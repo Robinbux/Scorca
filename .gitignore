@@ -1,0 +1,30 @@
+# Exclude Python byte code files
+*.pyc
+__pycache__/
+
+# Exclude system files
+.DS_Store
+Thumbs.db
+
+# Exclude environment-specific files
+venv/
+.venv/
+.env
+
+# Exclude IDE files
+.idea/
+
+# Exclude compiled Python files
+*.pyd
+*.pyo
+*.pyc
+
+# Exclude logs
+*.log
+
+# Exclude temporary files
+*.swp
+*~
+
+# Exclude JSON files
+*.json
