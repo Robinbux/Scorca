@@ -28,3 +28,6 @@ venv/
 
 # Exclude JSON files
 *.json
+
+# Exclude network weights
+lc0_nets/
