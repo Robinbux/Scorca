@@ -4,18 +4,20 @@ from typing import List, Tuple, Optional, Dict, Set
 from itertools import chain
 
 import chess
+import chess.polyglot
 from joblib import Parallel, delayed
 
 from board_tracker_utils import legal_board_for_sense_result, legal_board_for_own_move_result, \
     next_possible_board_states_based_on_opponent_move_result
 from multiprocessing import Pool
 
-from utils import convert_castling_moves_if_any, possible_piece_types_from_move
+from utils import convert_castling_moves_if_any, possible_piece_types_from_move, HashableBoard
 
 
 class BoardsTracker:
+
     def __init__(self):
-        self.possible_states = {chess.Board()}
+        self.possible_states = {HashableBoard()}
         self.likely_states = {}
         self.transposition_table = {}
         self.taken_moves = []

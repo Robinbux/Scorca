@@ -1,17 +1,15 @@
 import math
 import os
-
 from collections import defaultdict
 from multiprocessing import Pool
-from typing import List, Optional, Tuple, Dict, Set, Any
-from lczero.backends import Backend, Weights, GameState
-
+from typing import List, Optional, Tuple, Dict, Set
 
 import chess.engine
 import chess.polyglot
+from lczero.backends import Backend, Weights, GameState
 
 from utils import convert_castling_moves_if_any, extend_if_possible, find_best_move_among_all, \
-    current_mover_gives_check, pseudo_legal_moves_with_castling_through_check, lc0_q_value_to_centipawn_score
+    current_mover_gives_check, pseudo_legal_moves_with_castling_through_check, get_resulting_move, HashableBoard
 
 NULL_MOVE = chess.Move.null()
 
@@ -19,9 +17,9 @@ NULL_MOVE = chess.Move.null()
 VALUE_MATE = 10000
 TIME_USED_FOR_OPERATION = 5
 
-KING_CAPTURE_SCORE = 5
-LEAVE_IN_CHECK_SCORE = 10
-CHECK_WITHOUT_CAPTURE_SCORE = 3
+KING_CAPTURE_SCORE = 70
+LEAVE_IN_CHECK_SCORE = 70
+CHECK_WITHOUT_CAPTURE_SCORE = 30
 
 # l0 Network weights
 # 24 blocks x 320 filters
@@ -44,6 +42,7 @@ L0_BACKEND = Backend(weights=L0_WEIGHTS)
 
 chess.Board.__hash__ = lambda self: chess.polyglot.zobrist_hash(self)
 
+
 class MoveStrategy:
     def __init__(self, game_information_db, logger):
         self.logger = logger
@@ -61,21 +60,37 @@ class MoveStrategy:
         best_move = self.find_best_move_l0(possible_boards, self.move_actions)
         return best_move, []
 
-    def get_best_moves_l0(self, boards: List[chess.Board], n_likely_boards_per_state: Optional[int] = None) -> Tuple[
-        Dict[str, float], Set[chess.Board]]:
+    def get_best_moves_l0(self, boards: List[chess.Board], n_likely_boards_per_state: Optional[int] = None,
+                          n_optimistic_boards_per_state: Optional[int] = None) -> Tuple[
+        Dict[str, float], Set[chess.Board], Set[chess.Board]]:
         all_moves = set()
         for board in boards:
             all_moves.update(pseudo_legal_moves_with_castling_through_check(board))
-        move_weights, move_counts, likely_boards = self.get_move_weights_and_move_counts(boards, list(all_moves),
-                                                                                    n_likely_boards_per_state)
+        move_weights, move_counts, likely_boards, optimistic_boards = self.get_move_weights_and_move_counts(boards,
+                                                                                                            list(
+                                                                                                                all_moves),
+                                                                                                            n_likely_boards_per_state,
+                                                                                                            n_optimistic_boards_per_state)
 
-        return move_weights, likely_boards
+        return move_weights, likely_boards, optimistic_boards
 
-    def find_best_move_l0(self, boards: List[chess.Board], possible_moves: List[chess.Move]) -> Optional[chess.Move]:
-        move_weights, move_counts, _ = self.get_move_weights_and_move_counts(boards, possible_moves)
+    def find_best_move_l0(self, boards: Set[chess.Board], possible_moves: List[chess.Move]) -> Optional[chess.Move]:
+        move_weights, move_counts, _, _ = self.get_move_weights_and_move_counts(boards, possible_moves)
 
-        # Find the best move among all moves
-        best_move = find_best_move_among_all(move_weights, move_counts, boards)
+        # I am FED UP WITH THE ATTACKER BOTS, SO MANUAL CHECKS...
+        print("Turn: ", self.game_information_db.turn)
+        if self.game_information_db.turn == 2 and (
+                HashableBoard("rnbqkbnr/ppp2ppp/3N4/3pp3/8/8/PPPPPPPP/R1BQKBNR b KQkq - 0 3") in boards or HashableBoard(
+                "r1bqkbnr/pppp1ppp/2nN4/4p3/8/8/PPPPPPPP/R1BQKBNR b KQkq - 0 3") in boards):
+            best_move = chess.Move.from_uci("f8d6")
+            return best_move
+        elif self.game_information_db.turn == 3 and HashableBoard(
+                "r1bqkbnr/pppppppp/8/8/2PP4/2Nn4/PP2PPPP/R1BQKBNR w KQkq - 3 4") in boards:
+            best_move = chess.Move.from_uci("d1d3")
+            return best_move
+        else:
+            # Find the best move among all moves
+            best_move = find_best_move_among_all(move_weights, move_counts, boards)
 
         # If we are mated everywhere, return None
         if best_move is None:
@@ -85,6 +100,7 @@ class MoveStrategy:
         best_move = extend_if_possible(best_move, move_weights, move_counts, boards[0])
 
         print(boards[:20])
+
         # print(move_weights)
         print(sorted(move_weights.items(), key=lambda item: item[1], reverse=True))
 
@@ -93,21 +109,32 @@ class MoveStrategy:
 
         return best_move
 
-
-
     def get_move_weights_and_move_counts(self, boards: List[chess.Board], possible_moves: List[chess.Move],
-                                         n_likely_boards_per_state: Optional[int] = None) -> Tuple[
-        Dict, Dict, Set[chess.Board]]:
+                                         n_likely_boards_per_state: Optional[int] = None,
+                                         n_optimistic_boards_per_state: Optional[int] = None) -> Tuple[
+        Dict, Dict, Set[chess.Board], Set[chess.Board]]:
         move_weights = defaultdict(float)
         move_counts = defaultdict(int)
         all_likely_boards = set()
+        all_optimistic_boards = set()
 
+        # Parralel
         with Pool() as p:
-            results = p.map(worker, [(board, possible_moves, n_likely_boards_per_state) for board in boards])
+            results = p.map(worker, [(board, possible_moves, n_likely_boards_per_state,
+                                      n_optimistic_boards_per_state) for board in boards])
 
-        for weights, counts, likely_boards in results:
+        # Iterative for debugging
+        # results = []
+        # for board in boards:
+        #     results.append(worker((board, possible_moves, n_likely_boards_per_state,
+        #                            n_optimistic_boards_per_state)))
+
+        for weights, counts, likely_boards, optimistic_boards in results:
             if likely_boards:
                 all_likely_boards.update(likely_boards)
+
+            if optimistic_boards:
+                all_optimistic_boards.update(optimistic_boards)
 
             for move, weight in weights.items():
                 move_weights[move] += weight
@@ -115,12 +142,13 @@ class MoveStrategy:
             for move, count in counts.items():
                 move_counts[move] += count
 
-        return move_weights, move_counts, all_likely_boards
+        return move_weights, move_counts, all_likely_boards, all_optimistic_boards
 
     @staticmethod
     def calculate_move_weights_and_get_likely_boards(board: chess.Board, b, possible_moves: List[chess.Move],
-                                                     n_likely_boards_to_return: Optional[int] = None) -> Tuple[
-        Dict, Dict, Optional[Set[chess.Board]]]:
+                                                     n_likely_boards_to_return: Optional[int] = None,
+                                                     n_optimistic_boards_per_state: Optional[int] = None) -> Tuple[
+        Dict, Dict, Optional[Set[chess.Board]], Optional[Set[chess.Board]]]:
         move_weights = defaultdict(float)
         move_counts = defaultdict(int)
 
@@ -136,18 +164,18 @@ class MoveStrategy:
                 if move.to_square == op_king_square:
                     move_weights[move.uci()] += KING_CAPTURE_SCORE
                     move_counts[move.uci()] += 1
-            return move_weights, move_counts, None
+            return move_weights, move_counts, None, None
 
         # Second case:
         if board.is_checkmate():
-            return move_weights, move_counts, None
+            return move_weights, move_counts, None, None
 
         game_state = GameState(board.fen())
         i2 = game_state.as_input(b)
         eval = b.evaluate(i2)[0]
 
         q = eval.q()  # q will be in [-1, 1]
-        #cp = lc0_q_value_to_centipawn_score(q)
+        # cp = lc0_q_value_to_centipawn_score(q)
 
         moves = game_state.moves()
         policy_indices = game_state.policy_indices()
@@ -157,10 +185,11 @@ class MoveStrategy:
         sorted_moves = sorted(move_scores_softmax, key=lambda x: x[1], reverse=True)
 
         likely_boards = set()
+        optimistic_boards = set()
 
         for idx, (move, score) in enumerate(sorted_moves):
             # Get piece of move
-            move_weights[move] -= math.log(idx + 1) * 2.5
+            move_weights[move] -= math.log(idx + 1) * 3.5
             move_counts[move] += 1
 
             move_obj = chess.Move.from_uci(move)
@@ -175,28 +204,56 @@ class MoveStrategy:
                 likely_board.push(chess.Move.from_uci(move))
                 likely_boards.add(likely_board)
 
+            # TODO: Do same for optimistic, i.e. take the n lowest moves:
+            if n_optimistic_boards_per_state and idx >= len(sorted_moves) - n_optimistic_boards_per_state:
+                optimistic_board = board.copy()
+                optimistic_board.push(chess.Move.from_uci(move))
+                optimistic_boards.add(optimistic_board)
+
+        board_is_in_check = board.is_check()
+
         # If we are into check on this board, subtract points for all moves not suggested here
         for possible_move in possible_moves:
             if possible_move.uci() not in move_weights:
-                # We have to see WHY we can't make the move. If it is a capture or sliding move, maybe on this board
-                # something is just blocking it or there is no piece to capture
-                # To check we just 'remove' our king from the board.
-                board_copy = board.copy()
-                king_pos = board_copy.king(board.turn)
-                is_king_move = possible_move.from_square == king_pos
-                board_copy.remove_piece_at(king_pos)
-                legal_moves = list(board_copy.legal_moves)
-                if (possible_move in legal_moves) or is_king_move:
+                resulting_move = get_resulting_move(board, possible_move)
+                if board_is_in_check:
+                    if resulting_move in move_weights:
+                        move_weights[possible_move.uci()] += move_weights[resulting_move.uci()]
+                        move_counts[resulting_move.uci()] += 1
+                        continue
                     move_weights[possible_move.uci()] -= LEAVE_IN_CHECK_SCORE
                     move_counts[possible_move.uci()] += 1
+                    continue
+
+                from_square = possible_move.from_square
+                if not board.piece_at(from_square):
+                    # Only happens when calculating moves for the opponent
+                    move_weights[possible_move.uci()] -= math.log(len(possible_moves) // 2 + 1) * 2.5
+                    move_counts[possible_move.uci()] += 1
+                    continue
+
+                if not resulting_move:
+                    # Must be pawn move?
+                    move_weights[possible_move.uci()] -= math.log(len(possible_moves) // 2 + 1) * 2.5
+                    move_counts[possible_move.uci()] += 1
+                    continue
+
+                if resulting_move.uci() not in move_weights:
+                    move_weights[possible_move.uci()] += move_weights[possible_move.uci()]
+                    move_counts[possible_move.uci()] += 1
+
                 else:
                     move_weights[possible_move.uci()] -= math.log(len(possible_moves) // 2 + 1) * 2.5
                     move_counts[possible_move.uci()] += 1
 
-        return move_weights, move_counts, likely_boards
+        return move_weights, move_counts, likely_boards, optimistic_boards
+
 
 def worker(args):
-    board, possible_moves, n_likely_boards_per_state = args
-    weights, counts, likely_boards = MoveStrategy.calculate_move_weights_and_get_likely_boards(board, L0_BACKEND, possible_moves,
-                                                                                  n_likely_boards_per_state)
-    return weights, counts, likely_boards
+    board, possible_moves, n_likely_boards_per_state, n_optimistic_boards_per_state = args
+    weights, counts, likely_boards, optimistic_boards = MoveStrategy.calculate_move_weights_and_get_likely_boards(board,
+                                                                                                                  L0_BACKEND,
+                                                                                                                  possible_moves,
+                                                                                                                  n_likely_boards_per_state,
+                                                                                                                  n_optimistic_boards_per_state)
+    return weights, counts, likely_boards, optimistic_boards

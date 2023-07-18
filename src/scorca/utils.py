@@ -4,13 +4,20 @@ from itertools import product
 from typing import List, Optional, Dict
 
 import chess
+import chess.polyglot
 import chess.engine
 import numpy as np
 from reconchess.utilities import slide_move
 
+from functools import lru_cache
 
 def bool_to_color(boolean_value: chess.Color):
     return 'White' if boolean_value else 'Black'
+
+
+class HashableBoard(chess.Board):
+    def __hash__(self):
+        return hash(self._transposition_key())
 
 
 def get_3x3_center_squares(square):
@@ -50,16 +57,18 @@ def convert_centipawn_score_to_win_probability(score: int, k: int = 8) -> float:
     return 1 / (1 + 10 ** (-score / (k * 100)))
 
 
-def current_mover_gives_check(board: chess.Board) -> bool:
+def current_mover_gives_check(board: HashableBoard) -> bool:
     king = board.king(not board.turn)
     attackers_mask = board.attackers_mask(board.turn, king)
     return bool(attackers_mask)
 
 
-def get_resulting_move(board: chess.Board, move: chess.Move, pseudo_legal_moves: List[chess.Move]) -> chess.Move:
-    if move in pseudo_legal_moves:
+def get_resulting_move(board: HashableBoard, move: chess.Move) -> Optional[chess.Move]:
+    if move in pseudo_legal_moves_with_castling_through_check(board):
         return move
     piece = board.piece_at(move.from_square)
+    if not piece:
+        return None
     if piece.piece_type in [chess.PAWN, chess.ROOK, chess.BISHOP, chess.QUEEN]:
         move = slide_move(board, move)
     return move
@@ -81,7 +90,7 @@ def lc0_q_value_to_centipawn_score(q_value: float) -> float:
     return 290.680623072 * np.tan(1.5620688421 * q_value)
 
 
-def find_best_move_among_all(move_weights: Dict, move_counts: Dict, boards: List[chess.Board]) -> Optional[chess.Move]:
+def find_best_move_among_all(move_weights: Dict, move_counts: Dict, boards: List[HashableBoard]) -> Optional[chess.Move]:
     # Sort the moves by total weight, highest first.
     sorted_moves = sorted(move_weights, key=move_weights.get, reverse=True)
     if not sorted_moves:
@@ -96,7 +105,7 @@ def find_best_move_among_all(move_weights: Dict, move_counts: Dict, boards: List
     return best_move
 
 
-def extend_if_possible(best_move: chess.Move, move_weights: Dict, move_counts: Dict, board: chess.Board) -> chess.Move:
+def extend_if_possible(best_move: chess.Move, move_weights: Dict, move_counts: Dict, board: HashableBoard) -> chess.Move:
     # Check if move is a sliding move
     piece_to_move = board.piece_at(best_move.from_square)
 
@@ -166,7 +175,7 @@ def extend_sliding_move(move: chess.Move) -> Optional[chess.Move]:
     return extended_move
 
 
-def calculate_square_entropy(chess_boards: List[chess.Board], square: chess.Square) -> float:
+def calculate_square_entropy(chess_boards: List[HashableBoard], square: chess.Square) -> float:
     # Initialize a dictionary to count the occurrences of each piece
     counts = defaultdict(int)
 
@@ -259,12 +268,10 @@ def possible_piece_types_from_move(move: chess.Move) -> List[chess.PieceType]:
 MOVE_CACHE = {}
 
 
-def pseudo_legal_moves_with_castling_through_check(board: chess.Board) -> List[chess.Move]:
-    # Check if we've already computed the moves for this board
-    board_fen = board.fen()
-    if board_fen in MOVE_CACHE:
-        return MOVE_CACHE[board_fen]
 
+@lru_cache(maxsize=None)
+def pseudo_legal_moves_with_castling_through_check(board: HashableBoard) -> List[chess.Move]:
+    # Check if we've already computed the moves for this board
     moves = [chess.Move.null(), *board.generate_pseudo_legal_moves()]
 
     castling_rights = board.castling_rights
@@ -276,6 +283,4 @@ def pseudo_legal_moves_with_castling_through_check(board: chess.Board) -> List[c
         moves.append(chess.Move(chess.E8, chess.G8))  # Black short castle
     if castling_rights & chess.BB_A8:
         moves.append(chess.Move(chess.E8, chess.C8))  # Black long castle
-
-    MOVE_CACHE[board_fen] = moves
     return moves

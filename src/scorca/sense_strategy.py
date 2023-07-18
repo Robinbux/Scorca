@@ -61,66 +61,9 @@ def calculate_threat_weights(board):
     return threat_weights
 
 
-class SenseStrategy:
-    def __init__(self):
-        self.sensed_squares = set()  # keep track of the squares that were sensed
-        self.sense_time = {}  # keep track of the time of the last sense for each square
-        self.decay_factor = 0.9  # adjust this parameter to change the decay rate
-        self.penalty_value = 1000  # penalty for sensing a square that was already sensed
-        self.current_turn = 0
-        self.cpu_count = 5
-
-
-    def sense(self, possible_boards: List[chess.Board]) -> int:
-        self.current_turn += 1
-        if len(possible_boards) > MAX_BOARDS:
-            possible_boards = random.sample(possible_boards, MAX_BOARDS)
-        best_square = self._calculate_best_sense_square(possible_boards)
-        rank, file = chess.square_rank(best_square), chess.square_file(best_square)
-        self.sensed_squares.update(dict.fromkeys([chess.square(file + df, rank + dr) for dr, df in NEIGHBORHOOD_DELTA], self.current_turn))
-        return best_square
-
-    def _calculate_best_sense_square(self, possible_boards):
-        entropy_scores, piece_probs = calculate_entropy_scores(possible_boards)
-        max_sum = 0
-        max_square = 12
-
-        # Use Joblib to calculate the threat weights in parallel
-        threat_weights_list = Parallel(n_jobs=self.cpu_count)(delayed(calculate_threat_weights)(board) for board in possible_boards)
-
-        # Combine the threat weights from all boards
-        threat_weights = np.sum(threat_weights_list, axis=0)
-
-        for rank, file in itertools.product(range(1, 7), range(1, 7)):
-            squares = np.array([chess.square(file + df, rank + dr) for dr, df in NEIGHBORHOOD_DELTA])
-            ranks, files = squares // 8, squares % 8
-
-            piece_probabilities = piece_probs[ranks, files].T[:6]
-
-            piece_types = np.arange(1, 7)
-            piece_weights_array = piece_weights[piece_types - 1]
-
-            square_sum = np.sum(entropy_scores[ranks, files] * piece_weights_array[:, None] * piece_probabilities, axis=0)
-            square_sum += threat_weights[squares]
-
-            if (square_sum > max_sum).any():
-                max_sum = square_sum
-                max_square = chess.square(file, rank)
-
-        return max_square
-
-    def _calculate_sensed_penalty(self, squares):
-        penalty = 0
-        for square in squares:
-            if square in self.sensed_squares:
-                turns_ago = self.current_turn - self.sensed_squares[square]
-                penalty += (self.decay_factor ** turns_ago) * self.penalty_value
-        return penalty
-
-
 class NaiveEntropySense:
 
-    def __init__(self, move_strategy, include_penalty=True, include_ponder_bonus=False, include_attacker_squares=False, include_piece_value_bonus=True, ):
+    def __init__(self, move_strategy, include_penalty=False, include_ponder_bonus=False, include_attacker_squares=False, include_piece_value_bonus=True, ):
         self.move_strategy = move_strategy
         self.sensed_squares = np.zeros((8, 8), dtype=int)
         self.include_penalty = include_penalty
@@ -132,8 +75,8 @@ class NaiveEntropySense:
     def sense(self, possible_boards: List[chess.Board], ponder_moves: List[chess.Move], game_information_db) -> int:
         if game_information_db.turn == 0 and game_information_db.color == chess.BLACK:
             return 20 # e3
-        if len(possible_boards) > 2000:
-            possible_boards = random.sample(possible_boards, 2000)
+        if len(possible_boards) > 10000:
+            possible_boards = random.sample(possible_boards, 10000)
         # if len(possible_boards) < 100:
         #     square = self.most_likely_move_sense(possible_boards)
         square = self.find_highest_entropy_region_square(possible_boards, ponder_moves)
@@ -147,7 +90,7 @@ class NaiveEntropySense:
 
         # Apply penalty to entropy scores based on previously sensed squares
         if self.include_penalty:
-            decay_factor = 0.5  # you can adjust this to change the strength of the penalty
+            decay_factor = 0.5
             entropy_scores -= decay_factor * self.sensed_squares
 
         # Calculate the sum of entropy scores for all 3x3 regions
@@ -186,7 +129,9 @@ class NaiveEntropySense:
                     attackers = board.attackers(not board.turn, king_square)
                     for square in chess.SQUARES:
                         if square in attackers:
-                            attack_counts[square] += 2
+                            # print("ATTACKER SQUARE *********************************")
+                            # print(square)
+                            attack_counts[square] += 1
 
         piece_probs = piece_counts / n_boards
         entropy = -np.nansum(piece_probs * np.log2(piece_probs), axis=1)
@@ -197,7 +142,9 @@ class NaiveEntropySense:
             attack_probs = attack_counts / n_boards
             attack_bonus_factor = 600_000
             # only apply bonus if entropy is not 0
-            entropy += np.where(entropy > 0, attack_bonus_factor * attack_probs, 0)
+            print(attack_probs)
+            entropy *= (1 + attack_probs)
+            #entropy += np.where(entropy > 0, attack_bonus_factor * attack_probs, 0)
 
         # Add piece value bonus
         if self.include_piece_value_bonus:
@@ -208,4 +155,5 @@ class NaiveEntropySense:
                         entropy[square] *= piece_weights_dict[piece_type_char] * count
 
         self.count += 1
+        #print(entropy.reshape((8, 8)))
         return entropy.reshape((8, 8))

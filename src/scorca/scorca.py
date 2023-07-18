@@ -1,6 +1,4 @@
-import json
 import logging
-import os
 import random
 import threading
 import time
@@ -17,7 +15,7 @@ from boards_tracker import BoardsTracker
 from game_information_db import GameInformationDB
 from move_strategy import MoveStrategy
 from sense_strategy import NaiveEntropySense
-from utils import  get_best_center_from_best_op_moves_dict
+from utils import get_best_center_from_best_op_moves_dict
 
 LOG_LEVELS = {
     'DEBUG': 'cyan',
@@ -34,6 +32,11 @@ class GameStage(Enum):
     END = 'end'
 
 
+STATES_CUTOFF_POINT = 10_000
+LIKELY_NEXT_STATES_PER_BOARD = 2
+OPTIMISTIC_STATES_PER_BOARD = 0
+
+
 def log_states_change(func):
     @wraps(func)
     def wrapper(self, *args, **kwargs):
@@ -45,11 +48,11 @@ def log_states_change(func):
 
     return wrapper
 
-chess.Board.__hash__ = lambda self: chess.polyglot.zobrist_hash(self)
 
 class Scorca(Player):
     def __init__(self, disable_logger: bool = False):
         self.likely_states = set()
+        self.likely_and_optimistic_states = set()
         self.opp_move_weights = None
         self.background_calc_finished = True
         self.percentage_calculated = 0
@@ -120,7 +123,6 @@ class Scorca(Player):
     def handle_game_start(self, color: Color, board: chess.Board, opponent_name: str):
         self.logger.info('Game starting...')
         self.color = color
-        self.board = board
         self.game_information_db.color = color
         self.game_information_db.opponent_color = not color
 
@@ -143,12 +145,14 @@ class Scorca(Player):
         if len(self.boards_tracker.possible_states) > 1 and self.opp_move_weights:
             if capture_square is not None:
                 # We remove all moves that don't go to the capture square
-                self.opp_move_weights = {key: value for key, value in self.opp_move_weights.items() if key.to_square == capture_square}
+                self.opp_move_weights = {key: value for key, value in self.opp_move_weights.items() if
+                                         key.to_square == capture_square}
 
-        self.logger.info(f'Amount of likely states before: {len(self.likely_states)}')
+        self.logger.info(f'Amount of likely and optimistic states before: {len(self.likely_and_optimistic_states)}')
         # Remove likely states that are not possible anymore
         self.likely_states &= self.boards_tracker.possible_states
-        self.logger.info(f'Amount of likely states after: {len(self.likely_states)}')
+        self.likely_and_optimistic_states &= self.boards_tracker.possible_states
+        self.logger.info(f'Amount of likely and optimistic states after: {len(self.likely_and_optimistic_states)}')
 
         self.logger.info(f"Time to handle opponent move result: {time.time() - start_time}")
 
@@ -182,7 +186,7 @@ class Scorca(Player):
 
     def _perform_and_log_sense_action(self):
         start_time = time.time()
-        if len(self.likely_states) > 1:
+        if len(self.likely_and_optimistic_states) > 1:
             self.logger.critical('SENSING BASED ON LIKELY STATES')
             square = self.sense_strategy.sense(self.likely_states, self.ponders,
                                                game_information_db=self.game_information_db)
@@ -193,7 +197,8 @@ class Scorca(Player):
 
         else:
             self.logger.critical('SENSING BASED ON POSSIBLE STATES')
-            square = self.sense_strategy.sense(self.boards_tracker.possible_states, self.ponders, game_information_db=self.game_information_db)
+            square = self.sense_strategy.sense(self.boards_tracker.possible_states, self.ponders,
+                                               game_information_db=self.game_information_db)
 
         self.logger.info(f"Time used for sense: {time.time() - start_time:.4f} seconds")
         self.logger.debug(f"Sensed square: {chess.SQUARE_NAMES[square] if square else 'None'}")
@@ -206,11 +211,10 @@ class Scorca(Player):
         self.boards_tracker.handle_sense_result(sense_result, seconds_left=self.seconds_left)
 
         # Update likely states again
-        self.logger.info(f'Amount of likely states before: {len(self.likely_states)}')
+        self.logger.info(f'Amount of likely and optimistic states before: {len(self.likely_and_optimistic_states)}')
         # Remove likely states that are not possible anymore
-        self.likely_states &= self.boards_tracker.possible_states
-        self.logger.info(f'Amount of likely states after: {len(self.likely_states)}')
-
+        self.likely_and_optimistic_states &= self.boards_tracker.possible_states
+        self.logger.info(f'Amount of likely and optimistic states after: {len(self.likely_and_optimistic_states)}')
 
     def choose_move(self, move_actions: List[chess.Move], seconds_left: int) -> Optional[chess.Move]:
         self.logger.info(f"Seconds MOVE: {seconds_left}")
@@ -223,7 +227,21 @@ class Scorca(Player):
 
     def _perform_and_log_move_action(self, move_actions: List[chess.Move], seconds_left: int):
         start_time = time.time()
-        states_to_use = self.likely_states if len(self.likely_states) > 0 else self.boards_tracker.possible_states
+        states_to_use = self.boards_tracker.possible_states
+
+        if len(self.likely_states) > 0:
+            states_to_use = self.likely_states
+            # Get all boards that attack our king
+            all_possible_states = self.boards_tracker.possible_states
+            states_that_attack_our_king = {state for state in all_possible_states if state.is_check()}
+            # self.logger.info('States that attack our king:')
+            # self.logger.info(states_that_attack_our_king)
+            # self.logger.info('States to use before:')
+            # self.logger.info(states_to_use)
+            states_to_use.update(states_that_attack_our_king)
+            # self.logger.info('States to use after:')
+            # self.logger.info(states_to_use)
+
         move, ponders = self.move_strategy.move(move_actions, states_to_use, seconds_left)
         # If move is none, pick random move
         if move is None:
@@ -248,7 +266,6 @@ class Scorca(Player):
                                                    capture_square=capture_square,
                                                    seconds_left=self.seconds_left)
 
-
         # Start background_calculation in a new thread
         self.stop_background_calculation = False
         background_thread = threading.Thread(target=self.background_calculation)
@@ -261,13 +278,16 @@ class Scorca(Player):
     def background_calculation(self):
         self.background_calc_finished = False
         self.opp_move_weights = {}
-        self.likely_states = set()
+        self.likely_and_optimistic_states = set()
         self.percentage_calculated = 0
         self.best_moves_for_opponent: Dict[Tuple[chess.Square, bool], float] = {}
 
-        opp_move_weights_str_keys, likely_states = self.move_strategy.get_best_moves_l0(self.boards_tracker.possible_states, n_likely_boards_per_state=2)
-        self.logger.critical(f'{len(likely_states)} likely states vs {len(self.boards_tracker.possible_states)} possible states')
+        opp_move_weights_str_keys, likely_states, optimistic_states = self.move_strategy.get_best_moves_l0(
+            self.boards_tracker.possible_states, n_likely_boards_per_state=LIKELY_NEXT_STATES_PER_BOARD, n_optimistic_boards_per_state=OPTIMISTIC_STATES_PER_BOARD)
+        self.logger.info(f"Calculated {len(likely_states)} likely states and {len(optimistic_states)} optimistic states")
         self.likely_states = likely_states
+        self.likely_and_optimistic_states = likely_states | optimistic_states
+        self.logger.info(f"Total amount of states to consider: {len(self.likely_and_optimistic_states)}")
         # Convert string keys to chess.Move keys...
         self.opp_move_weights = {chess.Move.from_uci(key): value for key, value in opp_move_weights_str_keys.items()}
 
@@ -276,13 +296,12 @@ class Scorca(Player):
         self.logger.info("Stopped background calculation!")
         self.background_calc_finished = True
 
-
     def handle_game_end(self, winner_color: Optional[Color], win_reason: Optional[WinReason],
                         game_history: GameHistory):
         self.logger.info('Game end')
 
     def _log_states_difference(self, operation: str, before: int, after: int):
-        if before <= 0  or after < 0:
+        if before <= 0 or after < 0:
             return
         self.logger.critical(f"States changes {operation}: {before} -> {after}")
         percentage_change = (after - before) / before * 100

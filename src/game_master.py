@@ -11,21 +11,19 @@ from reconchess.history import GameHistory
 
 from opponent_bots import StrangeFish2
 from src.misc_bots.preset_move_bot import PresetMoveBot
-from src.scorca.move_strategy import Engine, BotParameters
 from src.scorca.scorca import Scorca
-from src.utils import bool_to_color, logger, VALUE_MATE
-from hyperopt import hp, fmin, tpe, Trials, STATUS_OK
 
-from deap import base, creator, tools, algorithms
+from loguru import logger
+
+
 import random
+
+from src.scorca.utils import bool_to_color
 
 SECONDS_PER_PLAYER = 300
 
-
-
 class BotOptions(str, Enum):
-    SCORCA_SUNFISH = 'SCORCA Sunfish'
-    SCORCA_STOCKFISH = 'SCORCA Stockfish'
+    SCORCA = 'SCORCA'
     STRANGE_FISH = 'STRANGE_FISH'
     TROUT = 'TROUT'
     ATTACKER = 'ATTACKER'
@@ -33,29 +31,19 @@ class BotOptions(str, Enum):
 
 
 class GameMaster:
-    GAME_LOGS_PATH = '../game_logs_new'
+    GAME_LOGS_PATH = '../game_logs'
 
     @staticmethod
-    def setup_bot(bot_option: BotOptions, params: BotParameters = None):
+    def setup_bot(bot_option: BotOptions):
         bots = {
             BotOptions.TROUT: lambda: ('Trout Bot', TroutBot()),
             BotOptions.ATTACKER: lambda: ('Attacker Bot', AttackerBot()),
             BotOptions.STRANGE_FISH: lambda: ('Strange Fish', StrangeFish2()),
-            BotOptions.SCORCA_SUNFISH: lambda: ('SCORCA Bot Sunfish', Scorca(Engine.SUNFISH, disable_logger=True)),
-            BotOptions.SCORCA_STOCKFISH: lambda: ('SCORCA Bot Stockfish', Scorca(Engine.STOCKFISH)),
+            BotOptions.SCORCA: lambda: ('SCORCA', Scorca()),
             BotOptions.PRESET_MOVE: lambda: ('Preset Move Bot', PresetMoveBot()),
         }
 
         bot_name, bot = bots[bot_option]()
-
-        # Set options if it's a Scorca bot
-        if bot_option == BotOptions.SCORCA_STOCKFISH:
-            # Use provided parameters if available, else randomize
-            if not params:
-                params = random_parameter_selection()
-            bot.move_strategy.set_options(
-                params
-            )
 
         return bot_name, bot
 
@@ -100,9 +88,9 @@ class GameMaster:
         results = defaultdict(int)
 
         # Set up the bots with hardcoded parameters if provided
-        bot1_name, bot1 = self.setup_bot(bot1_options, bot1_params)
+        bot1_name, bot1 = self.setup_bot(bot1_options)
         bot1_name = f"BOT 1 ({bot1_name})"
-        bot2_name, bot2 = self.setup_bot(bot2_options, bot2_params)
+        bot2_name, bot2 = self.setup_bot(bot2_options)
         bot2_name = f"BOT 2 ({bot2_name})"
 
         self.save_initial_experiment_settings(experiment_dir, num_games, bot1, bot2)
@@ -111,7 +99,7 @@ class GameMaster:
 
         for game_id in range(num_games):
             # Randomly assign bots to colors
-            is_bot1_white = random.random() < 0.5
+            is_bot1_white = random.random() < 1
 
             white, white_name, black, black_name = (bot1, bot1_name, bot2, bot2_name) if is_bot1_white else (bot2, bot2_name, bot1, bot1_name)
 
@@ -134,10 +122,6 @@ class GameMaster:
                 'turns': turns,
             }
 
-            if hasattr(white, 'sense_strategy_name'):
-                game_details['white_sense_strategy'] = white.sense_strategy_name
-            if hasattr(black, 'sense_strategy_name'):
-                game_details['black_sense_strategy'] = black.sense_strategy_name
             if hasattr(white, 'out_of_time'):
                 game_details['white_went_timeout'] = white.out_of_time
             if hasattr(black, 'out_of_time'):
@@ -177,11 +161,6 @@ class GameMaster:
             json.dump(data, file, indent=2)
 
 
-    def log_experiment_results(self, results: dict, bot1: BotOptions, bot2: BotOptions):
-        logger.info('Experiment results:')
-        logger.info(f'{bot1}: {results[bot1]} wins')
-        logger.info(f'{bot2}: {results[bot2]} wins')
-
     def create_new_experiment_dir(self):
         new_dir_index = len(os.listdir(self.GAME_LOGS_PATH))
         new_dir_name = 'games_{:03d}'.format(new_dir_index)
@@ -193,101 +172,13 @@ class GameMaster:
         return new_dir_path
 
     def save_initial_experiment_settings(self, dir_path, num_games, bot1, bot2):
-        if isinstance(bot1, Scorca) and bot1.engine == Engine.STOCKFISH:
-            bot1_options = bot1.move_strategy.get_options()
-        else:
-            bot1_options = None
-
-        if isinstance(bot2, Scorca) and bot2.engine == Engine.STOCKFISH:
-            bot2_options = bot2.move_strategy.get_options()
-        else:
-            bot2_options = None
-
         settings_file_path = os.path.join(dir_path, 'settings.json')
         with open(settings_file_path, 'w') as file:
             json.dump({
                 'num_games': num_games,
                 'seconds_per_player': SECONDS_PER_PLAYER,
-                'bot1': bot1_options,
-                'bot2': bot2_options
             }, file, indent=2)
 
-    def append_experiment_results(self, dir_path, games_details):
-        settings_file_path = os.path.join(dir_path, 'settings.json')
-
-        # Read the existing data
-        with open(settings_file_path, 'r') as file:
-            data = json.load(file)
-
-        # Append the new data
-        data['games_details'] = games_details
-
-        # Write back to the file
-        with open(settings_file_path, 'w') as file:
-            json.dump(data, file, indent=2)
-
-# parameter ranges
-BOARD_EVAL_RANGE = [10, 50]  # example range, adjust as needed
-MATE_SCORE_BASE_RANGE = [32765, 32765]  # example range, adjust as needed
-CHECK_EXPOSED_VALUE = [-15000, -3000]  # example range, adjust as needed
-BOARDS_PER_BEST_WORST_N = [3, 30]
-REMOVE_MOVES_PERCENTILE = [0, 50] # 0 means no moves are removed, 50 means half of the moves are removed
-EVALUATED_BOARDS_AMOUNT_LIMIT = [500, 5000]
-
-
-def random_parameter_selection():
-    return BotParameters(
-        mate_score_base=random.randint(VALUE_MATE, VALUE_MATE),
-        check_exposed_value=random.randint(-15000, -3000),
-        king_capture_score=random.randint(VALUE_MATE *1.5, VALUE_MATE * 1.5),
-        boards_per_best_worst_n=random.randint(10, 40),
-        evaluated_boards_amount_limit=random.randint(100, 1000),
-        remove_moves_percentile=random.randint(0, 50),
-        # random_boards=bool(random.getrandbits(1))
-    )
-
-# Setup the hyper-parameter space
-param_space = {
-    'amount_of_boards_to_evaluate': hp.quniform('amount_of_boards_to_evaluate',3, 30, 1),
-    'mate_score_base': hp.quniform('mate_score_base', 2000, 8000, 100),
-    'check_exposed_value': hp.quniform('check_exposed_value', -15000, -3000, 500),
-    'king_capture_score': hp.quniform('king_capture_score', 1000, 15000, 1000),
-    'boards_per_best_worst_n': hp.quniform('boards_per_best_worst_n', 4, 30, 1),
-    'evaluated_boards_amount_limit': hp.quniform('evaluated_boards_amount_limit', 500, 5000, 50),
-    'remove_moves_percentile': hp.quniform('remove_moves_percentile', 0, 50, 5),
-}
-
-# The objective function
-def objective(params):
-    game_master = GameMaster()
-    bot_params = BotParameters(**params)
-
-    num_games = 4
-
-    bot1 = BotOptions.SCORCA_STOCKFISH
-    bot2 = BotOptions.STRANGE_FISH
-
-    # modify run_experiment to return average win rate as the evaluation metric
-    avg_win_rate = game_master.run_experiment(
-        num_games=num_games,
-        bot1_options=bot1,
-        bot2_options=bot2,
-        bot1_params=bot_params,
-    )
-
-    # optimize for the maximum win rate
-    return {'loss': -avg_win_rate, 'status': STATUS_OK}
-
-# if __name__ == '__main__':
-#     # The optimization process
-#     trials = Trials()
-#     best = fmin(objective,
-#         space=param_space,
-#         algo=tpe.suggest,
-#         max_evals=5,  # adjust this number based on how long you are willing to train
-#         trials=trials)
-#
-#     print(best)
 
 if __name__ == '__main__':
     print("START")
@@ -297,27 +188,9 @@ if __name__ == '__main__':
     num_games = 1
 
 
-    bot1 = BotOptions.SCORCA_STOCKFISH
-    bot2 = BotOptions.STRANGE_FISH
-    # "amount_of_boards_to_evaluate": 22,
-    # "mate_score_base": 7643,
-    # "check_exposed_value": -3537,
-    # "king_capture_score": 1536,
-    # "boards_per_best_worst_n": 15,
-    # "evaluated_boards_amount_limit": 884,
-    # "remove_moves_percentile": 41
+    bot1 = BotOptions.SCORCA
+    bot2 = BotOptions.ATTACKER
 
-    bot1_params = BotParameters(
-        mate_score_base=VALUE_MATE,
-        check_exposed_value=-VALUE_MATE*0.8,
-        king_capture_score=VALUE_MATE*1.5,
-        boards_per_best_worst_n=200,
-        evaluated_boards_amount_limit=200,
-        remove_moves_percentile=0,
-    )
-
-    #bot1_params = random_parameter_selection()
-    #bot2_params = random_parameter_selection()
 
     for i in range(num_experiments):
         print(f"Running experiment {i + 1}...")
@@ -326,5 +199,4 @@ if __name__ == '__main__':
             num_games=num_games,
             bot1_options=bot1,
             bot2_options=bot2,
-            bot1_params=bot1_params,
         )

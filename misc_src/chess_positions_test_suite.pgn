@@ -1,0 +1,3129 @@
+﻿[Event "CSS-WM"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "WMT 52"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/4kpbn/p1p3p1/Pp2p2p/1P2Pn2/N1P1BP2/5P1P/5BK1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxb5 *
+
+[Event "Alpha-Zero"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4r1k1/2pbnrq1/1p1b1p2/2pPp1pp/p1P1P2P/P2QNNB1/1P3PP1/3RR2K b - - 0 1"]
+[PlyCount "1"]
+
+1... Nc8 *
+
+[Event "iq4"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "62.6.IQ.999"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4rr1k/pQ4pp/8/7q/2B2BbP/P1P2nP1/5PK1/R6R b - - 0 1"]
+[PlyCount "1"]
+
+1... Rxf4 *
+
+[Event "lapuce2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "LCTFIN07"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6k1/4pp1p/3p2p1/P1pPb3/R7/1r2P1PP/3B1P2/6K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bb4 *
+
+[Event "STS7Offer of Simplification"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "STS(v7.0) Simplification.071"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7k/4r1p1/1p1b3p/p4q2/8/P5PP/1P1NQPK1/4R3 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qf3 *
+
+[Event "pet"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "PET019: opposite bishops"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/4kpp1/3p1b2/p6P/2B5/6P1/6K1 b - - 0 1"]
+[PlyCount "1"]
+
+1... Bh3 *
+
+[Event "pet"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "PET050: QNBR vs QNR"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7k/7p/1p4p1/n2p4/1K1p3R/2NB4/3Q1P2/q1r5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rxh7+ *
+
+[Event "ecmgcp"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ECM.1229"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r3rk1/6p1/p1pb1qPp/3p4/4nPR1/2N4Q/PPP4P/2K1BR2 b - - 0 1"]
+[PlyCount "1"]
+
+1... Rb7 *
+
+[Event "ecmgcp"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ECM.1573"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2r1rbk1/p1Bq1ppp/Ppn1b3/1Npp4/B7/3P2Q1/1PP2PPP/R4RK1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxa7 *
+
+[Event "Tim-Krabbe"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Pos.38 Petrosyan-Hasaj, Schilde 1970"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2k5/q1p5/3p4/pPpPp1pp/N1P1Pp2/P4PbP/KQ4P1/8 b - - 0 1"]
+[PlyCount "1"]
+
+1... Qb6 *
+
+[Event "Tim-Krabbe"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Pos.4 Brzozka-Bronstein, Miskolc 1963"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r6/4k3/r2p2p1/2pR1p1p/2P1pP1P/pPK1P1P1/P7/1B6 b - - 0 1"]
+[PlyCount "1"]
+
+1... Rxb3+ *
+
+[Event "Smith-Gach, CorrGame 1999"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Nightmare II-06"]
+[Black "Endspiel D vs D"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/4kpp1/1pQq3p/p7/P7/3P2P1/2P2P1P/6K1 w - - 0 35"]
+[PlyCount "1"]
+[SourceTitle "Nightmare II"]
+[Source "Walt. Eigenmann"]
+[SourceDate "2016.08.25"]
+[SourceVersion "1"]
+[SourceVersionDate "2016.08.25"]
+[SourceQuality "1"]
+
+35. Qxd6+ *
+
+[Event "Kekely 2008"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Nightmare II-09"]
+[Black "Patt"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7k/1p5p/2qpn1PP/Pp1p4/8/3B2p1/3B1pP1/R4K2 w - - 0 1"]
+[PlyCount "1"]
+[SourceTitle "Nightmare II"]
+[Source "Walt. Eigenmann"]
+[SourceDate "2016.08.25"]
+[SourceVersion "1"]
+[SourceVersionDate "2016.08.25"]
+[SourceQuality "1"]
+
+1. a6 *
+
+[Event "Timman 2012"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Nightmare II-19"]
+[Black "Springeropfer"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5B2/1p1nNp2/8/1P2R3/3p3q/8/p1K1P1Q1/k3b3 w - - 0 1"]
+[PlyCount "1"]
+[SourceTitle "Nightmare II"]
+[Source "Walt. Eigenmann"]
+[SourceDate "2016.08.25"]
+[SourceVersion "1"]
+[SourceVersionDate "2016.08.25"]
+[SourceQuality "1"]
+
+1. Ng6 *
+
+[Event "Der-Brillante-Schachzug"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1n6/Pp1p1p1p/1P1P1P1P/4K3/2p5/p7/rpp1P3/qkb1R3 w - - 0 1"]
+[PlyCount "1"]
+
+1. axb8=N *
+
+[Event "Der-Brillante-Schachzug"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/5nnp/6k1/3N4/p3N1Pp/P2p1p2/P1bP1P1P/2K5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nf4+ *
+
+[Event "Der-Brillante-Schachzug"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1bq1k1r/4npp1/p1nNp2p/bp1pP2P/3P4/P4N2/2B2PP1/R1BQ1K1R w - - 0 1"]
+[PlyCount "1"]
+
+1. Ng5 *
+
+[Event "Der-Brillante-Schachzug"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2b1r1k1/pp3n1p/2n1p1p1/3p4/2pP1QB1/P1q2N2/2P2PPP/R3R1K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ra2 *
+
+[Event "Der-Brillante-Schachzug"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1k3q2/pp2n1pP/2PK4/2pR1b2/8/6Q1/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,51,0]} 1. Rxf5 *
+
+[Event "Der-Brillante-Schachzug"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1q6/4p3/6Q1/2N1n3/p2P2P1/P2PP1k1/4Kp1p/2B5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ne4+ *
+
+[Event "Der-Brillante-Schachzug"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/3P3k/n2K3p/2p1n3/1b4N1/2p1p1P1/8/3B4 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nf6+ *
+
+[Event "The Engine Crackers"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "001 Michal Formela 2019"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5N1n/3P1p1p/5P1k/1Pp1P2p/4KP1P/2p5/p4b2/5N2 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ne3 *
+
+[Event "The Engine Crackers"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "002 Gerd Hoerning 2004"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "k7/P4pp1/1P6/2p1P3/2P1n3/p5pB/P4n2/K5b1 w - - 0 1"]
+[PlyCount "1"]
+
+1. e6 *
+
+[Event "The Engine Crackers"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "004 Gerhard Josten 2001"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7k/pp1pBp1N/1p3Pp1/b3K1PR/P3P2p/R1n4P/2P1N1P1/3q4 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rxc3 *
+
+[Event "The Engine Crackers"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "013 G. Figlio - A. Moreto 201"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r7/pp2Pp1k/5P1p/PBp1B1p1/5n2/8/8/5K2 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bxf4 *
+
+[Event "The Engine Crackers"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "016 V. Kozirev 2013"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6k1/2p3p1/B4R1P/R3P2K/4p1pP/P3q3/1Qp5/2r4r w - - 0 1"]
+[PlyCount "1"]
+
+1. Bc4+ *
+
+[Event "The Engine Crackers"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "017 LC0 - Stockfish 2020"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2rqr1k1/pp1bbp1p/2n1p1pB/2N1P3/1PQp4/P4N2/5PP1/3RR1K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-14,-66]} 1. Ne4 *
+
+[Event "The Engine Crackers"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "018 M. Garcia - P. Krug 2015"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3q3N/1p5k/5B2/8/1p2p1Rp/1P5K/p3PP2/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rg7+ *
+
+[Event "The Engine Crackers"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "012 BrainFish vs LC0 2020"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r4r2/b2q2pk/3p2np/N2pp3/PP1P4/2P3PP/1B3P2/R3RQK1 b - - 0 1"]
+[PlyCount "1"]
+
+1... Rf5 *
+
+[Event "Eigenmann-Endspiel-Test"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "E_E_T 077 - T&L vs T&L"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rk1b4/p2p2p1/1P6/2R2P2/8/2K5/8/5B2 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rc8+ *
+
+[Event "Eigenmann Rapid Engine Chess"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ERET 002 - Zugzwang"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1n2N1k/2n2K1p/3pp3/5Pp1/b5R1/8/1PPP4/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-582,-724]} 1. Ng6+ *
+
+[Event "Eigenmann Rapid Engine Chess"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ERET 032 - Zugzwang"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/7p/5P1k/1p5P/5p2/2p1p3/P1P1P1P1/1K3Nb1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ng3 *
+
+[Event "Eigenmann Rapid Engine Chess"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ERET 036 - Endspiel"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1k1n2n/8/pP6/5R2/8/1b1B4/4N3/1K5N w - - 0 1"]
+[PlyCount "1"]
+
+1. b7+ *
+
+[Event "Eigenmann Rapid Engine Chess"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ERET 037 - Zugzwang"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1k6/bPN2pp1/Pp2p3/p1p5/2pn4/3P4/PPR5/1K6 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,22,-140]} 1. Na8 *
+
+[Event "Eigenmann Rapid Engine Chess"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ERET 046 - Endspiel"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/4nk2/1p3p2/1r1p2pp/1P1R1N1P/6P1/3KPP2/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nd3 *
+
+[Event "Eigenmann Rapid Engine Chess"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ERET 075 - Festung"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6r1/6r1/2p1k1pp/p1pbP2q/Pp1p1PpP/1P1P2NR/1KPQ3R/8 b - - 0 1"]
+[PlyCount "1"]
+
+1... Qf5 *
+
+[Event "Eigenmann Rapid Engine Chess"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ERET 090 - Endspiel"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4K1k1/8/1p5p/1Pp3b1/8/1P3P2/P1B2P2/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. f4 *
+
+[Event "Eigenmann Rapid Engine Chess"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ERET 093 - Endspiel"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2b1r3/r2ppN2/8/1p1p1k2/pP1P4/2P3R1/PP3PP1/2K5 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-295,-586]} 1. Nd6+ *
+
+[Event "Eigenmann Rapid Engine Chess"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ERET 094 - Damenopfer"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2k2Br1/p6b/Pq1r4/1p2p1b1/1Ppp2p1/Q1P3N1/5RPP/R3N1K1 b - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,44,197]} 1... Rf6 *
+
+[Event "Eigenmann Rapid Engine Chess"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "ERET 103 - Zugzwang"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4k1br/1K1p1n1r/2p2pN1/P2p1N2/2P3pP/5B2/P2P4/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Kc8 *
+
+[Event "arasan20"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan20.71"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2r3k1/1bp3pp/pp1pNn1r/3P1p1q/1PP1pP2/P3P1P1/3Q3P/2RR1BK1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,52,48]} 1. c5 *
+
+[Event "arasan20"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan20.87"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2r1r2k/1b1n1p1p/p3pPp1/1p1pP2q/3N4/P3Q1P1/1PP4P/2KRRB2 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,91,269]} 1. g4 *
+
+[Event "arasan20"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan20.148"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r2q1k1r/pp2n1pp/2nb1p2/1B1p3Q/N2P4/2P1B3/PP4PP/R4RK1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rxf6+ *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.6"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b1k2r/1p1pppb1/p5pp/3P4/q2p1B2/3P1Q2/PPP2PPP/R3R1K1 w kq - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-218,-280]} 1. Rxe7+ *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.20"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3q1rk1/pr1b1p1p/1bp2p2/2ppP3/8/2P1BN2/PPQ3PP/R4RK1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bh6 *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.27"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2bq1rk1/rpb2p2/2p1p1p1/p1N3Np/P2P1P1P/1Q2R1P1/1P3P2/3R2K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. f5 *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.34"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r2q1rk1/ppp2p2/3p1np1/4pNQ1/4P1pP/1PPP4/1P3P2/R3K1R1 w Q - 0 1"]
+[PlyCount "1"]
+
+1. Qh6 *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.41"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2b1rk2/5p2/p1P5/2p2P2/2p5/7B/P7/2KR4 w - - 0 1"]
+[PlyCount "1"]
+
+1. f6 *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.52"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "q3nrk1/4bppp/3p4/r3nPP1/4P2P/NpQ1B3/1P4B1/1K1R3R b - - 0 1"]
+[PlyCount "1"]
+
+1... Nc7 *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.96"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r3rk1/3bbppp/1qn2P2/p2pP1P1/3P4/2PB1N2/6K1/qNBQ1R2 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bxh7+ *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.124"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b3kr/pp1n2Bp/2pb2q1/3p3N/3P4/2P2Q2/P1P3PP/4RRK1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,552,852]} 1. Re5 *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.132"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r2q1r2/1b2bpkp/p3p1p1/2ppP1P1/7R/1PN1BQR1/1PP2P1P/4K3 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qf6+ *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.137"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3r1r1k/pp5p/4b1pb/6q1/3P4/4p1BP/PP2Q1PK/3RRB2 b - - 0 1"]
+[PlyCount "1"]
+
+1... Qxg3+ *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.146"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1q2rk1/1b2bppp/p1p1p3/4B3/PP6/3B3P/2P1QPP1/R2R2K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bxh7+ *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.155"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r1rb1k1/5ppp/4p3/1p1p3P/1q2P2Q/pN3P2/PPP4P/1K1R2R1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rxg7+ *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.159"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b2rk1/1pq1nppp/pbn1p3/8/3N4/3BBN2/PPP1QPPP/3R1RK1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,94,0]} 1. Bxh7+ *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.179"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b3r1/5p1k/p1n2P1p/P1qpp1P1/1p1p4/3P2Q1/BPPB2P1/R4RK1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Kf2 *
+
+[Event "Arasan-v21"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "arasan21.184"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1qr1bk1/2p2pp1/ppn1p2p/8/1PPPN1nP/P4NP1/2Q2PK1/2BRR3 w - - 0 1"]
+[PlyCount "1"]
+
+1. Neg5 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7k/Bp1R1b1p/1p2pK1n/8/4P1P1/6pB/4p3/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bb8 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5N2/rp6/pB1p1N2/pb2k1K1/3p2p1/1R2pp2/4B1n1/6bn w - - 0 1"]
+[PlyCount "1"]
+
+1. Rc3 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/4bB2/8/B2n1P2/3n2P1/p7/4k3/1K6 b - - 0 1"]
+[PlyCount "1"]
+
+1... Bd8 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "Q3b3/1p2q3/1p6/bp5P/1p6/1p6/1P1N1PPp/4NK1k w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,21,0,-437,-368,-328,-309,-235,-165,-151,-23,0,0,0,0,0,0,0,0,0,0,22,
+29985,29986]} 1. Qd8 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5K1k/rp6/8/3Pppp1/4p1p1/3p4/5p2/1Q1n4 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qb6 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1n1Bn2K/1r5p/r4pb1/2R1p1N1/3k1P2/2R2P1q/1P2P3/N1b5 w - - 0 1"]
+[PlyCount "1"]
+
+1. f5 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4B3/1pk1p3/q3p3/1nP1Pp2/PPQ2P2/PK2P3/4b3/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,55,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,131,226,309,391,464,434,29979,29980,29981,29982,29985,29986,
+29987,29988]} 1. Qxb5 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/1pp5/1p4k1/n7/1B5P/1K6/5PP1/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bxa5 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7r/p2b4/rp2p2p/kB6/8/2K5/1P6/4R3 w - - 0 1"]
+[PlyCount "1"]
+
+1. Re5 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/6pp/2Qp1p2/pPpPp3/k7/2K3P1/P1PP4/5q2 w - - 0 1"]
+[PlyCount "1"]
+
+1. Kb2 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "qk1B4/p3K3/8/PP2p3/4P3/4N3/2P5/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bc7+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4K3/1B1p4/pn1Npb2/k3p3/P1pn4/P7/7B/3N4 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,37,75,88,74,90,57,57,60,42,53,-237,42,-218,-216,-261,-189,-261,-261,
+-233,-221,-195,-203,-196,-137,-198,-5,-198,-196,-258,9,-53,29993,29994,29995,
+29996,29997,29998,29999,-30000]} 1. Bc6 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/1p3k2/1pp1pp1p/1P2q2P/2Q1P3/2P3P1/5PK1/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qd4 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "k7/2p5/2p4b/2p1NBp1/2p3K1/2P5/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxc6 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "n6r/b7/1R4R1/2k5/2pppppp/8/1PPPPPP1/r4NK1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,19,-364,-689,-714,-1071,-1105,-1409,-1472,-1517,-1533,-2025,-1842,
+-2278,-2278,-2069,-2270,-2698,-2395,-2291,-2663,-2277]} 1. b4+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/qpp5/8/k1p1N3/2p5/P7/1PP1B3/K7 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nc6+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/2q1k3/5N2/1p1P3N/p7/2P5/PBK5/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. d6+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5k1r/7p/2p3P1/2p5/1p4PK/p6R/7P/4B3 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,17,-120,-54,0,113,102,108,0,83,96,101,91,83,91,91,91,1249,1412,1450]} 
+1. Kg5 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2K3b1/8/pPP1p1P1/2p1k2N/2P1pN1P/6PP/n1pQ2p1/1q3r2 w - - 0 1"]
+[PlyCount "1"]
+
+1. Kc7 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5N1r/5n1n/ppp3R1/5K2/7k/6p1/6PN/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,25,0,-476,-484,-730,-751,-759,-734,-750,-750,-758,-765,-650,-630,-530,
+-583,-607,29975,29976,29977,29978,29979,29980,29981,29982,29983,29984]} 1. Rg4+
+*
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6bk/5pp1/3N1p1b/8/6pN/5pPp/4pP1P/4K3 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ng6+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/6p1/2p4q/pppp4/8/2kN2Qp/2P4p/7K w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,7,-82,-274,-306,-495,-501,-671,-557,-685]} 1. Ne5+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2b2B1r/3p4/pbpp4/5nR1/kp2p3/N2P1p1p/PPP3Nn/K7 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,24,-1206,-1501,-1300,-208,-48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+} 1. b3+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4k3/2p4p/8/p2n1p2/5P1P/4BP2/1PN1K1nP/8 b - - 0 1"]
+[PlyCount "1"]
+
+1... Ngxe3 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2k5/1p1p1q1b/1PP1p2p/3PPpQp/5P1P/6KP/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qd8+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "K1n5/2R1PN2/kpp2n2/pp5Q/r1p3pp/6bb/5p1q/7r w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-1230,-2809]} 1. Nd6 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/P6K/6pp/3P2pk/p2P4/1Pp3P1/2Bp3n/1b6 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bd1+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/p1kp4/p1pr3r/8/3R1B2/8/3PK1P1/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rxd6 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1k6/1P2bp2/PpP1p2P/N2p4/2p5/1p4KP/2b1BpPn/5R2 w - - 0 1"]
+[PlyCount "1"]
+
+1. h7 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "Kb3B1k/1Pp1p1R1/npN1p3/pr1rppP1/1q6/1b1p4/3N4/3n3B w - - 0 1"]
+[PlyCount "1"]
+
+1. Nf3 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7k/1p2B2p/1P2K1p1/3p3P/8/4b1P1/1pP2N2/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,17,44,-385,-403,-453,-459,-416,-405,-405,-405,518,518,593,601,605,
+29997,29998,29999,-30000]} 1. Kf7 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/kP2Rp2/6pB/p6p/P4PPP/5P2/6K1/2q5 w - - 0 1"]
+[PlyCount "1"]
+
+1. f5 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2N4r/5p1P/5p1k/5K1p/5P1p/6RP/4b1P1/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,37,22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,797,826,826,430,0,0,29988,
+29989,29990,29991,29992,29993,29994,29995,29996,29997,29998,29999,-30000]} 1.
+Rg8 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rkb5/1p6/pBp5/PPPp4/1K1Pp1P1/4Pp1p/5P1P/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ba7+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2k5/1R1pp3/1K2p3/2p5/1BprP3/8/2B4p/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,18,0,-18,449,492,504,436,450,475,507,527,599,625,643,645,702,713,730,
+787,1134]} 1. Ba5 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2n1n1r1/1qp2R1B/bp4N1/1p1rP3/1p1b2p1/6R1/P2p1p2/3K1k1N w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,27,-1283,-687,-694,-1512,-1399,-888,-837,-548,-355,-89,0,0,0,392,392,
+-417,759,810,1238,29988,29993,29994,29995,29996,29997,29998,29999,-30000]} 1.
+Nh4 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3b4/3rp2N/K2p4/1Nkpp2b/Q7/1p3p2/1P3q1B/5n2 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bg1 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1k5b/p2K3P/P6p/p4pp1/1p6/4B3/2P5/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bc1 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6kr/7p/3Kp1pP/8/3N1p2/5b2/4B3/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ke7 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "kb6/rrp1R3/n1B1R3/p7/2p5/2P5/2P3n1/K7 w - - 0 1"]
+[PlyCount "1"]
+
+1. Re8 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/6Qp/p5pP/P2n4/8/5p2/p2K1P2/1k2Bb2 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qa1+ *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1b2b1BN/2r1pp1n/2qpR2p/r1Np1Rnk/p5p1/Q5Kp/8/4B3 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qf3 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6k1/8/ppp2pP1/4P1p1/7p/PPP1K3/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,13,117,-235,-220,-221,-194,-151,-8,179,6,258,329,437,753,826]} 1. e6 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5kb1/1p6/1p6/1P1p1p1p/Pb1P1P1P/8/4P1P1/1KB5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ba3 *
+
+[Event "ACT3"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2b4k/2Ppp2P/p3p3/P5p1/4P1P1/8/B7/6K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,14,448,559,215,873,779,903,872,689,970,983,1124,1245,1427,1535,1520]} 
+1. Bxe6 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.001"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3k4/1p5b/r3p1p1/P2pPpPp/1PpP3P/N6r/K2B1P2/2R3R1 b - - 0 1"]
+[PlyCount "1"]
+
+1... Rxa3+ *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.008"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r6/1b6/1P2k3/4Np2/2R2PpP/2K1p1P1/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,127,0]} 1. Rc7 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.009"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1n1k4/4n2p/2p1p1pP/1pPbPp2/pP3P2/P7/2K3Q1/6R1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qxg6 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.012"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r2q2k1/2pb1nr1/p2p4/3Pp2p/P3Pp2/5PbN/1N2B1PP/2R2QRK b - - 0 1"]
+[PlyCount "1"]
+
+1... Bxh2 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.014"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1B2b2k/7q/4n2p/3Np1PQ/8/1p6/5N1P/1K1B4 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-228,-343]} 1. g6 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.020"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2rq2k1/1p2b1pp/2n1b1r1/pN1p4/B1P1p3/1P2B2P/2P2PP1/2RQ1R1K b - - 0 1"]
+[PlyCount "1"]
+
+1... Bc5 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.022"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b2rk1/2P3pp/3b4/3Pp3/p1BnN2q/3P1p2/PP1B1PPP/R2QR1K1 b - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,5,135]} 1... Rf5 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.023"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2Br1r1k/qb3p1p/p2p1Np1/np1Pp1P1/2P5/3RP2P/5R2/4Q1K1 b - - 0 1"]
+[PlyCount "1"]
+
+1... bxc4 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.027"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r2r1k1/1q1bb1p1/3pp1Pp/1p3P2/p1nNn3/P1N1B3/B1P1Q3/2KR3R w - - 0 1"]
+[PlyCount "1"]
+
+1. Bxh6 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.029"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rq3r1k/bpp1Rb1p/5p2/1Pn5/p1N5/P5PP/2Q2PB1/3R2K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-166,0]} 1. Ne5 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.031"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1K6/RP3pk1/4p3/2rbP1P1/8/8/P7/8 b - - 0 1"]
+[PlyCount "1"]
+
+1... Rc2 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.032"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/2pb1kpK/6p1/3P1pP1/3PpB2/PP6/8/8 b - - 0 1"]
+[PlyCount "1"]
+
+1... e3 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.034"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r3rqk1/4bp1p/1p3Bb1/4P1P1/Pppp1Q2/3PpN2/1P5R/R5K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Kg2 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.035"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r2r4/Pq6/BPp1bb1k/2Pp1p2/3PpPp1/4P1Pp/R1K4P/1R3Q2 b - - 0 1"]
+[PlyCount "1"]
+
+1... Bc8 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.037"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/2p1rpk1/pp2Brp1/3p3p/1P6/3p3P/1P1P1BP1/5R1K w - - 0 1"]
+[PlyCount "1"]
+
+1. Bd4 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.038"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1q3r1/4n1bk/7p/1P1pp3/P3Ppbn/3P1NP1/B1PBQP1K/R3R1N1 b - - 0 1"]
+[PlyCount "1"]
+
+1... Bf6 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.039"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/1p2Rrpp/2p3k1/p2p4/3P1P2/P5PP/1P4K1/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rxf7 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.040"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5k2/p7/3p4/1p1B1p1p/1P3P2/P1rP3P/6P1/n1BK4 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-56,-116]} 1. Bb2 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.041"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3k4/6p1/p1p1pnBp/1pP2P1P/1P2PK2/P7/8/8 b - - 0 1"]
+[PlyCount "1"]
+
+1... e5+ *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.042"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r5rk/2b4p/b1P2n2/p1P5/4pp2/1pN2P1q/PP1NB2P/R1BQ2RK b - - 0 1"]
+[PlyCount "1"]
+
+1... Be5 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.043"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4rrk1/1bqn1p1p/2pp2p1/pp1P2B1/5NPQ/2nP3P/1PP4K/4RR2 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-81,-168]} 1. Rxe8 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.044"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r3kr2/4ppQN/q1pp2p1/3nP3/2nPN3/Pp3PP1/1P5P/1K1R3R b q - 0 1"]
+[PlyCount "1"]
+
+1... Kd7 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.045"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1r5/1p3p1k/1b3Ppp/2ppP3/p2Pq2n/P4R2/3Q2PN/3RB1K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,20,-133]} 1. Bxh4 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.046"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/R5r1/1PbkP3/5p1p/1P1K4/5P2/1P4P1/8 b - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-28,0]} 1... Rxa7 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.050"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b2r1k/4nPq1/p1p1P3/2bp3p/P5p1/2QB3P/6P1/2R2R1K w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,0,-25]} 1. Rf6 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.053"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rnbq3r/1p2b1k1/2pp1p1p/pP3pp1/2BP3N/P3P3/2P2PPP/RN1Q1RK1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,0,-274]} 1. Ng6 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.055"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/p4r2/1pPB2k1/8/6P1/7p/b6P/5RK1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rxf7 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.056"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/4k3/6P1/pr1pPp2/2p4P/1p4K1/1P6/3R4 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,78,-180]} 1. Rg1 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.059"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r5r/1ppn2p1/1n1p1pB1/p2Pp1k1/1P2P2N/P1P2PP1/8/R3R1K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,78,-51]} 1. f4+ *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.060"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r4kb/4pr2/Qppp2q1/6p1/2PP1p2/P1N5/1P1RbPB1/R3B1K1 b - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,0,203]} 1... Bh5 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.062"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6k1/5pp1/7p/pBP5/P5K1/1P4P1/3Q1PbP/2r1r3 b - - 0 1"]
+[PlyCount "1"]
+
+1... Rcd1 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.063"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/5kp1/p1P2p2/4nP2/PP1p3p/5N1b/5K2/6B1 b - - 0 1"]
+[PlyCount "1"]
+
+1... Nxf3 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.064"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3rrn1k/5pp1/4b2p/p2pP3/1ppP1N1q/P5R1/1PBQ1RPP/6K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-34,-277]} 1. Rxg7 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.065"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/2P5/p4P2/4Pb2/PP1r1k1P/8/1R3K2 b - - 0 1"]
+[PlyCount "1"]
+
+1... Be5 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.069"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/1p1k4/pp1p1P2/1P2PKp1/1n4P1/1P4Bp/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,63,-144]} 1. exd5 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.070"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r3r2/2pbk1p1/3p1n1p/p1b1p2q/2BnP3/3P1N1P/PPPN1PP1/R1BQ1RK1 b - - 0 1"]
+[PlyCount "1"]
+
+1... Bxh3 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.073"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5qk1/pp4p1/4ppp1/2Q3P1/7P/P1P5/1P4P1/6K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qxf8+ *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.074"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/1b5p/1bk1p1p1/p1p1P3/2P3P1/q2rB3/P1RNK2P/2Q5 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-22,-53]} 1. Qxa3 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.077"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r4r2/p4pk1/1qpQ2p1/1pn1Pb1n/5PpP/2N5/PPP1N1B1/1K1R3R w - - 0 1"]
+[PlyCount "1"]
+
+1. Ng3 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.080"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/1r3p2/5R2/1pn1P1k1/2p5/p7/P5PP/2b2R1K w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,54,3]} 1. R1f5+ *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.082"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rn1qkb1r/4ppp1/2p1P1bp/pp6/2pP2B1/2N3N1/PP1B1PPP/n2Q1RK1 w kq - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-152,-292]} 1. Nh5 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.083"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1bqr3/2p5/1pnbBnkp/p4N2/3Q4/PPN5/1KP2PPP/3RR3 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,0,-216]} 1. Qh4 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.085"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6rk/2p1np2/1r1pb3/1p2p3/p1PPP1p1/1P2N1Pq/P1BQRP2/3R2K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-29,-166]} 1. Nf1 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.087"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r4rk1/4p1np/1np2ppQ/p2qPb2/Pp1PN3/3B4/1PP1N2P/R3K1R1 w Q - 0 1"]
+[PlyCount "1"]
+
+1. O-O-O *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.088"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "b2nrqk1/p1r2pb1/2pp1P2/1p1P4/7Q/1N3N1P/3B2P1/2R1n1K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-65,-429]} 1. Ng5 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.090"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4r3/1ppk2p1/3pr2p/5B2/p3RP2/2P5/P2P2PP/7K w - - 0 1"]
+[PlyCount "1"]
+
+1. c4 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.091"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/p4k2/3pp3/2p1p1Q1/6PK/1pP1P1n1/1P2P2n/3r4 b - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-179,59]} 1... Nf3+ *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.094"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4k2r/p2n4/Pp1p1b1p/1PpPp1pP/4PpP1/5P2/2R2Q2/2R4K w k - 0 1"]
+[PlyCount "1"]
+
+1. Rxc5 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.098"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6k1/ppp2pp1/8/1n1P4/3N2P1/2P5/P4P1P/6K1 b - - 0 1"]
+[PlyCount "1"]
+
+1... Nxd4 *
+
+[Event "TTT2"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "TTT2.099"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r4r1k/4qpb1/bp2pNpp/p1p1P3/PnBP4/1R3N2/1P1Q1PPP/R5K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,24,-239]} 1. Nh4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.001"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1B1K1k2/4N2p/3pP1pP/6p1/p7/3N2b1/2r2p2/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,0,-192]} 1. Nc6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.002"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1B1r4/rp2npkp/2b1pbp1/1qp5/nPN1R3/1P1P1QP1/2P2PBP/5R1K w - - 0 1"]
+[PlyCount "1"]
+
+1. Qxf6+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.003"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1N4K1/1pp1p3/7k/2r3pP/p2pp1P1/P6N/8/2B5 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-176,-692]} 1. Nc6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.007"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1k6/3p4/1B6/4Pp1p/1p5R/1p4p1/pP3n2/K6n w - - 0 1"]
+[PlyCount "1"]
+
+1. Rxh1 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.008"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1nb3rr/2pp3p/p1k2P2/n1q1PN2/P1pR3N/b4PBp/1R2P3/1KQ5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rd6+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.010"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1q1r3k/3P1pp1/ppBR1n1p/4Q2P/P4P2/8/5PK1/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rxf6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.014"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r3r2/4bpkp/1qb1p1p1/3pP1P1/p1pP1Q2/PpP2N1R/1Pn1B2P/3RB2K w - - 0 1"]
+[PlyCount "1"]
+
+1. Qf6+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.019"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r3rk1/5p1p/p2pb1p1/3Np1P1/2pRPR2/qP2Q1N1/P1PK3P/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nf5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.020"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1r4k1/pb3p1p/r1p1p1p1/2p1P3/P1P2P2/1PB5/2K3PP/5R2 w - - 0 1"]
+[PlyCount "1"]
+
+1. a5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.023"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1rb1qrk1/2b2pp1/p3pBn1/3pP1Pp/1ppP4/2P1QN2/PP3P1P/R2BR1K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-187,-449]} 1. Nh4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.026"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "1rb2r1k/3p1pp1/p3p2p/1p2P3/4q3/1N2B1R1/PPP1N1P1/2KR1B2 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,5,-88]} 1. Nf4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.031"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2R5/k1p1p1K1/P1p1Pp2/5P2/7P/pB6/2p5/2r5 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,0,-292]} 1. Rxc7+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.035"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2b3r1/1p1p2pk/2nBp2p/2P1Ppq1/R7/4QBPP/5P2/5K2 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qxg5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.043"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2q2r1k/p1p1b1pp/br1p1n2/2p1N1BP/Q1P1P3/8/PP1N1PP1/2KR3R w - - 0 1"]
+[PlyCount "1"]
+
+1. Ng6+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.047"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2r2r1k/qb3p1p/p2p1Np1/np1Pp1P1/2P5/3RP2P/5R2/4Q1K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rf4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.050"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2r2rk1/2q2p1p/p1p1nPpQ/3p4/4p1B1/8/PPP3PP/R4R1K w - - 0 1"]
+[PlyCount "1"]
+
+1. Rf5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.053"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "2r5/prkpR1p1/2p1ppK1/P1p1N1B1/P1P1P3/8/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bf4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.054"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3B4/1r2p3/r2p1p2/bkp1P1p1/1p1P1PPp/p1P1K2P/PPB5/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ba4+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.055"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3Q4/3p4/P2p4/N2b4/8/4P3/5p1p/5Kbk w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,0,29984]} 1. Qa8 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.056"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3b2n1/1q3p1k/6pp/np2N3/2bBPN2/1pP4P/4QPP1/1B4K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,24,36]} 1. Nexg6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.057"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3k4/2pq3p/pp5R/4P3/P6P/2PN4/1PN3K1/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nd4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.061"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3q1r1k/6rp/3p4/P2Pbp1Q/N3Pp1n/2P5/P1B2RPP/R6K b - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,97,160]} 1... f3 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.064"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "3r3r/k7/2p5/1pPp1p1p/pP2pPpP/P1K1P1P1/2b5/BN6 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-427,-1166]} 1. Kd4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.066"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4B3/1Pb4p/8/4p1k1/3p1p2/5K2/2P5/8 b - - 0 1"]
+[PlyCount "1"]
+
+1... e4+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.068"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4K2k/1pQp3p/1R4p1/1P4P1/8/3P3P/1q3r2/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qd8 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.069"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4R3/P7/2bB2p1/r3pk2/2p2p1P/2P2P1K/6P1/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,200,220]} 1. Rxe5+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.070"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4b1k1/P4pPp/1R3P1P/2r5/8/1P6/1K6/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,512,401]} 1. a8=B *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.072"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4b3/7p/4k3/B4pPP/5K2/P4P2/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. g6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.076"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4knQ1/7r/3p2p1/2bP1pP1/5P1N/6K1/8/8 b - - 0 1"]
+[PlyCount "1"]
+
+1... Rxh4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.077"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4q1kn/2Bp1p2/1N1PpPp1/1P2P1P1/2N3b1/6p1/1P4Pb/7K w - - 0 1"]
+[PlyCount "1"]
+
+1. Na5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.078"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4q1kr/p6p/1prQPppB/4n3/4P3/2P5/PP2B2P/R5K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qxe5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.081"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "4r1rk/p3qpp1/1pnp1n1p/5P2/P1PPP3/4Q2P/2BB2R1/6RK w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,90,47]} 1. Rxg7 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.087"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5nr1/2Pp2pk/3Pp1p1/4P1P1/6P1/5K2/8/7n w - - 0 1"]
+[PlyCount "1"]
+
+1. c8=N *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.089"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "5rk1/pp3p1p/7b/2pR4/8/2P4P/P1PNr1P1/2K4R b - - 0 1"]
+[PlyCount "1"]
+
+1... Rxd2 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.090"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6R1/8/2pB3k/2P4p/5p1q/5P2/4P1K1/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bf8+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.091"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6br/1KNp1n1r/2p2p2/P1ppRP2/1kP3pP/3PBB2/PN1P4/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bxc5+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.094"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6k1/8/1pK4p/bPp5/8/1P6/P1B2P2/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. b4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.095"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6k1/p7/8/4B3/Pp3p1P/qP5P/P1Rb2K1/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Kf3 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.096"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "6k1/ppn2p2/8/2P2P1p/1P2K3/2N5/P7/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nd5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.099"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7k/4PBNp/7P/2p5/2P5/2rq2Pp/1P3P1K/8 b - - 0 1"]
+[PlyCount "1"]
+
+1... Qxg3+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.102"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7q/b1p5/1p1Npkb1/pPP2ppP/P1P5/3B2P1/5P1R/K3R3 w - - 0 1"]
+[PlyCount "1"]
+
+1. hxg6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.103"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/1B3b1p/7P/p2p4/P2pp1kp/Q7/1N1Pq2P/7K w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-117,-398]} 1. Qh3+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.105"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/1p1pNpbk/1q1P4/pP2p2K/P3N3/4P1P1/3P4/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nc8 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.107"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/1p6/p4p1p/2p1P2k/5P2/6pP/1P4P1/6K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-82,430]} 1. f5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.108"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/2N4r/1p3pkp/8/5K1p/2P4N/P3Bn2/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bh5+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.109"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/2p1q3/p3P3/2P4p/1PBP2kP/2N3P1/7K/8 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,0,-73]} 1. Be2+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.113"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/3P3k/n2K3p/2p3n1/1b4N1/2p1p1P1/8/3B4 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-191,-358]} 1. Nf6+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.121"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/6pp/1K6/N5P1/3N4/8/npn1P3/k7 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nab3+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.126"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/bp4Pk/4KB2/R6p/2pNp1P1/p7/3p1Pnq/2r5 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nc6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.129"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/p7/qkpN1p2/8/1B1P4/PP3K2/5P2/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ba5+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.130"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "N7/8/2KQ2rp/6k1/3p3p/2p4P/4PP2/5N2 w - - 0 1"]
+[PlyCount "1"]
+
+1. f4+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.131"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "Nq3n1k/8/P1p2Npp/2Kp3R/pp6/n3p3/8/4Q3 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nc7 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.133"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "k7/p1pR4/1p3p2/2P2rpB/PbP4p/2N1p2p/KP6/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bf3+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.135"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "n1QBq1k1/5p1p/5KP1/p7/8/8/8/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bc7 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.136"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "nk1b4/2rPp3/4Q1p1/1K2Br2/5P2/8/1P6/8 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ka6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.141"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "qrb5/b1Pp3p/1pkB4/1p2P3/1P1KPp2/R4P1p/P3pP1P/4N1n1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Rc3+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.142"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b1k1r1/1p2np1p/p1n1pQp1/3p4/3NPP2/P2RB3/2PK2PP/q4B1R w q - 0 1"]
+[PlyCount "1"]
+
+1. Be2 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.144"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b1qk1r/pn3pp1/1p2p3/3pP1Bp/1bPN4/4Q1R1/P2N1PP1/R5K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-92,-290]} 1. Bf6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.146"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b1qr1k/2p3pp/4p3/1pb1PpN1/pn3N1P/8/PPP1QPP1/2KR3R w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-303,0]} 1. Rd8 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.147"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b1qr1k/2p3pp/4p3/1pb1PpN1/pn3N1P/P7/1PP1QPP1/2KR3R w - - 0 1"]
+[PlyCount "1"]
+
+1. Rd8 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.150"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b2rk1/2q1bppp/p2pp3/2n3PQ/1p1BP3/1BN5/PPP2P1P/2KR2R1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bf6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.152"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b2rk1/3n1pb1/2p1p1p1/p5P1/Pp2B1NQ/1q4P1/2R2P2/3R2K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-227,-645]} 1. Rxd7 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.154"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b2rk1/pp3ppp/1n2p3/3pP3/2PN1BPq/b1PB4/P1Q2P1P/1K1R3R w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,16,-344]} 1. Nf3 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.156"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1b3k1/ppppn1pp/4n1q1/8/5P2/2N1B3/PPP3QP/3R1RK1 w - - 0 1"]
+[PlyCount "1"]
+
+1. f5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.160"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r1bq1rk1/pp2b2p/2p1pppQ/8/1n1PN2P/3B1N2/PPP2PP1/2KR3R w - - 0 1"]
+[PlyCount "1"]
+
+1. Neg5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.170"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r2q1r2/1b2bpkp/n3p1p1/2ppP1P1/p6R/1PN1BQR1/NPP2P1P/4K3 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qf6+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.177"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r2qrbk1/1b3p2/3p2pB/1p1P1N2/1np1P3/5NRP/1P3PP1/1B1Qn1K1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-13,-364]} 1. N3h4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.179"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r2r2k1/pqp1bppp/1pn1pn2/8/2NP1B2/2N1P1P1/PPQ2P1P/R4RK1 b - - 0 1"]
+[PlyCount "1"]
+
+1... Rxd4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.182"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r3r1k1/1b1n1pbp/pq1p2p1/1pp1P3/3P1B2/nP1B1NNP/P4PP1/R2QR1K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nh5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.183"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r3r1k1/1b1nbp1p/1qn1p3/1p1pPp2/p2P4/P2BNN2/1P1Q1BPP/R4RK1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Ng4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.184"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r3r1k1/pp1q1p2/2p2npb/PPPp1bnp/3PpN2/2N1P1PP/1R1B1PBK/3Q1R2 b - - 0 1"]
+[PlyCount "1"]
+
+1... Bg4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.189"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r4r1k/ppq4p/2n1bppP/2P1p3/2B2n2/1N3Q2/PBP2PP1/3RR1K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qxf4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.190"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r4rk1/1bq1bppp/p1npp3/2nB1NP1/1p2P3/2N1B3/PPP1QP1P/2KR2R1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Qh5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.191"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r4rk1/4bppp/bq2p3/npnpP3/p2B1P2/P1PB1N2/1P2QNPP/R4RK1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bxh7+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.195"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r5k1/p1pb2bp/3p3r/P1pPp1p1/2B1Pq2/1R2QPp1/1P4PP/5RBK b - - 0 1"]
+[PlyCount "1"]
+
+1... Rxh2+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.196"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r5rk/1bq1bpp1/1p1ppn1p/pP5P/2P1P3/P1N2P2/1B1Q1P2/1K1R1BR1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nd5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.197"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r6r/4k3/p2bP2p/2n2PP1/2BQn2P/1pP1p3/1q1BK3/3R3R b - - 0 1"]
+[PlyCount "1"]
+
+1... Qc2 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.200"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r7/1q1r1p1k/3p1Qpp/pbpP4/1nB1P1P1/1P3NBP/5P1K/4R3 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-39,-238]} 1. Bf4 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.203"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rn2kr2/1pp1b1p1/4p3/1Pp1P2p/p1P1NP1P/P7/1B4P1/3RR1K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. g3 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.204"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rn3r1k/pn1p1ppq/bpp4p/7P/4N1Q1/6P1/PP3PB1/R1B1R1K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Bg5 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.206"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rn3rk1/p2q1pp1/4p2p/2ppP1NQ/P7/2P1P3/2P3PP/R4RK1 w - - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-81,-299]} 1. Rf6 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.208"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rnb2rk1/1pq1bppp/p3p3/2npP1P1/3N1P2/2NBB3/PPP4P/R2QK2R w KQ - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,23,-137]} 1. Bxh7+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.209"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rnbq1rk1/p3bp2/2p1p1p1/1p1nP1P1/2pP1P2/2N5/PP4P1/RBBQK2R w KQ - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-256,-274]} 1. Bd2 *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.210"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rnbq3r/pppp4/3b1pkp/5p2/2BP4/4P3/PPP2PPP/RN1QK2R w KQ - 0 1"]
+[PlyCount "1"]
+
+{[%evp 0,1,-35,29986]} 1. Qh5+ *
+
+[Event "Hard-2020-final-213-positions"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "Hard-Talkchess-2020.213"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rqn2rk1/1p2ppb1/p1b3pp/2R1P1N1/8/4BB1Q/3R1PPP/6K1 w - - 0 1"]
+[PlyCount "1"]
+
+1. Nxf7 *
+
