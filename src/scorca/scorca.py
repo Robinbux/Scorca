@@ -1,7 +1,9 @@
 import logging
+import os
 import random
 import threading
 import time
+from datetime import datetime
 from enum import Enum
 from functools import wraps
 from typing import Tuple, List, Dict
@@ -59,11 +61,13 @@ class Scorca(Player):
         self.percentage_calculated = 0
         self.best_moves_for_opponent = None
         self.stop_background_calculation = False
+        self.logger = logging.getLogger(f'scorca_{id(self)}')
+
         self._initialize_game_state()
-        self._configure_logger(disable_logger)
         self._initialize_strategy()
         self.seconds_left = 100000
         self.best_opponents_move = []
+
 
     def reset(self):
         """
@@ -82,15 +86,27 @@ class Scorca(Player):
         self.game_information_db = GameInformationDB(None, None)
         self.boards_tracker = BoardsTracker()
 
-    def _configure_logger(self, disable_logger: bool):
-        self.logger = logging.getLogger(f'scorca_{id(self)}')
+    from datetime import datetime
+
+    def _configure_logger(self, disable_logger: bool, opponent_name: str):
         if disable_logger:
             self.logger.setLevel(logging.CRITICAL + 1)
         else:
             self.logger.setLevel(logging.DEBUG)
-            handler = logging.StreamHandler()
-            handler.setFormatter(self._get_log_formatter())
-            self.logger.addHandler(handler)
+            stream_handler = logging.StreamHandler()
+            stream_handler.setFormatter(self._get_log_formatter())
+            self.logger.addHandler(stream_handler)
+
+            # Create a file handler
+            current_time = datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
+            script_dir = os.path.dirname(os.path.realpath(__file__))
+            log_path = os.path.join(script_dir, '..', '..', 'scorca_logs')
+            filename = f"{log_path}/{opponent_name}_{current_time}.log"
+            file_handler = logging.FileHandler(filename)
+            file_handler.setFormatter(self._get_log_formatter())
+            self.logger.addHandler(file_handler)
+
+
 
     @staticmethod
     def _get_log_formatter():
@@ -126,6 +142,7 @@ class Scorca(Player):
         self.color = color
         self.game_information_db.color = color
         self.game_information_db.opponent_color = not color
+        self._configure_logger(False, opponent_name)
 
     @log_states_change
     def handle_opponent_move_result(self, captured_my_piece: bool, capture_square: Optional[Square]):

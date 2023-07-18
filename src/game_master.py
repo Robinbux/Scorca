@@ -189,7 +189,7 @@ if __name__ == '__main__':
 
 
     bot1 = BotOptions.SCORCA
-    bot2 = BotOptions.STRANGE_FISH
+    bot2 = BotOptions.ATTACKER
 
 
     for i in range(num_experiments):
