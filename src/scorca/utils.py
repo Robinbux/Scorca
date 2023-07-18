@@ -269,7 +269,7 @@ MOVE_CACHE = {}
 
 
 
-@lru_cache(maxsize=5000)
+# @lru_cache(maxsize=5000)
 def pseudo_legal_moves_with_castling_through_check(board: HashableBoard) -> List[chess.Move]:
     # Check if we've already computed the moves for this board
     moves = [chess.Move.null(), *board.generate_pseudo_legal_moves()]

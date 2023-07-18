@@ -17,9 +17,9 @@ NULL_MOVE = chess.Move.null()
 VALUE_MATE = 10000
 TIME_USED_FOR_OPERATION = 5
 
-KING_CAPTURE_SCORE = 50
-LEAVE_IN_CHECK_SCORE = 50
-CHECK_WITHOUT_CAPTURE_SCORE = 10
+KING_CAPTURE_SCORE = 10
+LEAVE_IN_CHECK_SCORE = 10
+CHECK_WITHOUT_CAPTURE_SCORE = 5
 
 # l0 Network weights
 # 24 blocks x 320 filters
@@ -189,7 +189,7 @@ class MoveStrategy:
 
         for idx, (move, score) in enumerate(sorted_moves):
             # Get piece of move
-            move_weights[move] -= math.log(idx + 1) * 3
+            move_weights[move] -= math.log(idx + 1) * 2.5
             move_counts[move] += 1
 
             move_obj = chess.Move.from_uci(move)
