@@ -17,8 +17,8 @@ NULL_MOVE = chess.Move.null()
 VALUE_MATE = 10000
 TIME_USED_FOR_OPERATION = 5
 
-KING_CAPTURE_SCORE = 70
-LEAVE_IN_CHECK_SCORE = 70
+KING_CAPTURE_SCORE = 50
+LEAVE_IN_CHECK_SCORE = 50
 CHECK_WITHOUT_CAPTURE_SCORE = 30
 
 # l0 Network weights
@@ -118,16 +118,16 @@ class MoveStrategy:
         all_likely_boards = set()
         all_optimistic_boards = set()
 
-        # Parralel
-        with Pool() as p:
-            results = p.map(worker, [(board, possible_moves, n_likely_boards_per_state,
-                                      n_optimistic_boards_per_state) for board in boards])
+        # # Parralel
+        # with Pool() as p:
+        #     results = p.map(worker, [(board, possible_moves, n_likely_boards_per_state,
+        #                               n_optimistic_boards_per_state) for board in boards])
 
         # Iterative for debugging
-        # results = []
-        # for board in boards:
-        #     results.append(worker((board, possible_moves, n_likely_boards_per_state,
-        #                            n_optimistic_boards_per_state)))
+        results = []
+        for board in boards:
+            results.append(worker((board, possible_moves, n_likely_boards_per_state,
+                                   n_optimistic_boards_per_state)))
 
         for weights, counts, likely_boards, optimistic_boards in results:
             if likely_boards:
@@ -174,12 +174,12 @@ class MoveStrategy:
         i2 = game_state.as_input(b)
         eval = b.evaluate(i2)[0]
 
-        q = eval.q()  # q will be in [-1, 1]
+        #q = eval.q()  # q will be in [-1, 1]
         # cp = lc0_q_value_to_centipawn_score(q)
 
         moves = game_state.moves()
         policy_indices = game_state.policy_indices()
-        move_scores = list(zip(moves, eval.p_raw(*policy_indices)))  # list of (move, probability) tuples
+        #move_scores = list(zip(moves, eval.p_raw(*policy_indices)))  # list of (move, probability) tuples
         move_scores_softmax = list(zip(moves, eval.p_softmax(*policy_indices)))
 
         sorted_moves = sorted(move_scores_softmax, key=lambda x: x[1], reverse=True)
@@ -225,10 +225,17 @@ class MoveStrategy:
                     move_counts[possible_move.uci()] += 1
                     continue
 
+
                 from_square = possible_move.from_square
                 if not board.piece_at(from_square):
                     # Only happens when calculating moves for the opponent
                     move_weights[possible_move.uci()] -= math.log(len(possible_moves) // 2 + 1) * 2.5
+                    move_counts[possible_move.uci()] += 1
+                    continue
+
+                # What if the move BRINGS us into check?
+                if board.piece_at(from_square).piece_type == chess.KING:
+                    move_weights[possible_move.uci()] -= LEAVE_IN_CHECK_SCORE
                     move_counts[possible_move.uci()] += 1
                     continue
 
@@ -238,8 +245,8 @@ class MoveStrategy:
                     move_counts[possible_move.uci()] += 1
                     continue
 
-                if resulting_move.uci() not in move_weights:
-                    move_weights[possible_move.uci()] += move_weights[possible_move.uci()]
+                if resulting_move.uci() in move_weights:
+                    move_weights[possible_move.uci()] += move_weights[resulting_move.uci()]
                     move_counts[possible_move.uci()] += 1
 
                 else:
