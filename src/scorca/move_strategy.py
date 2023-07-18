@@ -78,7 +78,7 @@ class MoveStrategy:
         move_weights, move_counts, _, _ = self.get_move_weights_and_move_counts(boards, possible_moves)
 
         # I am FED UP WITH THE ATTACKER BOTS, SO MANUAL CHECKS...
-        print("Turn: ", self.game_information_db.turn)
+        self.logger.info("Turn: ", self.game_information_db.turn)
         if self.game_information_db.turn == 2 and (
                 HashableBoard("rnbqkbnr/ppp2ppp/3N4/3pp3/8/8/PPPPPPPP/R1BQKBNR b KQkq - 0 3") in boards or HashableBoard(
                 "r1bqkbnr/pppp1ppp/2nN4/4p3/8/8/PPPPPPPP/R1BQKBNR b KQkq - 0 3") in boards):
@@ -99,10 +99,11 @@ class MoveStrategy:
         # Extend the best move if it is possible
         best_move = extend_if_possible(best_move, move_weights, move_counts, boards[0])
 
-        print(boards[:20])
+        self.logger.info(int(boards[:20]))
 
         # print(move_weights)
-        print(sorted(move_weights.items(), key=lambda item: item[1], reverse=True))
+        self.logger.info((sorted(move_weights.items(), key=lambda item: item[1], reverse=True)))
+        
 
         # Convert the castling moves if the best move is a castling move
         best_move = convert_castling_moves_if_any(best_move)
@@ -219,7 +220,7 @@ class MoveStrategy:
                 if board_is_in_check:
                     if resulting_move in move_weights:
                         move_weights[possible_move.uci()] += move_weights[resulting_move.uci()]
-                        move_counts[resulting_move.uci()] += 1
+                        move_counts[possible_move.uci()] += 1
                         continue
                     move_weights[possible_move.uci()] -= LEAVE_IN_CHECK_SCORE
                     move_counts[possible_move.uci()] += 1
@@ -241,7 +242,7 @@ class MoveStrategy:
 
                 if not resulting_move:
                     # Must be pawn move?
-                    move_weights[possible_move.uci()] -= math.log(len(possible_moves) // 2 + 1) * 3
+                    move_weights[possible_move.uci()] -= math.log(len(possible_moves) // 2 + 1) * 2.5
                     move_counts[possible_move.uci()] += 1
                     continue
 
