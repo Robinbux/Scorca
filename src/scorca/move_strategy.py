@@ -99,11 +99,11 @@ class MoveStrategy:
         # Extend the best move if it is possible
         best_move = extend_if_possible(best_move, move_weights, move_counts, boards[0])
 
-        self.logger.info(int(boards[:20]))
+        self.logger.info((boards[:20]))
 
         # print(move_weights)
         self.logger.info((sorted(move_weights.items(), key=lambda item: item[1], reverse=True)))
-        
+
 
         # Convert the castling moves if the best move is a castling move
         best_move = convert_castling_moves_if_any(best_move)
