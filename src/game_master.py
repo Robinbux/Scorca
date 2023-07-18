@@ -99,7 +99,7 @@ class GameMaster:
 
         for game_id in range(num_games):
             # Randomly assign bots to colors
-            is_bot1_white = random.random() < 1
+            is_bot1_white = random.random() < 0.5
 
             white, white_name, black, black_name = (bot1, bot1_name, bot2, bot2_name) if is_bot1_white else (bot2, bot2_name, bot1, bot1_name)
 
@@ -189,7 +189,7 @@ if __name__ == '__main__':
 
 
     bot1 = BotOptions.SCORCA
-    bot2 = BotOptions.ATTACKER
+    bot2 = BotOptions.STRANGE_FISH
 
 
     for i in range(num_experiments):

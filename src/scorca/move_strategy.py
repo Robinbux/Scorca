@@ -118,16 +118,16 @@ class MoveStrategy:
         all_likely_boards = set()
         all_optimistic_boards = set()
 
-        # # Parralel
-        # with Pool() as p:
-        #     results = p.map(worker, [(board, possible_moves, n_likely_boards_per_state,
-        #                               n_optimistic_boards_per_state) for board in boards])
+        # Parralel
+        with Pool() as p:
+            results = p.map(worker, [(board, possible_moves, n_likely_boards_per_state,
+                                      n_optimistic_boards_per_state) for board in boards])
 
-        # Iterative for debugging
-        results = []
-        for board in boards:
-            results.append(worker((board, possible_moves, n_likely_boards_per_state,
-                                   n_optimistic_boards_per_state)))
+        # # Iterative for debugging
+        # results = []
+        # for board in boards:
+        #     results.append(worker((board, possible_moves, n_likely_boards_per_state,
+        #                            n_optimistic_boards_per_state)))
 
         for weights, counts, likely_boards, optimistic_boards in results:
             if likely_boards:
