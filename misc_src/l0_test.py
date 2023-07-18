@@ -89,51 +89,42 @@ class TestFindBestMove(unittest.TestCase):
         if unexpected_moves:
             self.assertNotIn(best_move, unexpected_moves, msg=f'{best_move} is in the unexpected moves.')
 
-    # def test_case_3(self):
-    #     color = chess.WHITE
-    #     game_information_db = GameInformationDB(color, not color)
-    #
-    #     move_strategy = MoveStrategy(game_information_db, logger)
-    #
-    #     boards = [HashableBoard('r1bqkbnr/pppppppp/8/8/2PP4/2Nn4/PP2PPPP/R1BQKBNR w KQkq - 3 4'),
-    #               HashableBoard('r1bqkbnr/1pp1pppp/n2p4/p7/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4'),
-    #               HashableBoard('r1bqkbnr/pppppppp/n7/8/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 3 4'),
-    #               HashableBoard('r1bqkbnr/pppppppp/2n5/8/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 3 4'),
-    #               HashableBoard('r1bqkbnr/pppp1ppp/8/n3p3/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4'),
-    #               HashableBoard('r1bqkbnr/pppppppp/8/8/2PPn3/2N5/PP2PPPP/R1BQKBNR w KQkq - 3 4'),
-    #               HashableBoard('r1bqkbnr/pppppppp/4n3/8/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 3 4'),
-    #               HashableBoard('r1bqkbnr/ppp2ppp/n2p4/4p3/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4'),
-    #               HashableBoard('r1bqkbnr/ppp2ppp/n3p3/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4'),
-    #               HashableBoard('r1bqkbnr/1pp1pppp/n7/p2p4/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4'),
-    #               HashableBoard('r1bqkbnr/pppp1ppp/8/2n1p3/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 2 4'),
-    #               HashableBoard('r1bqkbnr/pp1ppppp/8/2p5/1nPP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4'),
-    #               HashableBoard('r1bqkbnr/ppp1pppp/n2p4/8/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4'),
-    #               HashableBoard('r1bqkbnr/ppp1pppp/n7/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4'),
-    #               HashableBoard('r1bqkbnr/pp1p1ppp/n7/2p1p3/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4'),
-    #               HashableBoard('r1bqkbnr/pp1ppppp/8/2p1n3/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4'),
-    #               HashableBoard('r1bqkbnr/pppp1ppp/4p3/2n5/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 2 4')]
-    #     # Get a set off all moves from all boards...
-    #     all_moves = set()
-    #     for board in boards:
-    #         all_moves.update(list(board.pseudo_legal_moves))
-    #
-    #     best_move = move_strategy.find_best_move_l0(boards, possible_moves=list(all_moves))
-    #
-    #     print(f'Best move: {best_move}')
-    #
-    #     expected_moves_ucis = [
-    #         'd1d3', 'e2d3'
-    #     ]
-    #     unexpected_moves_ucis = [
-    #
-    #     ]
-    #     expected_moves = [chess.Move.from_uci(uci) for uci in expected_moves_ucis]
-    #     unexpected_moves = [chess.Move.from_uci(uci) for uci in unexpected_moves_ucis]
-    #     # Assuming that expected_moves and unexpected_moves are defined
-    #     if expected_moves:
-    #         self.assertIn(best_move, expected_moves, msg=f'{best_move} is not in the expected moves.')
-    #     if unexpected_moves:
-    #         self.assertNotIn(best_move, unexpected_moves, msg=f'{best_move} is in the unexpected moves.')
+    def test_case_3(self):
+        color = chess.WHITE
+        game_information_db = GameInformationDB(color, not color)
+
+        move_strategy = MoveStrategy(game_information_db, logger)
+
+        boards = [HashableBoard('r2q1B1k/pp2pp1p/2bp1bp1/8/2P5/Q7/PP1nBPPP/3R2K1 w - - 0 18'),
+                  HashableBoard('r1q2Bk1/pp2pp1p/2bp1bp1/8/2P5/Q7/PP1nBPPP/3R2K1 w - - 0 18'),
+                  HashableBoard('r2q1Bk1/p3pp1p/2bp1bp1/1p6/2P5/Q7/PP1nBPPP/3R2K1 w - - 0 18'),
+                  HashableBoard('r2q1Bk1/pp2pp1p/2bp2p1/6b1/2P5/Q7/PP1nBPPP/3R2K1 w - - 0 18'),
+                  HashableBoard('r3qBk1/pp2pp1p/2bp1bp1/8/2P5/Q7/PP1nBPPP/3R2K1 w - - 0 18'),
+                  HashableBoard('r2q1Bk1/pp2pp1p/2bp1b2/6p1/2P5/Q7/PP1nBPPP/3R2K1 w - - 0 18'),
+                  HashableBoard('r2q1Bk1/pp2pp1p/2bp2p1/8/2P1n3/Q7/PP1bBPPP/3R2K1 w - - 0 18'),
+                  HashableBoard('r2q1Bk1/p3pp1p/1pbp1bp1/8/2P5/Q7/PP1nBPPP/3R2K1 w - - 0 18')]
+        # Get a set off all moves from all boards...
+        all_moves = set()
+        for board in boards:
+            all_moves.update(list(board.pseudo_legal_moves))
+
+        best_move = move_strategy.find_best_move_l0(boards, possible_moves=list(all_moves))
+
+        print(f'Best move: {best_move}')
+
+        expected_moves_ucis = [
+
+        ]
+        unexpected_moves_ucis = [
+            'f8g7'
+        ]
+        expected_moves = [chess.Move.from_uci(uci) for uci in expected_moves_ucis]
+        unexpected_moves = [chess.Move.from_uci(uci) for uci in unexpected_moves_ucis]
+        # Assuming that expected_moves and unexpected_moves are defined
+        if expected_moves:
+            self.assertIn(best_move, expected_moves, msg=f'{best_move} is not in the expected moves.')
+        if unexpected_moves:
+            self.assertNotIn(best_move, unexpected_moves, msg=f'{best_move} is in the unexpected moves.')
 
     def test_case_4(self):
         color = chess.WHITE
@@ -183,7 +174,6 @@ class TestFindBestMove(unittest.TestCase):
             self.assertIn(best_move, expected_moves, msg=f'{best_move} is not in the expected moves.')
         if unexpected_moves:
             self.assertNotIn(best_move, unexpected_moves, msg=f'{best_move} is in the unexpected moves.')
-
 
 
 if __name__ == '__main__':
