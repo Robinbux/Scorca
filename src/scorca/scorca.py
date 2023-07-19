@@ -165,11 +165,12 @@ class Scorca(Player):
                 # We remove all moves that don't go to the capture square
                 self.opp_move_weights = {key: value for key, value in self.opp_move_weights.items() if
                                          key.to_square == capture_square}
-
+        self.logger.info(f'Amount of likely states before: {len(self.likely_and_optimistic_states)}')
         self.logger.info(f'Amount of likely and optimistic states before: {len(self.likely_and_optimistic_states)}')
         # Remove likely states that are not possible anymore
         self.likely_states &= self.boards_tracker.possible_states
         self.likely_and_optimistic_states &= self.boards_tracker.possible_states
+        self.logger.info(f'Amount of likely states after: {len(self.likely_and_optimistic_states)}')
         self.logger.info(f'Amount of likely and optimistic states after: {len(self.likely_and_optimistic_states)}')
 
         self.logger.info(f"Time to handle opponent move result: {time.time() - start_time}")
@@ -231,6 +232,7 @@ class Scorca(Player):
         # Update likely states again
         self.logger.info(f'Amount of likely and optimistic states before: {len(self.likely_and_optimistic_states)}')
         # Remove likely states that are not possible anymore
+        self.likely_states &= self.boards_tracker.possible_states
         self.likely_and_optimistic_states &= self.boards_tracker.possible_states
         self.logger.info(f'Amount of likely and optimistic states after: {len(self.likely_and_optimistic_states)}')
 
