@@ -1,0 +1,44 @@
+import random
+from reconchess import *
+import numpy as np
+
+class PresetMoveBot(Player):
+
+    def __init__(self):
+        self.possible_boards: List[chess.Board] = []
+        self.moves = [
+            chess.Move.from_uci('e2e4'),
+            chess.Move.from_uci('e4d5'),
+            chess.Move.from_uci('b1c3'),
+            chess.Move.from_uci('f1b5'),
+            chess.Move.from_uci('b5e8'),
+        ]
+        self.moves_iter = iter(self.moves)
+
+    def handle_game_start(self, color: Color, board: chess.Board, opponent_name: str):
+        pass
+
+    def handle_opponent_move_result(self, captured_my_piece: bool, capture_square: Optional[Square]):
+        # Update the state of the game based on opponent's move
+        pass
+
+    def choose_sense(self, sense_actions: List[Square], move_actions: List[chess.Move], seconds_left: float) -> Optional[Square]:
+        return 0
+
+    def handle_sense_result(self, sense_result: List[Tuple[Square, Optional[chess.Piece]]]):
+        # Update the state of the game based on the sense result
+        pass
+
+    def choose_move(self, move_actions: List[chess.Move], seconds_left: float) -> Optional[chess.Move]:
+        return next(self.moves_iter)
+
+    def handle_move_result(self, requested_move: Optional[chess.Move], taken_move: Optional[chess.Move],
+                           captured_opponent_piece: bool, capture_square: Optional[Square]):
+        # Update the state of the game based on the move result
+        # Also handle the reward for the RL agent based on whether a piece was captured
+        pass
+
+    def handle_game_end(self, winner_color: Optional[Color], win_reason: Optional[WinReason],
+                        game_history: GameHistory):
+        # Give the RL agent a final reward based on whether it won or lost the game
+        pass

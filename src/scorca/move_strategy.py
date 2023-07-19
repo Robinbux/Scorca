@@ -3,6 +3,7 @@ import os
 from collections import defaultdict
 from multiprocessing import Pool
 from typing import List, Optional, Tuple, Dict, Set
+from concurrent.futures import ProcessPoolExecutor
 
 import chess.engine
 import chess.polyglot
@@ -64,6 +65,7 @@ class MoveStrategy:
                           n_optimistic_boards_per_state: Optional[int] = None) -> Tuple[
         Dict[str, float], Set[chess.Board], Set[chess.Board]]:
         all_moves = set()
+        self.logger.info("Before get_move_weights_and_move_counts")
         for board in boards:
             all_moves.update(pseudo_legal_moves_with_castling_through_check(board))
         move_weights, move_counts, likely_boards, optimistic_boards = self.get_move_weights_and_move_counts(boards,
@@ -71,6 +73,8 @@ class MoveStrategy:
                                                                                                                 all_moves),
                                                                                                             n_likely_boards_per_state,
                                                                                                             n_optimistic_boards_per_state)
+        self.logger.info("After get_move_weights_and_move_counts")
+
 
         return move_weights, likely_boards, optimistic_boards
 
@@ -78,7 +82,7 @@ class MoveStrategy:
         move_weights, move_counts, _, _ = self.get_move_weights_and_move_counts(boards, possible_moves)
 
         # I am FED UP WITH THE ATTACKER BOTS, SO MANUAL CHECKS...
-        self.logger.info("Turn: ", self.game_information_db.turn)
+        self.logger.info(f"Turn: {self.game_information_db.turn}")
         if self.game_information_db.turn == 2 and (
                 HashableBoard("rnbqkbnr/ppp2ppp/3N4/3pp3/8/8/PPPPPPPP/R1BQKBNR b KQkq - 0 3") in boards or HashableBoard(
                 "r1bqkbnr/pppp1ppp/2nN4/4p3/8/8/PPPPPPPP/R1BQKBNR b KQkq - 0 3") in boards):
@@ -120,10 +124,12 @@ class MoveStrategy:
         all_optimistic_boards = set()
 
         # Parralel
-        with Pool() as p:
-            results = p.map(worker, [(board, possible_moves, n_likely_boards_per_state,
-                                      n_optimistic_boards_per_state) for board in boards])
-
+        self.logger.info("Before Pool map")
+        with ProcessPoolExecutor() as executor:
+            futures = [executor.submit(worker, (board, possible_moves, n_likely_boards_per_state,
+                                    n_optimistic_boards_per_state)) for board in boards]
+            results = [future.result() for future in futures]
+        self.logger.info("After Pool map")
         # # Iterative for debugging
         # results = []
         # for board in boards:
@@ -190,7 +196,7 @@ class MoveStrategy:
 
         for idx, (move, score) in enumerate(sorted_moves):
             # Get piece of move
-            move_weights[move] -= math.log(idx + 1) * 2.5
+            move_weights[move] -= math.log(idx + 1) * 4
             move_counts[move] += 1
 
             move_obj = chess.Move.from_uci(move)
@@ -242,7 +248,7 @@ class MoveStrategy:
 
                 if not resulting_move:
                     # Must be pawn move?
-                    move_weights[possible_move.uci()] -= math.log(len(possible_moves) // 2 + 1) * 2.5
+                    move_weights[possible_move.uci()] -= math.log(len(possible_moves) // 2 + 1) * 3.5
                     move_counts[possible_move.uci()] += 1
                     continue
 
@@ -251,7 +257,7 @@ class MoveStrategy:
                     move_counts[possible_move.uci()] += 1
 
                 else:
-                    move_weights[possible_move.uci()] -= math.log(len(possible_moves) // 2 + 1) * 2.5
+                    move_weights[possible_move.uci()] -= math.log(len(possible_moves) // 2 + 1) * 3.5
                     move_counts[possible_move.uci()] += 1
 
         return move_weights, move_counts, likely_boards, optimistic_boards
