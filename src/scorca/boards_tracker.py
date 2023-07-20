@@ -16,7 +16,8 @@ from utils import convert_castling_moves_if_any, possible_piece_types_from_move,
 
 class BoardsTracker:
 
-    def __init__(self):
+    def __init__(self, logger):
+        self.logger = logger
         self.possible_states = {HashableBoard()}
         self.likely_states = {}
         self.transposition_table = {}
@@ -89,20 +90,22 @@ class BoardsTracker:
         self.possible_states = {board for board in Parallel(n_jobs=self.num_cpus)(new_boards) if board is not None}
 
     def handle_opponent_move_result(self, captured_my_piece: bool, capture_square: Optional[chess.Square],
-                                    seconds_left: float = None, stockfish_engine=None) -> None:
-        self.best_squares_for_opp_to_move_to =  collections.Counter()
+                                    seconds_left: float = None) -> None:
+        self.best_squares_for_opp_to_move_to = collections.Counter()
 
         start_time = time.time()
         results = []
-        with Pool(processes=self.num_cpus) as pool:
-            for board in self.possible_states:
-                if time.time() - start_time >= seconds_left:
-                    print('ABORTING')
-                    print(f'Passed time: {time.time() - start_time}')
-                    print(f'Seconds left: {seconds_left}')
-                    self.possible_states = set(chain.from_iterable(result.get() for result in results))
-                    break  # stops the computation if the time limit has been reached
-                result = pool.apply_async(next_possible_board_states_based_on_opponent_move_result,
-                                          ((board, captured_my_piece, capture_square),))
-                results.append(result)
-            self.possible_states = set(chain.from_iterable(result.get() for result in results))
+        for board in self.possible_states:
+            if time.time() - start_time >= seconds_left:
+                self.logger.info('ABORTING')
+                self.logger.info(f'Passed time: {time.time() - start_time}')
+                self.logger.info(f'Seconds left: {seconds_left}')
+                self.possible_states = set(chain.from_iterable(result for result in results))
+                break  # stops the computation if the time limit has been reached
+            results.append(delayed(next_possible_board_states_based_on_opponent_move_result)
+                           ((board, captured_my_piece, capture_square), ))
+        self.logger.info('Before parallel operation in handle_opponent_move_result!')
+        results = Parallel(n_jobs=self.num_cpus)(results)
+        self.possible_states = set(chain.from_iterable(result for result in results))
+        self.logger.info('After parallel operation in handle_opponent_move_result!')
+

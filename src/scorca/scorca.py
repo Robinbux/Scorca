@@ -68,7 +68,6 @@ class Scorca(Player):
         self.seconds_left = 100000
         self.best_opponents_move = []
 
-
     def reset(self):
         """
         Reset the state of the object to a fresh initialized state.
@@ -84,7 +83,7 @@ class Scorca(Player):
         self.board = None
         self.out_of_time = False
         self.game_information_db = GameInformationDB(None, None)
-        self.boards_tracker = BoardsTracker()
+        self.boards_tracker = BoardsTracker(self.logger)
 
     from datetime import datetime
 
@@ -105,8 +104,6 @@ class Scorca(Player):
             file_handler = logging.FileHandler(filename)
             file_handler.setFormatter(self._get_log_formatter())
             self.logger.addHandler(file_handler)
-
-
 
     @staticmethod
     def _get_log_formatter():
@@ -150,8 +147,16 @@ class Scorca(Player):
         self.logger.critical('*************************')
         self.logger.critical('Handle opponent move result')
         # Wait for background calculation to finish up
+        count = 0
         while not self.background_calc_finished:
-            pass
+            time.sleep(0.2)
+            count += 1
+            if count % 20 == 0:
+                localtime = time.localtime()
+                result = time.strftime("%I:%M:%S %p", localtime)
+                print(f"Time in waiting loop: {result}")
+
+        self.logger.info(f"Continuing with opp move result!")
 
         if (self.color and self.game_information_db.turn == 0) or self.out_of_time:
             return
@@ -159,7 +164,7 @@ class Scorca(Player):
         self.boards_tracker.handle_opponent_move_result(captured_my_piece=captured_my_piece,
                                                         capture_square=capture_square,
                                                         seconds_left=self.seconds_left)
-
+        self.logger.info(f"Done with boards tracker expansion!")
         if len(self.boards_tracker.possible_states) > 1 and self.opp_move_weights:
             if capture_square is not None:
                 # We remove all moves that don't go to the capture square
@@ -304,8 +309,10 @@ class Scorca(Player):
 
         self.logger.info("Starting Background Calculation!")
         opp_move_weights_str_keys, likely_states, optimistic_states = self.move_strategy.get_best_moves_l0(
-            self.boards_tracker.possible_states, n_likely_boards_per_state=LIKELY_NEXT_STATES_PER_BOARD, n_optimistic_boards_per_state=OPTIMISTIC_STATES_PER_BOARD)
-        self.logger.info(f"Calculated {len(likely_states)} likely states and {len(optimistic_states)} optimistic states")
+            self.boards_tracker.possible_states, n_likely_boards_per_state=LIKELY_NEXT_STATES_PER_BOARD,
+            n_optimistic_boards_per_state=OPTIMISTIC_STATES_PER_BOARD)
+        self.logger.info(
+            f"Calculated {len(likely_states)} likely states and {len(optimistic_states)} optimistic states")
         self.likely_states = likely_states
         self.likely_and_optimistic_states = likely_states | optimistic_states
         self.logger.info(f"Total amount of states to consider: {len(self.likely_and_optimistic_states)}")
