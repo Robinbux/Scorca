@@ -9,7 +9,6 @@ from reconchess.bots.attacker_bot import AttackerBot
 from reconchess.bots.trout_bot import TroutBot
 from reconchess.history import GameHistory
 
-from opponent_bots import StrangeFish2
 from src.misc_bots.preset_move_bot import PresetMoveBot
 from src.scorca.scorca import Scorca
 

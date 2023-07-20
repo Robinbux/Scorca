@@ -326,7 +326,8 @@ class Scorca(Player):
 
     def handle_game_end(self, winner_color: Optional[Color], win_reason: Optional[WinReason],
                         game_history: GameHistory):
-        self.logger.info('Game end')
+        self.logger.info(f'Game end: {winner_color} {win_reason}')
+        self.logger.info(game_history)
 
     def _log_states_difference(self, operation: str, before: int, after: int):
         if before <= 0 or after < 0:

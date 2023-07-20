@@ -270,17 +270,28 @@ MOVE_CACHE = {}
 
 
 # @lru_cache(maxsize=5000)
-def pseudo_legal_moves_with_castling_through_check(board: HashableBoard) -> List[chess.Move]:
+def pseudo_legal_moves_with_castling_through_check(board: HashableBoard, with_null = True) -> List[chess.Move]:
     # Check if we've already computed the moves for this board
-    moves = [chess.Move.null(), *board.generate_pseudo_legal_moves()]
+    if with_null:
+        moves = [chess.Move.null(), *board.generate_pseudo_legal_moves()]
+    else:
+        moves = board.generate_pseudo_legal_moves()
 
-    castling_rights = board.castling_rights
-    if castling_rights & chess.BB_H1:
-        moves.append(chess.Move(chess.E1, chess.G1))  # White short castle
-    if castling_rights & chess.BB_A1:
-        moves.append(chess.Move(chess.E1, chess.C1))  # White long castle
-    if castling_rights & chess.BB_H8:
-        moves.append(chess.Move(chess.E8, chess.G8))  # Black short castle
-    if castling_rights & chess.BB_A8:
-        moves.append(chess.Move(chess.E8, chess.C8))  # Black long castle
+    board.castle_rights = board.castling_rights
+
+    # Check if white can castle kingside
+    if board.castling_rights & chess.BB_H1 and not board.occupied & (chess.BB_F1 | chess.BB_G1):
+        moves.append(chess.Move.from_uci('e1g1'))
+
+    # Check if white can castle queenside
+    if board.castling_rights & chess.BB_A1 and not board.occupied & (chess.BB_B1 | chess.BB_C1 | chess.BB_D1):
+        moves.append(chess.Move.from_uci('e1c1'))
+
+    # Check if black can castle kingside
+    if board.castling_rights & chess.BB_H8 and not board.occupied & (chess.BB_F8 | chess.BB_G8):
+        moves.append(chess.Move.from_uci('e8g8'))
+
+    # Check if black can castle queenside
+    if board.castling_rights & chess.BB_A8 and not board.occupied & (chess.BB_B8 | chess.BB_C8 | chess.BB_D8):
+        moves.append(chess.Move.from_uci('e8c8'))
     return moves
