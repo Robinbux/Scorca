@@ -35,8 +35,8 @@ T1_786 = 't1-768x15x24h-swa-4000000.pb'  # 92 sec for 10000 evals
 T1_512 = 't1-smolgen-512x15x8h-distilled-swa-3395000.pb'
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
-#weights_path = os.path.join(script_dir, '..', '..', 'lc0_nets', T60)
-weights_path = "/Users/robinbux/Desktop/Scorca_clean/lc0_nets/weights_run2_792013.lc0"
+weights_path = os.path.join(script_dir, '..', '..', 'lc0_nets', T60)
+#weights_path = "/Users/robinbux/Desktop/Scorca_clean/lc0_nets/weights_run2_792013.lc0"
 # Load weights
 L0_WEIGHTS = Weights(weights_path)
 L0_BACKEND = Backend(weights=L0_WEIGHTS)
