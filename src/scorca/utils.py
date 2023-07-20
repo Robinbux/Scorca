@@ -275,7 +275,7 @@ def pseudo_legal_moves_with_castling_through_check(board: HashableBoard, with_nu
     if with_null:
         moves = [chess.Move.null(), *board.generate_pseudo_legal_moves()]
     else:
-        moves = board.generate_pseudo_legal_moves()
+        moves = list(board.generate_pseudo_legal_moves())
 
     board.castle_rights = board.castling_rights
 
