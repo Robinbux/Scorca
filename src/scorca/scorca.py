@@ -205,14 +205,14 @@ class Scorca(Player):
 
     def _perform_and_log_sense_action(self):
         start_time = time.time()
-        # if len(self.likely_and_optimistic_states) > 1:
-        #     self.logger.critical('SENSING BASED ON LIKELY STATES')
-        #     square = self.sense_strategy.sense(self.likely_states, self.ponders,
-        #                                        game_information_db=self.game_information_db)
+        if len(self.likely_and_optimistic_states) > 1:
+            self.logger.critical('SENSING BASED ON LIKELY STATES')
+            square = self.sense_strategy.sense(self.likely_states, self.ponders,
+                                               game_information_db=self.game_information_db)
 
-        if self.opp_move_weights:
-            self.logger.critical('SENSING BASED ON OPP MOVE WEIGHTS')
-            square = get_best_center_from_best_op_moves_dict(self.opp_move_weights)
+        # if self.opp_move_weights:
+        #     self.logger.critical('SENSING BASED ON OPP MOVE WEIGHTS')
+        #     square = get_best_center_from_best_op_moves_dict(self.opp_move_weights)
 
         else:
             self.logger.critical('SENSING BASED ON POSSIBLE STATES')
