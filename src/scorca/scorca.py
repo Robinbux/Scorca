@@ -60,7 +60,6 @@ class Scorca(Player):
         self.background_calc_finished = True
         self.percentage_calculated = 0
         self.best_moves_for_opponent = None
-        self.stop_background_calculation = False
         self.logger = logging.getLogger(f'scorca_{id(self)}')
 
         self._initialize_game_state()
@@ -143,7 +142,6 @@ class Scorca(Player):
 
     @log_states_change
     def handle_opponent_move_result(self, captured_my_piece: bool, capture_square: Optional[Square]):
-        self.stop_background_calculation = True
         self.logger.critical('*************************')
         self.logger.critical('Handle opponent move result')
         # Wait for background calculation to finish up
@@ -275,6 +273,9 @@ class Scorca(Player):
         self.logger.info(f"Time used for move: {time.time() - start_time:.4f} seconds")
         self.logger.debug(f"Requested Move: {move.uci() if move else 'None'}")
         self.seconds_left = seconds_left - (time.time() - start_time)
+
+        self.background_calc_finished = False
+
         return move
 
     @log_states_change
@@ -292,16 +293,15 @@ class Scorca(Player):
                                                    seconds_left=self.seconds_left)
 
         # Start background_calculation in a new thread
-        self.stop_background_calculation = False
+
         background_thread = threading.Thread(target=self.background_calculation)
-        background_thread.daemon = True  # Ensures that background threads do not prevent program termination
+        background_thread.daemon = True
         background_thread.start()
 
         self.game_information_db.turn += 1
         self.logger.info('Opponents turn starting...\n')
 
     def background_calculation(self):
-        self.background_calc_finished = False
         self.opp_move_weights = {}
         self.likely_and_optimistic_states = set()
         self.percentage_calculated = 0
