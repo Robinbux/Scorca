@@ -7,7 +7,7 @@ from datetime import datetime
 from enum import Enum
 from functools import wraps
 from typing import Tuple, List, Dict
-
+from datetime import datetime
 import chess
 import chess.polyglot
 import colorlog
@@ -16,8 +16,10 @@ from reconchess import Player, Color, Optional, WinReason, GameHistory, Square
 from boards_tracker import BoardsTracker
 from game_information_db import GameInformationDB
 from move_strategy import MoveStrategy
-from sense_strategy import NaiveEntropySense
+from sense_strategy import NaiveEntropySense, AdaptedEntropySense
 from utils import get_best_center_from_best_op_moves_dict
+
+
 
 LOG_LEVELS = {
     'DEBUG': 'cyan',
@@ -66,6 +68,10 @@ class Scorca(Player):
         self._initialize_strategy()
         self.seconds_left = 100000
         self.best_opponents_move = []
+        
+        self.play_against_attacker = False
+        
+        print("INITIALIZEEEE")
 
     def reset(self):
         """
@@ -83,8 +89,6 @@ class Scorca(Player):
         self.out_of_time = False
         self.game_information_db = GameInformationDB(None, None)
         self.boards_tracker = BoardsTracker(self.logger)
-
-    from datetime import datetime
 
     def _configure_logger(self, disable_logger: bool, opponent_name: str):
         if disable_logger:
@@ -129,12 +133,16 @@ class Scorca(Player):
     def _initialize_strategy(self):
         self.move_strategy = MoveStrategy(self.game_information_db, self.logger)
         self.sense_strategy_name = 'naive_entropy_sense'
-        self.sense_strategy = NaiveEntropySense(self.move_strategy)
+        self.sense_strategy = AdaptedEntropySense()
         self.ponders = []
         self.ponders = []
 
     def handle_game_start(self, color: Color, board: chess.Board, opponent_name: str):
         self.logger.info('Game starting...')
+        self.logger.info(f'Opponent name: {opponent_name}')
+        print("HANDLE GAME START!!!!!")
+        print(opponent_name)
+        self.play_against_attacker = opponent_name == "AttackerBot"
         self.color = color
         self.game_information_db.color = color
         self.game_information_db.opponent_color = not color
@@ -144,7 +152,10 @@ class Scorca(Player):
     def handle_opponent_move_result(self, captured_my_piece: bool, capture_square: Optional[Square]):
         self.logger.critical('*************************')
         self.logger.critical('Handle opponent move result')
+        if (self.color and self.game_information_db.turn == 0) or self.out_of_time:
+            return
         # Wait for background calculation to finish up
+        self.logger.info(f'In handle opp move result. Background calc finished: {self.background_calc_finished}')
         count = 0
         while not self.background_calc_finished:
             time.sleep(0.2)
@@ -153,11 +164,9 @@ class Scorca(Player):
                 localtime = time.localtime()
                 result = time.strftime("%I:%M:%S %p", localtime)
                 print(f"Time in waiting loop: {result}")
+        self.logger.info('Continuing with handle opp move result')
 
-        self.logger.info(f"Continuing with opp move result!")
-
-        if (self.color and self.game_information_db.turn == 0) or self.out_of_time:
-            return
+        
         start_time = time.time()
         self.boards_tracker.handle_opponent_move_result(captured_my_piece=captured_my_piece,
                                                         capture_square=capture_square,

@@ -24,7 +24,7 @@ CHECK_WITHOUT_CAPTURE_SCORE = 5
 
 # l0 Network weights
 # 24 blocks x 320 filters
-T60 = 'weights_run1_814174.lc0'  # 96 sec for 10000 evals
+T60 = 'weights_run1_814501.lc0'  # 96 sec for 10000 evals
 # 20 blocks x 256 filters
 LEELENSTEIN = '.20x256SE-jj-9-75000000.pb'  # 59 sec for 10000 evals
 # 15/16 blocks x 192 filters
@@ -35,8 +35,8 @@ T1_786 = 't1-768x15x24h-swa-4000000.pb'  # 92 sec for 10000 evals
 T1_512 = 't1-smolgen-512x15x8h-distilled-swa-3395000.pb'
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
-#weights_path = os.path.join(script_dir, '..', '..', 'lc0_nets', T60)
-weights_path = "/Users/robinbux/Desktop/Scorca_clean/lc0_nets/weights_run2_792013.lc0"
+weights_path = os.path.join(script_dir, '..', '..', 'lc0_nets', T60)
+#weights_path = "/Users/robinbux/Desktop/Scorca_clean/lc0_nets/weights_run2_792013.lc0"
 # Load weights
 L0_WEIGHTS = Weights(weights_path)
 L0_BACKEND = Backend(weights=L0_WEIGHTS)

@@ -3,9 +3,6 @@ from typing import List
 import chess
 import itertools
 import numpy as np
-import random
-from joblib import Parallel, delayed
-
 
 np.seterr(all='ignore')
 
@@ -63,7 +60,57 @@ def calculate_threat_weights(board):
 
 class NaiveEntropySense:
 
-    def __init__(self, move_strategy, include_penalty=False, include_ponder_bonus=False, include_attacker_squares=False, include_piece_value_bonus=True, ):
+    def __init__(self):
+        pass
+
+    def sense(self, possible_boards: List[chess.Board], ponder_moves: List[chess.Move], game_information_db) -> int:
+        if game_information_db.turn == 0 and game_information_db.color == chess.BLACK:
+            return 20 # e3
+        square = self.find_highest_entropy_region_square(possible_boards, ponder_moves)
+        return square
+
+    def find_highest_entropy_region_square(self, possible_boards, ponder_moves):
+        entropy_scores = self.entropy_score(possible_boards, ponder_moves)
+
+        # Calculate the sum of entropy scores for all 3x3 regions
+        max_sum = 0
+        max_square = 12
+
+        for rank in range(1, 7):
+            for file in range(1, 7):
+                square_sum = entropy_scores[rank - 1:rank + 2, file - 1:file + 2].sum()
+                if square_sum > max_sum:
+                    max_sum = square_sum
+                    max_square = chess.square(file, rank)
+        # Return the center field of the 3x3 region with the highest sum
+        return max_square
+
+    def entropy_score(self, possible_boards, ponder_moves):
+        n_boards = len(possible_boards)
+        piece_counts = np.zeros((64, 13))
+
+        for board in possible_boards:
+            for square in range(64):
+                piece = board.piece_at(square)
+                if piece is not None:
+                    piece_type = piece.piece_type
+                    color = int(piece.color)
+                    piece_index = (piece_type - 1) + color * 6
+                else:
+                    piece_index = 12
+                piece_counts[square, piece_index] += 1
+
+
+        piece_probs = piece_counts / n_boards
+        entropy = -np.nansum(piece_probs * np.log2(piece_probs), axis=1)
+        entropy[np.isnan(entropy)] = 0
+
+        return entropy.reshape((8, 8))
+
+
+class AdaptedEntropySense:
+
+    def __init__(self, move_strategy = None, include_penalty=True, include_ponder_bonus=False, include_attacker_squares=False, include_piece_value_bonus=True, ):
         self.move_strategy = move_strategy
         self.sensed_squares = np.zeros((8, 8), dtype=int)
         self.include_penalty = include_penalty
@@ -75,8 +122,8 @@ class NaiveEntropySense:
     def sense(self, possible_boards: List[chess.Board], ponder_moves: List[chess.Move], game_information_db) -> int:
         if game_information_db.turn == 0 and game_information_db.color == chess.BLACK:
             return 20 # e3
-        if len(possible_boards) > 10000:
-            possible_boards = random.sample(possible_boards, 10000)
+        # if len(possible_boards) > 2000:
+        #     possible_boards = random.sample(possible_boards, 2000)
         # if len(possible_boards) < 100:
         #     square = self.most_likely_move_sense(possible_boards)
         square = self.find_highest_entropy_region_square(possible_boards, ponder_moves)
@@ -90,7 +137,7 @@ class NaiveEntropySense:
 
         # Apply penalty to entropy scores based on previously sensed squares
         if self.include_penalty:
-            decay_factor = 0.5
+            decay_factor = 0.5  # you can adjust this to change the strength of the penalty
             entropy_scores -= decay_factor * self.sensed_squares
 
         # Calculate the sum of entropy scores for all 3x3 regions
@@ -129,9 +176,7 @@ class NaiveEntropySense:
                     attackers = board.attackers(not board.turn, king_square)
                     for square in chess.SQUARES:
                         if square in attackers:
-                            # print("ATTACKER SQUARE *********************************")
-                            # print(square)
-                            attack_counts[square] += 1
+                            attack_counts[square] += 2
 
         piece_probs = piece_counts / n_boards
         entropy = -np.nansum(piece_probs * np.log2(piece_probs), axis=1)
@@ -142,9 +187,7 @@ class NaiveEntropySense:
             attack_probs = attack_counts / n_boards
             attack_bonus_factor = 600_000
             # only apply bonus if entropy is not 0
-            print(attack_probs)
-            entropy *= (1 + attack_probs)
-            #entropy += np.where(entropy > 0, attack_bonus_factor * attack_probs, 0)
+            entropy += np.where(entropy > 0, attack_bonus_factor * attack_probs, 0)
 
         # Add piece value bonus
         if self.include_piece_value_bonus:
@@ -155,5 +198,4 @@ class NaiveEntropySense:
                         entropy[square] *= piece_weights_dict[piece_type_char] * count
 
         self.count += 1
-        #print(entropy.reshape((8, 8)))
         return entropy.reshape((8, 8))

@@ -8,7 +8,7 @@ from concurrent.futures import ProcessPoolExecutor
 from reconchess.utilities import capture_square_of_move
 
 
-from src.utils import pseudo_legal_moves_with_castling_through_check
+from .utils import pseudo_legal_moves_with_castling_through_check
 
 
 def legal_board_for_sense_result(args: Tuple[chess.Board, List[Tuple[chess.Square, Optional[chess.Piece]]]]) -> Optional[chess.Board]:

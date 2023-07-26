@@ -2,7 +2,7 @@ import math
 from collections import defaultdict
 from itertools import product
 from typing import List, Optional, Dict, Tuple, Set
-
+import os 
 import chess
 import chess.engine
 import numpy as np
@@ -18,7 +18,7 @@ VALUE_MATE = 10000
 TIME_USED_FOR_OPERATION = 5
 
 # 24 blocks x 320 filters
-T60 = '/Users/robinbux/Desktop/RBC_New/lc0_nets/weights_run1_814174.lc0'  # 96 sec for 10000 evals
+T60 = 'weights_run1_814501.lc0'  # 96 sec for 10000 evals
 
 # 20 blocks x 256 filters
 LEELENSTEIN = '/Users/robinbux/Desktop/RBC_New/lc0_nets/20x256SE-jj-9-75000000.pb'  # 59 sec for 10000 evals
@@ -32,8 +32,11 @@ T1_786 = '/Users/robinbux/Desktop/RBC_New/lc0_nets/t1-768x15x24h-swa-4000000.pb'
 # 15 blocks x 512 filters
 T1_512 = '/Users/robinbux/Desktop/RBC_New/lc0_nets/t1-smolgen-512x15x8h-distilled-swa-3395000.pb'
 
+script_dir = os.path.dirname(os.path.realpath(__file__))
+weights_path = os.path.join(script_dir, '..', '..', 'lc0_nets', T60)
+
 # Load weights
-w = Weights(T60)
+w = Weights(weights_path)
 
 # Choose a backend
 b = Backend(weights=w)

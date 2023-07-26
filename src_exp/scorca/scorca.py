@@ -14,16 +14,16 @@ import chess.polyglot
 import colorlog
 from reconchess import Player, Color, Optional, WinReason, GameHistory, Square
 
-from src.boards_tracker import BoardsTracker
+from .boards_tracker import BoardsTracker
 from .game_information_db import GameInformationDB
-from .move_strategy import MoveStrategy, Engine
-from .sense_strategy import NaiveEntropySense, SenseStrategy
-from ..utils import  get_best_center_from_best_op_moves_dict, \
+#from .move_strategy import MoveStrategy, Engine
+from .sense_strategy import AdaptedEntropySense, NaiveEntropySense
+from .utils import  get_best_center_from_best_op_moves_dict, \
     get_move_weights_and_move_counts, find_best_move_among_all, calculate_square_entropy, move_square_away_from_edges, \
     get_best_moves_l0
 
-EXPERIMENT_ENTROPY_DIR = '/Users/robinbux/Desktop/RBC_New/experiments/sense_comp'
-PIECE_STATES_REMOVAL_DIR = '/Users/robinbux/Desktop/RBC_New/experiments/piece_states_removal'
+# EXPERIMENT_ENTROPY_DIR = '/Users/robinbux/Desktop/RBC_New/experiments/sense_comp'
+# PIECE_STATES_REMOVAL_DIR = '/Users/robinbux/Desktop/RBC_New/experiments/piece_states_removal'
 
 LOG_LEVELS = {
     'DEBUG': 'cyan',
@@ -55,17 +55,17 @@ chess.Board.__hash__ = lambda self: chess.polyglot.zobrist_hash(self)
 
 
 class Scorca(Player):
-    def __init__(self, engine: Engine = Engine.SUNFISH , disable_logger: bool = False, history_path:str = None, results_path:str = None):
+    def __init__(self, disable_logger: bool = False, history_path:str = None, results_path:str = None, save_results: bool = True):
+        self.save_results = save_results
         self.likely_states = set()
         self.opp_move_weights = None
         self.background_calc_finished = True
         self.percentage_calculated = 0
         self.best_moves_for_opponent = None
         self.stop_background_calculation = False
-        self.engine = engine
         self._initialize_game_state()
         self._configure_logger(disable_logger)
-        self._initialize_strategy(engine)
+        self._initialize_strategy()
         self.seconds_left = 100000
         self.best_opponents_move = []
 
@@ -129,10 +129,10 @@ class Scorca(Player):
             style='%'
         )
 
-    def _initialize_strategy(self, engine: Engine):
-        self.move_strategy = MoveStrategy(self.game_information_db, self.logger, engine)
+    def _initialize_strategy(self):
+        #self.move_strategy = MoveStrategy(self.game_information_db, self.logger, engine)
         self.sense_strategy_name = 'naive_entropy_sense'
-        self.sense_strategy = NaiveEntropySense(self.move_strategy)
+        self.sense_strategy = AdaptedEntropySense()
         self.ponders = []
         self.ponders = []
 
@@ -151,20 +151,28 @@ class Scorca(Player):
 
     @log_states_change
     def handle_opponent_move_result(self, captured_my_piece: bool, capture_square: Optional[Square]):
+        if not self.save_results:
+            return
         self.stop_background_calculation = True
         self.logger.critical('*************************')
         self.logger.critical('Handle opponent move result')
-        # Wait for background calculation to finish up
+        self.logger.info(f'Background calc finished: {self.background_calc_finished}')
+        count = 0
         while not self.background_calc_finished:
-            pass
+            time.sleep(0.3)
+            count += 1
+            if count % 20 == 0:
+                localtime = time.localtime()
+                result = time.strftime("%I:%M:%S %p", localtime)
+                self.logger.info(f"Time in waiting loop: {result}... Count: {count}")
+                print(self.background_calc_finished)
 
         if (self.color and self.game_information_db.turn == 0) or self.out_of_time:
             return
         start_time = time.time()
         self.boards_tracker.handle_opponent_move_result(captured_my_piece=captured_my_piece,
                                                         capture_square=capture_square,
-                                                        seconds_left=self.seconds_left,
-                                                        stockfish_engine=self.move_strategy.stockfish_engine)
+                                                        seconds_left=self.seconds_left)
 
         if len(self.boards_tracker.possible_states) > 1 and self.opp_move_weights:
             if capture_square is not None:
@@ -180,6 +188,8 @@ class Scorca(Player):
 
     def choose_sense(self, sense_actions: List[Square], move_actions: List[chess.Move], seconds_left: float) -> \
             Optional[Square]:
+        next_sense = next(self.senses)
+
         if self._should_skip_sense():
             return None
         if self._is_time_low(seconds_left):
@@ -253,6 +263,8 @@ class Scorca(Player):
 
     @log_states_change
     def handle_sense_result(self, sense_result: List[Tuple[Square, Optional[chess.Piece]]]):
+        if not self.save_results:
+            return
         if self.out_of_time:
             return
         states_before = len(self.boards_tracker.possible_states)
@@ -300,11 +312,14 @@ class Scorca(Player):
         self.logger.info(f"Time used for move: {time.time() - start_time:.4f} seconds")
         self.logger.debug(f"Requested Move: {move.uci() if move else 'None'}")
         self.seconds_left = seconds_left - (time.time() - start_time)
+        self.background_calc_finished = False
         return move
 
     @log_states_change
     def handle_move_result(self, requested_move: Optional[chess.Move], taken_move: Optional[chess.Move],
                            captured_opponent_piece: bool, capture_square: Optional[Square]):
+        if not self.save_results:
+            return
         self.logger.info('Handle move result')
         self.logger.info(f"Seconds left: {self.seconds_left}")
         if self.out_of_time:
@@ -344,6 +359,7 @@ class Scorca(Player):
         # Play moves on all possible boards for
 
         self.logger.info("Stopped background calculation!")
+        self.logger.info("Changing value to TRUE")
         self.background_calc_finished = True
 
     # def background_calculation(self):
@@ -384,14 +400,15 @@ class Scorca(Player):
         self._write_state_counts_to_file()
 
     def _write_state_counts_to_file(self):
-        data = {
-            'sense_strategy':'likely_states',
-            'state_counts': self.state_counts,
-        }
-        new_dir_index = len(os.listdir(EXPERIMENT_ENTROPY_DIR))
-        new_dir_name = 'game_{:03d}'.format(new_dir_index)
-        with open(self.results_path, 'w') as f:
-            json.dump(data, f)
+        if self.save_results:
+            data = {
+                'sense_strategy':'likely_states',
+                'state_counts': self.state_counts,
+            }
+            # new_dir_index = len(os.listdir(EXPERIMENT_ENTROPY_DIR))
+            # new_dir_name = 'game_{:03d}'.format(new_dir_index)
+            with open(self.results_path, 'w') as f:
+                json.dump(data, f)
 
     def _log_states_change(self, operation: str, func, *args):
         pre_operation_state_count = len(self.boards_tracker.possible_states)

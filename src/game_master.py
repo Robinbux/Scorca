@@ -8,16 +8,16 @@ from reconchess import Player, play_local_game, WinReason
 from reconchess.bots.attacker_bot import AttackerBot
 from reconchess.bots.trout_bot import TroutBot
 from reconchess.history import GameHistory
-
-from src.misc_bots.preset_move_bot import PresetMoveBot
-from src.scorca.scorca import Scorca
+from typing import Tuple
+from misc_bots.preset_move_bot import PresetMoveBot
+from scorca.scorca import Scorca
 
 from loguru import logger
 
 
 import random
 
-from src.scorca.utils import bool_to_color
+from scorca.utils import bool_to_color
 
 SECONDS_PER_PLAYER = 300
 
@@ -30,14 +30,14 @@ class BotOptions(str, Enum):
 
 
 class GameMaster:
-    GAME_LOGS_PATH = '../game_logs'
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    GAME_LOGS_PATH = os.path.join(script_dir, '..', 'game_logs')
 
     @staticmethod
     def setup_bot(bot_option: BotOptions):
         bots = {
             BotOptions.TROUT: lambda: ('Trout Bot', TroutBot()),
             BotOptions.ATTACKER: lambda: ('Attacker Bot', AttackerBot()),
-            BotOptions.STRANGE_FISH: lambda: ('Strange Fish', StrangeFish2()),
             BotOptions.SCORCA: lambda: ('SCORCA', Scorca()),
             BotOptions.PRESET_MOVE: lambda: ('Preset Move Bot', PresetMoveBot()),
         }
@@ -46,8 +46,8 @@ class GameMaster:
 
         return bot_name, bot
 
-    def play_single_game(self, white_bot: Player, black_bot: Player, game_id: int, experiment_dir: str) -> tuple[
-        str, bool | None, WinReason | None, int]:
+    def play_single_game(self, white_bot: Player, black_bot: Player, game_id: int, experiment_dir: str) -> Tuple[
+        str, bool, WinReason, int]:
         logger.info(f"Playing game {game_id}...\n"
                     f"White player: {white_bot}\n"
                     f"Black player: {black_bot}")

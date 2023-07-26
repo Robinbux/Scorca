@@ -13,10 +13,9 @@ import chess.engine
 from chess import Move
 from chess.polyglot import open_reader
 
-from src.boards_tracker.board_tracker_utils import pseudo_legal_moves_with_castling_through_check
-from src.boards_tracker.boards_tracker import BoardsTracker
-from src.rbc_sunfish import *
-from src.utils import current_mover_gives_check, get_resulting_move, \
+from .boards_tracker.board_tracker_utils import pseudo_legal_moves_with_castling_through_check
+from .boards_tracker.boards_tracker import BoardsTracker
+from .utils import current_mover_gives_check, get_resulting_move, \
     convert_centipawn_score_to_win_probability, find_best_move_l0
 
 OPENING_BOOK_PATH = '../opening_book/Human.bin'

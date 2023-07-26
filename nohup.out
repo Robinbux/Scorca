@@ -1,0 +1,851 @@
+Creating backend [eigen]...
+Using Eigen version 3.4.0
+Eigen max batch size is 256.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+TypeError: play_game() missing 1 required positional argument: 'json_file'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "src_exp/play_history_games.py", line 61, in <module>
+    main()
+  File "src_exp/play_history_games.py", line 53, in main
+    for idx, json_file in tqdm(pool.imap_unordered(play_game, enumerate(json_files[START_IDX:END_IDX], start=START_IDX))):
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/site-packages/tqdm/std.py", line 1178, in __iter__
+    for obj in iterable:
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/pool.py", line 865, in next
+    raise value
+TypeError: play_game() missing 1 required positional argument: 'json_file'
+Creating backend [eigen]...
+Using Eigen version 3.4.0
+Eigen max batch size is 256.
+0it [00:00, ?it/s][32mINFO    [0m 2023-07-24 15:29:03,436 [[34mscorca_140073348736864[0m] Game starting...[0m
+[32mINFO    [0m 2023-07-24 15:29:03,437 [[34mscorca_140073348737776[0m] Game starting...[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:29:03,439 [[34mscorca_140073348736864[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:29:03,439 [[34mscorca_140073348736864[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:29:03,441 [[34mscorca_140073348736864[0m] [1mStates changes handle_opponent_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:29:03,442 [[34mscorca_140073348736864[0m] [1m0 states removed! (0.00%)[0m
+[32mINFO    [0m 2023-07-24 15:29:03,444 [[34mscorca_140073348736864[0m] Only one possible board, no need to sense[0m
+/home/rstohr/anaconda3/envs/RBC/lib/python3.8/site-packages/joblib/parallel.py:1324: UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+  n_jobs = self._backend.configure(n_jobs=self.n_jobs, parallel=self,
+[32mINFO    [0m 2023-07-24 15:29:03,449 [[34mscorca_140073348736864[0m] Amount of likely states before: 0[0m
+[32mINFO    [0m 2023-07-24 15:29:03,449 [[34mscorca_140073348736864[0m] Amount of likely states after: 0[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:29:03,450 [[34mscorca_140073348736864[0m] [1mStates changes handle_sense_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:29:03,451 [[34mscorca_140073348736864[0m] [1m0 states removed! (0.00%)[0m
+[32mINFO    [0m 2023-07-24 15:29:03,452 [[34mscorca_140073348736864[0m] Seconds MOVE: 899.986156[0m
+[32mINFO    [0m 2023-07-24 15:29:03,453 [[34mscorca_140073348736864[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:29:03,454 [[34mscorca_140073348736864[0m] Seconds left: 899.986156[0m
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+[32mINFO    [0m 2023-07-24 15:29:03,458 [[34mscorca_140073348736864[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:29:03,458 [[34mscorca_140073348736864[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+    self.run()
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/threading.py", line 870, in run
+[31m[47mCRITICAL[0m 2023-07-24 15:29:03,460 [[34mscorca_140073348736864[0m] [1m0 states removed! (0.00%)[0m
+    self._target(*self._args, **self._kwargs)
+  File "/home/rstohr/Scorca/src_exp/scorca/scorca.py", line 335, in background_calculation
+[31m[47mCRITICAL[0m 2023-07-24 15:29:03,462 [[34mscorca_140073348737776[0m] [1m*************************[0m
+    opp_move_weights_str_keys, likely_states = get_best_moves_l0(self.boards_tracker.possible_states, n_likely_boards_per_state=2)
+  File "/home/rstohr/Scorca/src_exp/scorca/utils.py", line 54, in get_best_moves_l0
+[31m[47mCRITICAL[0m 2023-07-24 15:29:03,464 [[34mscorca_140073348737776[0m] [1mHandle opponent move result[0m
+    move_weights, move_counts, likely_boards = get_move_weights_and_move_counts(boards, list(all_moves),
+  File "/home/rstohr/Scorca/src_exp/scorca/utils.py", line 310, in get_move_weights_and_move_counts
+    with Pool() as p:
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/context.py", line 119, in Pool
+    return Pool(processes, initializer, initargs, maxtasksperchild,
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/pool.py", line 212, in __init__
+    self._repopulate_pool()
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/pool.py", line 303, in _repopulate_pool
+    return self._repopulate_pool_static(self._ctx, self.Process,
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/pool.py", line 326, in _repopulate_pool_static
+    w.start()
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+AssertionError: daemonic processes are not allowed to have children
+0it [00:00, ?it/s]
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "src_exp/play_history_games.py", line 48, in play_game
+    winner_color, win_reason, history = play_local_game(white_player=white_player, black_player=black_player)
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/site-packages/reconchess/play.py", line 37, in play_local_game
+    play_turn(game, players[game.turn], end_turn_last=True)
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/site-packages/reconchess/play.py", line 85, in play_turn
+    notify_opponent_move_results(game, player)
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/site-packages/reconchess/play.py", line 103, in notify_opponent_move_results
+    player.handle_opponent_move_result(opt_capture_square is not None, opt_capture_square)
+  File "/home/rstohr/Scorca/src_exp/scorca/scorca.py", line 47, in wrapper
+    result = func(self, *args, **kwargs)
+  File "/home/rstohr/Scorca/src_exp/scorca/scorca.py", line 164, in handle_opponent_move_result
+    self.boards_tracker.handle_opponent_move_result(captured_my_piece=captured_my_piece,
+  File "/home/rstohr/Scorca/src_exp/scorca/boards_tracker.py", line 98, in handle_opponent_move_result
+    with Pool(processes=self.num_cpus) as pool:
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/context.py", line 119, in Pool
+    return Pool(processes, initializer, initargs, maxtasksperchild,
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/pool.py", line 212, in __init__
+    self._repopulate_pool()
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/pool.py", line 303, in _repopulate_pool
+    return self._repopulate_pool_static(self._ctx, self.Process,
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/pool.py", line 326, in _repopulate_pool_static
+    w.start()
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/process.py", line 118, in start
+    assert not _current_process._config.get('daemon'), \
+AssertionError: daemonic processes are not allowed to have children
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "src_exp/play_history_games.py", line 62, in <module>
+    main()
+  File "src_exp/play_history_games.py", line 54, in main
+    for _ in tqdm(pool.imap_unordered(play_game, enumerate(json_files[START_IDX:END_IDX], start=START_IDX))):
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/site-packages/tqdm/std.py", line 1178, in __iter__
+    for obj in iterable:
+  File "/home/rstohr/anaconda3/envs/RBC/lib/python3.8/multiprocessing/pool.py", line 865, in next
+    raise value
+AssertionError: daemonic processes are not allowed to have children
+Creating backend [eigen]...
+Using Eigen version 3.4.0
+Eigen max batch size is 256.
+0it [00:00, ?it/s][32mINFO    [0m 2023-07-24 15:32:27,176 [[34mscorca_140223754577376[0m] Game starting...[0m
+[32mINFO    [0m 2023-07-24 15:32:27,176 [[34mscorca_140223754578288[0m] Game starting...[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:27,178 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:27,178 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:27,178 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:27,179 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:27,180 [[34mscorca_140223754577376[0m] Only one possible board, no need to sense[0m
+Creating backend [eigen]...
+Using Eigen version 3.4.0
+Eigen max batch size is 256.
+[32mINFO    [0m 2023-07-24 15:32:29,551 [[34mscorca_140223754577376[0m] Amount of likely states before: 0[0m
+[32mINFO    [0m 2023-07-24 15:32:29,552 [[34mscorca_140223754577376[0m] Amount of likely states after: 0[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:29,553 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:29,553 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:29,554 [[34mscorca_140223754577376[0m] Seconds MOVE: 897.622779[0m
+[32mINFO    [0m 2023-07-24 15:32:29,556 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:29,557 [[34mscorca_140223754577376[0m] Seconds left: 897.622779[0m
+Creating backend [eigen]...
+Using Eigen version 3.4.0
+Eigen max batch size is 256.
+[32mINFO    [0m 2023-07-24 15:32:31,564 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:31,565 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:31,565 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+Next move: d2d4
+[31m[47mCRITICAL[0m 2023-07-24 15:32:31,567 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:31,567 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+[32mINFO    [0m 2023-07-24 15:32:31,840 [[34mscorca_140223754578288[0m] Amount of likely states before: 0[0m
+[32mINFO    [0m 2023-07-24 15:32:31,841 [[34mscorca_140223754578288[0m] Amount of likely states after: 0[0m
+[32mINFO    [0m 2023-07-24 15:32:31,856 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.2718174457550049[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:31,857 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 1 -> 23[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:31,858 [[34mscorca_140223754578288[0m] [1m22 states added! (2200.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:31,873 [[34mscorca_140223754578288[0m] Amount of possible boards: 23[0m
+[32mINFO    [0m 2023-07-24 15:32:31,874 [[34mscorca_140223754578288[0m] Seconds left: 899.693875[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:31,875 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON POSSIBLE STATES[0m
+[32mINFO    [0m 2023-07-24 15:32:31,889 [[34mscorca_140223754578288[0m] Time used for sense: 0.0140 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:31,890 [[34mscorca_140223754578288[0m] Sensed square: e3[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:32,419 [[34mscorca_140223754577376[0m] [1m2 likely states vs 1 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:32,419 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+Creating backend [eigen]...
+Creating backend [eigen]...
+Using Eigen version 3.4.0
+Eigen max batch size is 256.
+Using Eigen version 3.4.0
+Eigen max batch size is 256.
+[32mINFO    [0m 2023-07-24 15:32:34,053 [[34mscorca_140223754578288[0m] Amount of likely states before: 0[0m
+[32mINFO    [0m 2023-07-24 15:32:34,053 [[34mscorca_140223754578288[0m] Amount of likely states after: 0[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,054 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 23 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,055 [[34mscorca_140223754578288[0m] [1m-22 states removed! (-95.65%)[0m
+[32mINFO    [0m 2023-07-24 15:32:34,056 [[34mscorca_140223754578288[0m] Seconds MOVE: 897.510295[0m
+[32mINFO    [0m 2023-07-24 15:32:34,058 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:34,058 [[34mscorca_140223754578288[0m] Seconds left: 897.510295[0m
+[32mINFO    [0m 2023-07-24 15:32:34,073 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+Next move: d7d5
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,074 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,074 [[34mscorca_140223754578288[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,087 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,088 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+[32mINFO    [0m 2023-07-24 15:32:34,298 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:34,299 [[34mscorca_140223754577376[0m] Amount of likely states after: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:34,300 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.199751615524292[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,312 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 1 -> 23[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,313 [[34mscorca_140223754577376[0m] [1m22 states added! (2200.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:34,314 [[34mscorca_140223754577376[0m] Amount of possible boards: 23[0m
+[32mINFO    [0m 2023-07-24 15:32:34,326 [[34mscorca_140223754577376[0m] Seconds left: 900.382979[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,327 [[34mscorca_140223754577376[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:32:34,328 [[34mscorca_140223754577376[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:32:34,328 [[34mscorca_140223754577376[0m] Time used for sense: 0.0012 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:34,341 [[34mscorca_140223754577376[0m] Sensed square: c7[0m
+[32mINFO    [0m 2023-07-24 15:32:34,529 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:34,542 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,543 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 23 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,544 [[34mscorca_140223754577376[0m] [1m-22 states removed! (-95.65%)[0m
+[32mINFO    [0m 2023-07-24 15:32:34,557 [[34mscorca_140223754577376[0m] Seconds MOVE: 900.140257[0m
+[32mINFO    [0m 2023-07-24 15:32:34,560 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:34,560 [[34mscorca_140223754577376[0m] Seconds left: 900.140257[0m
+Next move: h2h3
+[32mINFO    [0m 2023-07-24 15:32:34,624 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,625 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,626 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,627 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:34,647 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:35,520 [[34mscorca_140223754578288[0m] [1m2 likely states vs 1 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:35,528 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:32:35,752 [[34mscorca_140223754578288[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:35,754 [[34mscorca_140223754578288[0m] Amount of likely states after: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:35,755 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.2264103889465332[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:35,770 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 1 -> 30[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:35,771 [[34mscorca_140223754578288[0m] [1m29 states added! (2900.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:35,772 [[34mscorca_140223754578288[0m] Amount of possible boards: 30[0m
+[32mINFO    [0m 2023-07-24 15:32:35,786 [[34mscorca_140223754578288[0m] Seconds left: 901.33501[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:35,787 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:32:35,789 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:32:35,789 [[34mscorca_140223754578288[0m] Time used for sense: 0.0022 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:35,805 [[34mscorca_140223754578288[0m] Sensed square: b2[0m
+[32mINFO    [0m 2023-07-24 15:32:35,975 [[34mscorca_140223754578288[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:35,976 [[34mscorca_140223754578288[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:35,976 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 30 -> 15[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:35,990 [[34mscorca_140223754578288[0m] [1m-15 states removed! (-50.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:35,992 [[34mscorca_140223754578288[0m] Seconds MOVE: 901.115069[0m
+[32mINFO    [0m 2023-07-24 15:32:35,995 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:35,996 [[34mscorca_140223754578288[0m] Seconds left: 901.115069[0m
+Next move: e7e5
+[32mINFO    [0m 2023-07-24 15:32:36,098 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:36,098 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 15 -> 15[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:36,104 [[34mscorca_140223754578288[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:36,105 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:36,106 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:36,899 [[34mscorca_140223754577376[0m] [1m2 likely states vs 1 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:36,906 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:32:37,080 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:37,093 [[34mscorca_140223754577376[0m] Amount of likely states after: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:37,094 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.18803644180297852[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:37,095 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 1 -> 29[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:37,108 [[34mscorca_140223754577376[0m] [1m28 states added! (2800.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:37,109 [[34mscorca_140223754577376[0m] Amount of possible boards: 29[0m
+[32mINFO    [0m 2023-07-24 15:32:37,109 [[34mscorca_140223754577376[0m] Seconds left: 904.06618[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:37,121 [[34mscorca_140223754577376[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:32:37,122 [[34mscorca_140223754577376[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:32:37,123 [[34mscorca_140223754577376[0m] Time used for sense: 0.0019 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:37,123 [[34mscorca_140223754577376[0m] Sensed square: b7[0m
+[32mINFO    [0m 2023-07-24 15:32:37,327 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:37,328 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:37,329 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 29 -> 15[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:37,340 [[34mscorca_140223754577376[0m] [1m-14 states removed! (-48.28%)[0m
+[32mINFO    [0m 2023-07-24 15:32:37,341 [[34mscorca_140223754577376[0m] Seconds MOVE: 903.833798[0m
+[32mINFO    [0m 2023-07-24 15:32:37,343 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:37,344 [[34mscorca_140223754577376[0m] Seconds left: 903.833798[0m
+Next move: f2f3
+[32mINFO    [0m 2023-07-24 15:32:37,413 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:37,415 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 15 -> 15[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:37,416 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:37,417 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:37,430 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+Next move: f2f3
+[31m[47mCRITICAL[0m 2023-07-24 15:32:38,425 [[34mscorca_140223754578288[0m] [1m30 likely states vs 15 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:38,427 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:32:38,761 [[34mscorca_140223754578288[0m] Amount of likely states before: 30[0m
+[32mINFO    [0m 2023-07-24 15:32:38,762 [[34mscorca_140223754578288[0m] Amount of likely states after: 12[0m
+[32mINFO    [0m 2023-07-24 15:32:38,763 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.33026647567749023[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:38,763 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 15 -> 420[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:38,776 [[34mscorca_140223754578288[0m] [1m405 states added! (2700.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:38,777 [[34mscorca_140223754578288[0m] Amount of possible boards: 420[0m
+[32mINFO    [0m 2023-07-24 15:32:38,778 [[34mscorca_140223754578288[0m] Seconds left: 904.641631[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:38,789 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:32:38,794 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:32:38,794 [[34mscorca_140223754578288[0m] Time used for sense: 0.0048 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:38,795 [[34mscorca_140223754578288[0m] Sensed square: d3[0m
+[32mINFO    [0m 2023-07-24 15:32:39,116 [[34mscorca_140223754578288[0m] Amount of likely states before: 12[0m
+[32mINFO    [0m 2023-07-24 15:32:39,116 [[34mscorca_140223754578288[0m] Amount of likely states after: 3[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:39,117 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 420 -> 181[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:39,118 [[34mscorca_140223754578288[0m] [1m-239 states removed! (-56.90%)[0m
+[32mINFO    [0m 2023-07-24 15:32:39,119 [[34mscorca_140223754578288[0m] Seconds MOVE: 904.299586[0m
+[32mINFO    [0m 2023-07-24 15:32:39,121 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:39,122 [[34mscorca_140223754578288[0m] Seconds left: 904.299586[0m
+[32mINFO    [0m 2023-07-24 15:32:39,228 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:39,234 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 181 -> 161[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:39,239 [[34mscorca_140223754578288[0m] [1m-20 states removed! (-11.05%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:39,245 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:39,246 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+Next move: e5d4
+[31m[47mCRITICAL[0m 2023-07-24 15:32:40,118 [[34mscorca_140223754577376[0m] [1m30 likely states vs 15 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:40,125 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:32:40,373 [[34mscorca_140223754577376[0m] Amount of likely states before: 30[0m
+[32mINFO    [0m 2023-07-24 15:32:40,375 [[34mscorca_140223754577376[0m] Amount of likely states after: 0[0m
+[32mINFO    [0m 2023-07-24 15:32:40,375 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.2501382827758789[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:40,389 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 15 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:40,390 [[34mscorca_140223754577376[0m] [1m-14 states removed! (-93.33%)[0m
+[32mINFO    [0m 2023-07-24 15:32:40,391 [[34mscorca_140223754577376[0m] Only one possible board, no need to sense[0m
+[32mINFO    [0m 2023-07-24 15:32:40,507 [[34mscorca_140223754577376[0m] Amount of likely states before: 0[0m
+[32mINFO    [0m 2023-07-24 15:32:40,508 [[34mscorca_140223754577376[0m] Amount of likely states after: 0[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:40,509 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:40,521 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:40,522 [[34mscorca_140223754577376[0m] Seconds MOVE: 907.4813340000001[0m
+[32mINFO    [0m 2023-07-24 15:32:40,525 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:40,538 [[34mscorca_140223754577376[0m] Seconds left: 907.4813340000001[0m
+Next move: d1d4
+[32mINFO    [0m 2023-07-24 15:32:40,643 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:40,644 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:40,645 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:40,647 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:40,647 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:45,928 [[34mscorca_140223754577376[0m] [1m2 likely states vs 1 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:45,935 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+Next move: d1d4
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,005 [[34mscorca_140223754578288[0m] [1m307 likely states vs 161 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:47,012 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:32:47,140 [[34mscorca_140223754578288[0m] Amount of likely states before: 307[0m
+[32mINFO    [0m 2023-07-24 15:32:47,144 [[34mscorca_140223754578288[0m] Amount of likely states after: 122[0m
+[32mINFO    [0m 2023-07-24 15:32:47,145 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.1266918182373047[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,146 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 161 -> 163[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,146 [[34mscorca_140223754578288[0m] [1m2 states added! (1.24%)[0m
+[32mINFO    [0m 2023-07-24 15:32:47,147 [[34mscorca_140223754578288[0m] Amount of possible boards: 163[0m
+[32mINFO    [0m 2023-07-24 15:32:47,148 [[34mscorca_140223754578288[0m] Seconds left: 902.6729379999999[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,149 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:32:47,150 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:32:47,150 [[34mscorca_140223754578288[0m] Time used for sense: 0.0014 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:47,151 [[34mscorca_140223754578288[0m] Sensed square: c3[0m
+[32mINFO    [0m 2023-07-24 15:32:47,242 [[34mscorca_140223754578288[0m] Amount of likely states before: 122[0m
+[32mINFO    [0m 2023-07-24 15:32:47,243 [[34mscorca_140223754578288[0m] Amount of likely states after: 89[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,243 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 163 -> 117[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,244 [[34mscorca_140223754578288[0m] [1m-46 states removed! (-28.22%)[0m
+[32mINFO    [0m 2023-07-24 15:32:47,244 [[34mscorca_140223754578288[0m] Seconds MOVE: 902.575745[0m
+[32mINFO    [0m 2023-07-24 15:32:47,246 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:47,246 [[34mscorca_140223754578288[0m] Seconds left: 902.575745[0m
+[32mINFO    [0m 2023-07-24 15:32:47,324 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,325 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 117 -> 117[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,331 [[34mscorca_140223754578288[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,336 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,337 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+Next move: b8c6
+[32mINFO    [0m 2023-07-24 15:32:47,612 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:47,614 [[34mscorca_140223754577376[0m] Amount of likely states after: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:47,627 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.28457117080688477[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,628 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 1 -> 38[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,629 [[34mscorca_140223754577376[0m] [1m37 states added! (3700.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:47,643 [[34mscorca_140223754577376[0m] Amount of possible boards: 38[0m
+[32mINFO    [0m 2023-07-24 15:32:47,644 [[34mscorca_140223754577376[0m] Seconds left: 912.0505880000001[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,645 [[34mscorca_140223754577376[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:32:47,660 [[34mscorca_140223754577376[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:32:47,662 [[34mscorca_140223754577376[0m] Time used for sense: 0.0170 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:47,662 [[34mscorca_140223754577376[0m] Sensed square: d7[0m
+[32mINFO    [0m 2023-07-24 15:32:47,866 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:47,867 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,868 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 38 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,883 [[34mscorca_140223754577376[0m] [1m-37 states removed! (-97.37%)[0m
+[32mINFO    [0m 2023-07-24 15:32:47,884 [[34mscorca_140223754577376[0m] Seconds MOVE: 911.8091530000002[0m
+[32mINFO    [0m 2023-07-24 15:32:47,887 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:47,901 [[34mscorca_140223754577376[0m] Seconds left: 911.8091530000002[0m
+Next move: d4e3
+[32mINFO    [0m 2023-07-24 15:32:47,995 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,998 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:47,998 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:48,000 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:48,002 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+Next move: d4e3
+[31m[47mCRITICAL[0m 2023-07-24 15:32:52,240 [[34mscorca_140223754578288[0m] [1m234 likely states vs 117 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:52,245 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:32:52,912 [[34mscorca_140223754578288[0m] Amount of likely states before: 234[0m
+[32mINFO    [0m 2023-07-24 15:32:52,915 [[34mscorca_140223754578288[0m] Amount of likely states after: 223[0m
+[32mINFO    [0m 2023-07-24 15:32:52,915 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.6689128875732422[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:52,916 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 117 -> 4482[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:52,916 [[34mscorca_140223754578288[0m] [1m4365 states added! (3730.77%)[0m
+[32mINFO    [0m 2023-07-24 15:32:52,917 [[34mscorca_140223754578288[0m] Amount of possible boards: 4482[0m
+[32mINFO    [0m 2023-07-24 15:32:52,918 [[34mscorca_140223754578288[0m] Seconds left: 902.5664219999999[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:52,918 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:32:52,922 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:32:52,922 [[34mscorca_140223754578288[0m] Time used for sense: 0.0036 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:52,923 [[34mscorca_140223754578288[0m] Sensed square: e3[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:52,923 [[34mscorca_140223754577376[0m] [1m2 likely states vs 1 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:52,938 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:32:53,270 [[34mscorca_140223754578288[0m] Amount of likely states before: 223[0m
+[32mINFO    [0m 2023-07-24 15:32:53,272 [[34mscorca_140223754578288[0m] Amount of likely states after: 11[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,272 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 4482 -> 12[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,272 [[34mscorca_140223754578288[0m] [1m-4470 states removed! (-99.73%)[0m
+[32mINFO    [0m 2023-07-24 15:32:53,273 [[34mscorca_140223754578288[0m] Seconds MOVE: 902.2103549999999[0m
+[32mINFO    [0m 2023-07-24 15:32:53,275 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:53,275 [[34mscorca_140223754578288[0m] Seconds left: 902.2103549999999[0m
+[32mINFO    [0m 2023-07-24 15:32:53,295 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,295 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 12 -> 12[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,297 [[34mscorca_140223754578288[0m] [1m0 states removed! (0.00%)[0m
+Next move: f8e7
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,298 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,299 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+[32mINFO    [0m 2023-07-24 15:32:53,594 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:53,595 [[34mscorca_140223754577376[0m] Amount of likely states after: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:53,611 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.2922549247741699[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,612 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 1 -> 41[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,613 [[34mscorca_140223754577376[0m] [1m40 states added! (4000.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:53,627 [[34mscorca_140223754577376[0m] Amount of possible boards: 41[0m
+[32mINFO    [0m 2023-07-24 15:32:53,627 [[34mscorca_140223754577376[0m] Seconds left: 916.3655940000001[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,628 [[34mscorca_140223754577376[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:32:53,644 [[34mscorca_140223754577376[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:32:53,644 [[34mscorca_140223754577376[0m] Time used for sense: 0.0161 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:53,645 [[34mscorca_140223754577376[0m] Sensed square: d7[0m
+[32mINFO    [0m 2023-07-24 15:32:53,797 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:53,798 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,799 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 41 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,815 [[34mscorca_140223754577376[0m] [1m-40 states removed! (-97.56%)[0m
+[32mINFO    [0m 2023-07-24 15:32:53,816 [[34mscorca_140223754577376[0m] Seconds MOVE: 916.175602[0m
+[32mINFO    [0m 2023-07-24 15:32:53,819 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:53,835 [[34mscorca_140223754577376[0m] Seconds left: 916.175602[0m
+Next move: e3e7
+[32mINFO    [0m 2023-07-24 15:32:53,935 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,936 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,937 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,957 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:53,958 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+Next move: e3e7
+[31m[47mCRITICAL[0m 2023-07-24 15:32:56,882 [[34mscorca_140223754578288[0m] [1m24 likely states vs 12 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:56,910 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:32:57,148 [[34mscorca_140223754578288[0m] Amount of likely states before: 24[0m
+[32mINFO    [0m 2023-07-24 15:32:57,151 [[34mscorca_140223754578288[0m] Amount of likely states after: 1[0m
+[32mINFO    [0m 2023-07-24 15:32:57,152 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.204545259475708[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:57,152 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 12 -> 13[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:57,167 [[34mscorca_140223754578288[0m] [1m1 states added! (8.33%)[0m
+[32mINFO    [0m 2023-07-24 15:32:57,168 [[34mscorca_140223754578288[0m] Amount of possible boards: 13[0m
+[32mINFO    [0m 2023-07-24 15:32:57,168 [[34mscorca_140223754578288[0m] Seconds left: 903.9723819999999[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:57,169 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:32:57,187 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:32:57,187 [[34mscorca_140223754578288[0m] Time used for sense: 0.0182 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:57,188 [[34mscorca_140223754578288[0m] Sensed square: f4[0m
+[32mINFO    [0m 2023-07-24 15:32:57,371 [[34mscorca_140223754578288[0m] Amount of likely states before: 1[0m
+[32mINFO    [0m 2023-07-24 15:32:57,372 [[34mscorca_140223754578288[0m] Amount of likely states after: 0[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:57,374 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 13 -> 9[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:57,375 [[34mscorca_140223754578288[0m] [1m-4 states removed! (-30.77%)[0m
+[32mINFO    [0m 2023-07-24 15:32:57,376 [[34mscorca_140223754578288[0m] Seconds MOVE: 903.7648079999999[0m
+[32mINFO    [0m 2023-07-24 15:32:57,379 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:57,379 [[34mscorca_140223754578288[0m] Seconds left: 903.7648079999999[0m
+[32mINFO    [0m 2023-07-24 15:32:57,400 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:57,400 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 9 -> 9[0m
+Next move: g8e7
+[31m[47mCRITICAL[0m 2023-07-24 15:32:57,401 [[34mscorca_140223754578288[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:57,403 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:57,403 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:58,321 [[34mscorca_140223754577376[0m] [1m2 likely states vs 1 possible states[0m
+[32mINFO    [0m 2023-07-24 15:32:58,363 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:32:58,578 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:58,579 [[34mscorca_140223754577376[0m] Amount of likely states after: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:58,580 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.21626949310302734[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:58,596 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 1 -> 4[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:58,597 [[34mscorca_140223754577376[0m] [1m3 states added! (300.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:58,598 [[34mscorca_140223754577376[0m] Amount of possible boards: 4[0m
+[32mINFO    [0m 2023-07-24 15:32:58,613 [[34mscorca_140223754577376[0m] Seconds left: 919.841217[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:58,613 [[34mscorca_140223754577376[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:32:58,615 [[34mscorca_140223754577376[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:32:58,630 [[34mscorca_140223754577376[0m] Time used for sense: 0.0167 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:32:58,631 [[34mscorca_140223754577376[0m] Sensed square: d6[0m
+[32mINFO    [0m 2023-07-24 15:32:58,776 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:32:58,777 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:58,794 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 4 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:58,795 [[34mscorca_140223754577376[0m] [1m-3 states removed! (-75.00%)[0m
+[32mINFO    [0m 2023-07-24 15:32:58,796 [[34mscorca_140223754577376[0m] Seconds MOVE: 919.6428930000001[0m
+[32mINFO    [0m 2023-07-24 15:32:58,817 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:32:58,819 [[34mscorca_140223754577376[0m] Seconds left: 919.6428930000001[0m
+Next move: b1c3
+[32mINFO    [0m 2023-07-24 15:32:58,881 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:58,882 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:58,883 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:58,885 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:32:58,885 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:00,865 [[34mscorca_140223754578288[0m] [1m17 likely states vs 9 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:00,872 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:01,095 [[34mscorca_140223754578288[0m] Amount of likely states before: 17[0m
+[32mINFO    [0m 2023-07-24 15:33:01,096 [[34mscorca_140223754578288[0m] Amount of likely states after: 17[0m
+[32mINFO    [0m 2023-07-24 15:33:01,097 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.2010190486907959[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:01,112 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 9 -> 230[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:01,113 [[34mscorca_140223754578288[0m] [1m221 states added! (2455.56%)[0m
+[32mINFO    [0m 2023-07-24 15:33:01,119 [[34mscorca_140223754578288[0m] Amount of possible boards: 230[0m
+[32mINFO    [0m 2023-07-24 15:33:01,136 [[34mscorca_140223754578288[0m] Seconds left: 906.50314[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:01,137 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:33:01,139 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:33:01,139 [[34mscorca_140223754578288[0m] Time used for sense: 0.0025 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:33:01,155 [[34mscorca_140223754578288[0m] Sensed square: b2[0m
+[32mINFO    [0m 2023-07-24 15:33:01,450 [[34mscorca_140223754578288[0m] Amount of likely states before: 17[0m
+[32mINFO    [0m 2023-07-24 15:33:01,452 [[34mscorca_140223754578288[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:01,452 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 230 -> 5[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:01,453 [[34mscorca_140223754578288[0m] [1m-225 states removed! (-97.83%)[0m
+[32mINFO    [0m 2023-07-24 15:33:01,454 [[34mscorca_140223754578288[0m] Seconds MOVE: 906.168775[0m
+[32mINFO    [0m 2023-07-24 15:33:01,456 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:01,456 [[34mscorca_140223754578288[0m] Seconds left: 906.168775[0m
+[32mINFO    [0m 2023-07-24 15:33:01,472 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:01,473 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 5 -> 5[0m
+Next move: e7f5
+[31m[47mCRITICAL[0m 2023-07-24 15:33:01,474 [[34mscorca_140223754578288[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:01,475 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:01,493 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:02,209 [[34mscorca_140223754577376[0m] [1m2 likely states vs 1 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:02,215 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:02,399 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:33:02,399 [[34mscorca_140223754577376[0m] Amount of likely states after: 2[0m
+[32mINFO    [0m 2023-07-24 15:33:02,415 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.19852662086486816[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:02,430 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 1 -> 33[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:02,431 [[34mscorca_140223754577376[0m] [1m32 states added! (3200.00%)[0m
+[32mINFO    [0m 2023-07-24 15:33:02,432 [[34mscorca_140223754577376[0m] Amount of possible boards: 33[0m
+[32mINFO    [0m 2023-07-24 15:33:02,448 [[34mscorca_140223754577376[0m] Seconds left: 923.5978600000001[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:02,448 [[34mscorca_140223754577376[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:33:02,451 [[34mscorca_140223754577376[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:33:02,468 [[34mscorca_140223754577376[0m] Time used for sense: 0.0194 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:33:02,469 [[34mscorca_140223754577376[0m] Sensed square: d7[0m
+[32mINFO    [0m 2023-07-24 15:33:02,758 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:33:02,773 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:02,775 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 33 -> 3[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:02,775 [[34mscorca_140223754577376[0m] [1m-30 states removed! (-90.91%)[0m
+[32mINFO    [0m 2023-07-24 15:33:02,793 [[34mscorca_140223754577376[0m] Seconds MOVE: 923.2368590000001[0m
+[32mINFO    [0m 2023-07-24 15:33:02,795 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:02,795 [[34mscorca_140223754577376[0m] Seconds left: 923.2368590000001[0m
+[32mINFO    [0m 2023-07-24 15:33:02,815 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:02,816 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 3 -> 3[0m
+Next move: c1f4
+[31m[47mCRITICAL[0m 2023-07-24 15:33:02,817 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:02,818 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:02,837 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:03,922 [[34mscorca_140223754578288[0m] [1m10 likely states vs 5 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:03,929 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:04,147 [[34mscorca_140223754578288[0m] Amount of likely states before: 10[0m
+[32mINFO    [0m 2023-07-24 15:33:04,161 [[34mscorca_140223754578288[0m] Amount of likely states after: 10[0m
+[32mINFO    [0m 2023-07-24 15:33:04,162 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.23259949684143066[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:04,163 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 5 -> 142[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:04,177 [[34mscorca_140223754578288[0m] [1m137 states added! (2740.00%)[0m
+[32mINFO    [0m 2023-07-24 15:33:04,179 [[34mscorca_140223754578288[0m] Amount of possible boards: 142[0m
+[32mINFO    [0m 2023-07-24 15:33:04,179 [[34mscorca_140223754578288[0m] Seconds left: 909.7865039999999[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:04,180 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:33:04,196 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:33:04,197 [[34mscorca_140223754578288[0m] Time used for sense: 0.0171 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:33:04,198 [[34mscorca_140223754578288[0m] Sensed square: d2[0m
+[32mINFO    [0m 2023-07-24 15:33:04,567 [[34mscorca_140223754578288[0m] Amount of likely states before: 10[0m
+[32mINFO    [0m 2023-07-24 15:33:04,568 [[34mscorca_140223754578288[0m] Amount of likely states after: 6[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:04,569 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 142 -> 12[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:04,570 [[34mscorca_140223754578288[0m] [1m-130 states removed! (-91.55%)[0m
+[32mINFO    [0m 2023-07-24 15:33:04,571 [[34mscorca_140223754578288[0m] Seconds MOVE: 909.394652[0m
+[32mINFO    [0m 2023-07-24 15:33:04,573 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:04,574 [[34mscorca_140223754578288[0m] Seconds left: 909.394652[0m
+[32mINFO    [0m 2023-07-24 15:33:04,605 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:04,606 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 12 -> 8[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:04,607 [[34mscorca_140223754578288[0m] [1m-4 states removed! (-33.33%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:04,608 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:04,609 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+Next move: d8g5
+[31m[47mCRITICAL[0m 2023-07-24 15:33:06,853 [[34mscorca_140223754577376[0m] [1m6 likely states vs 3 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:06,860 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:07,065 [[34mscorca_140223754577376[0m] Amount of likely states before: 6[0m
+[32mINFO    [0m 2023-07-24 15:33:07,079 [[34mscorca_140223754577376[0m] Amount of likely states after: 5[0m
+[32mINFO    [0m 2023-07-24 15:33:07,080 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.22001194953918457[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:07,081 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 3 -> 111[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:07,093 [[34mscorca_140223754577376[0m] [1m108 states added! (3600.00%)[0m
+[32mINFO    [0m 2023-07-24 15:33:07,095 [[34mscorca_140223754577376[0m] Amount of possible boards: 111[0m
+[32mINFO    [0m 2023-07-24 15:33:07,095 [[34mscorca_140223754577376[0m] Seconds left: 925.7250380000002[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:07,111 [[34mscorca_140223754577376[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:33:07,113 [[34mscorca_140223754577376[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:33:07,114 [[34mscorca_140223754577376[0m] Time used for sense: 0.0031 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:33:07,115 [[34mscorca_140223754577376[0m] Sensed square: d7[0m
+[32mINFO    [0m 2023-07-24 15:33:07,403 [[34mscorca_140223754577376[0m] Amount of likely states before: 5[0m
+[32mINFO    [0m 2023-07-24 15:33:07,404 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:07,405 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 111 -> 9[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:07,406 [[34mscorca_140223754577376[0m] [1m-102 states removed! (-91.89%)[0m
+[32mINFO    [0m 2023-07-24 15:33:07,407 [[34mscorca_140223754577376[0m] Seconds MOVE: 925.4129890000002[0m
+[32mINFO    [0m 2023-07-24 15:33:07,409 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:07,410 [[34mscorca_140223754577376[0m] Seconds left: 925.4129890000002[0m
+[32mINFO    [0m 2023-07-24 15:33:07,426 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:07,427 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 9 -> 3[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:07,428 [[34mscorca_140223754577376[0m] [1m-6 states removed! (-66.67%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:07,429 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:07,429 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+Next move: f4g5
+[31m[47mCRITICAL[0m 2023-07-24 15:33:08,635 [[34mscorca_140223754578288[0m] [1m12 likely states vs 8 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:08,642 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:08,838 [[34mscorca_140223754578288[0m] Amount of likely states before: 12[0m
+[32mINFO    [0m 2023-07-24 15:33:08,840 [[34mscorca_140223754578288[0m] Amount of likely states after: 8[0m
+[32mINFO    [0m 2023-07-24 15:33:08,840 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.19838428497314453[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:08,852 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 8 -> 8[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:08,853 [[34mscorca_140223754578288[0m] [1m0 states removed! (0.00%)[0m
+[32mINFO    [0m 2023-07-24 15:33:08,854 [[34mscorca_140223754578288[0m] Amount of possible boards: 8[0m
+[32mINFO    [0m 2023-07-24 15:33:08,865 [[34mscorca_140223754578288[0m] Seconds left: 912.93236[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:08,866 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:33:08,867 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:33:08,878 [[34mscorca_140223754578288[0m] Time used for sense: 0.0121 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:33:08,879 [[34mscorca_140223754578288[0m] Sensed square: f4[0m
+[32mINFO    [0m 2023-07-24 15:33:09,014 [[34mscorca_140223754578288[0m] Amount of likely states before: 8[0m
+[32mINFO    [0m 2023-07-24 15:33:09,015 [[34mscorca_140223754578288[0m] Amount of likely states after: 4[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:09,016 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 8 -> 4[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:09,028 [[34mscorca_140223754578288[0m] [1m-4 states removed! (-50.00%)[0m
+[32mINFO    [0m 2023-07-24 15:33:09,029 [[34mscorca_140223754578288[0m] Seconds MOVE: 912.756977[0m
+[32mINFO    [0m 2023-07-24 15:33:09,030 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:09,031 [[34mscorca_140223754578288[0m] Seconds left: 912.756977[0m
+Next move: c8e6
+[32mINFO    [0m 2023-07-24 15:33:09,065 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:09,065 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 4 -> 4[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:09,066 [[34mscorca_140223754578288[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:09,068 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:09,068 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:09,943 [[34mscorca_140223754577376[0m] [1m6 likely states vs 3 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:09,944 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:10,093 [[34mscorca_140223754577376[0m] Amount of likely states before: 6[0m
+[32mINFO    [0m 2023-07-24 15:33:10,095 [[34mscorca_140223754577376[0m] Amount of likely states after: 6[0m
+[32mINFO    [0m 2023-07-24 15:33:10,095 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.14504623413085938[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:10,107 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 3 -> 98[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:10,108 [[34mscorca_140223754577376[0m] [1m95 states added! (3166.67%)[0m
+[32mINFO    [0m 2023-07-24 15:33:10,109 [[34mscorca_140223754577376[0m] Amount of possible boards: 98[0m
+[32mINFO    [0m 2023-07-24 15:33:10,120 [[34mscorca_140223754577376[0m] Seconds left: 929.3499130000002[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:10,121 [[34mscorca_140223754577376[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:33:10,125 [[34mscorca_140223754577376[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:33:10,136 [[34mscorca_140223754577376[0m] Time used for sense: 0.0149 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:33:10,138 [[34mscorca_140223754577376[0m] Sensed square: e6[0m
+[32mINFO    [0m 2023-07-24 15:33:10,318 [[34mscorca_140223754577376[0m] Amount of likely states before: 6[0m
+[32mINFO    [0m 2023-07-24 15:33:10,319 [[34mscorca_140223754577376[0m] Amount of likely states after: 0[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:10,320 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 98 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:10,334 [[34mscorca_140223754577376[0m] [1m-97 states removed! (-98.98%)[0m
+[32mINFO    [0m 2023-07-24 15:33:10,335 [[34mscorca_140223754577376[0m] Seconds MOVE: 929.1236700000002[0m
+[32mINFO    [0m 2023-07-24 15:33:10,337 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:10,337 [[34mscorca_140223754577376[0m] Seconds left: 929.1236700000002[0m
+Next move: g5h4
+[32mINFO    [0m 2023-07-24 15:33:10,408 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:10,422 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:10,423 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:10,425 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:10,425 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+Next move: g5h4
+[31m[47mCRITICAL[0m 2023-07-24 15:33:11,802 [[34mscorca_140223754578288[0m] [1m8 likely states vs 4 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:11,809 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:11,996 [[34mscorca_140223754578288[0m] Amount of likely states before: 8[0m
+[32mINFO    [0m 2023-07-24 15:33:11,998 [[34mscorca_140223754578288[0m] Amount of likely states after: 8[0m
+[32mINFO    [0m 2023-07-24 15:33:11,998 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.1888105869293213[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:12,010 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 4 -> 137[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:12,011 [[34mscorca_140223754578288[0m] [1m133 states added! (3325.00%)[0m
+[32mINFO    [0m 2023-07-24 15:33:12,012 [[34mscorca_140223754578288[0m] Amount of possible boards: 137[0m
+[32mINFO    [0m 2023-07-24 15:33:12,022 [[34mscorca_140223754578288[0m] Seconds left: 916.13137[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:12,023 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:33:12,027 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:33:12,039 [[34mscorca_140223754578288[0m] Time used for sense: 0.0158 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:33:12,040 [[34mscorca_140223754578288[0m] Sensed square: d2[0m
+[32mINFO    [0m 2023-07-24 15:33:12,382 [[34mscorca_140223754578288[0m] Amount of likely states before: 8[0m
+[32mINFO    [0m 2023-07-24 15:33:12,383 [[34mscorca_140223754578288[0m] Amount of likely states after: 0[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:12,384 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 137 -> 69[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:12,385 [[34mscorca_140223754578288[0m] [1m-68 states removed! (-49.64%)[0m
+[32mINFO    [0m 2023-07-24 15:33:12,386 [[34mscorca_140223754578288[0m] Seconds MOVE: 915.757365[0m
+[32mINFO    [0m 2023-07-24 15:33:12,388 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:12,388 [[34mscorca_140223754578288[0m] Seconds left: 915.757365[0m
+[32mINFO    [0m 2023-07-24 15:33:12,462 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:12,463 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 69 -> 67[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:12,469 [[34mscorca_140223754578288[0m] [1m-2 states removed! (-2.90%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:12,469 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:12,475 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+Next move: d5d4
+[31m[47mCRITICAL[0m 2023-07-24 15:33:13,046 [[34mscorca_140223754577376[0m] [1m2 likely states vs 1 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:13,058 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:13,227 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:33:13,228 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[32mINFO    [0m 2023-07-24 15:33:13,229 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.1711726188659668[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:13,230 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 1 -> 37[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:13,246 [[34mscorca_140223754577376[0m] [1m36 states added! (3600.00%)[0m
+[32mINFO    [0m 2023-07-24 15:33:13,247 [[34mscorca_140223754577376[0m] Amount of possible boards: 37[0m
+[32mINFO    [0m 2023-07-24 15:33:13,248 [[34mscorca_140223754577376[0m] Seconds left: 933.2562590000002[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:13,264 [[34mscorca_140223754577376[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:33:13,266 [[34mscorca_140223754577376[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:33:13,267 [[34mscorca_140223754577376[0m] Time used for sense: 0.0032 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:33:13,268 [[34mscorca_140223754577376[0m] Sensed square: c7[0m
+[32mINFO    [0m 2023-07-24 15:33:13,456 [[34mscorca_140223754577376[0m] Amount of likely states before: 1[0m
+[32mINFO    [0m 2023-07-24 15:33:13,457 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:13,458 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 37 -> 19[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:13,475 [[34mscorca_140223754577376[0m] [1m-18 states removed! (-48.65%)[0m
+[32mINFO    [0m 2023-07-24 15:33:13,476 [[34mscorca_140223754577376[0m] Seconds MOVE: 933.0275600000002[0m
+[32mINFO    [0m 2023-07-24 15:33:13,478 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:13,478 [[34mscorca_140223754577376[0m] Seconds left: 933.0275600000002[0m
+Next move: h4e7
+[32mINFO    [0m 2023-07-24 15:33:13,650 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:13,650 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 19 -> 15[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:13,651 [[34mscorca_140223754577376[0m] [1m-4 states removed! (-21.05%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:13,671 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:13,671 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+Next move: h4e7
+[31m[47mCRITICAL[0m 2023-07-24 15:33:17,514 [[34mscorca_140223754578288[0m] [1m129 likely states vs 67 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:17,522 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:18,049 [[34mscorca_140223754578288[0m] Amount of likely states before: 129[0m
+[32mINFO    [0m 2023-07-24 15:33:18,052 [[34mscorca_140223754578288[0m] Amount of likely states after: 118[0m
+[32mINFO    [0m 2023-07-24 15:33:18,052 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 0.5249278545379639[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:18,053 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 67 -> 1950[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:18,071 [[34mscorca_140223754578288[0m] [1m1883 states added! (2810.45%)[0m
+[32mINFO    [0m 2023-07-24 15:33:18,072 [[34mscorca_140223754578288[0m] Amount of possible boards: 1950[0m
+[32mINFO    [0m 2023-07-24 15:33:18,073 [[34mscorca_140223754578288[0m] Seconds left: 916.2711860000001[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:18,088 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:33:18,092 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:33:18,093 [[34mscorca_140223754578288[0m] Time used for sense: 0.0046 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:33:18,093 [[34mscorca_140223754578288[0m] Sensed square: d2[0m
+[32mINFO    [0m 2023-07-24 15:33:18,878 [[34mscorca_140223754578288[0m] Amount of likely states before: 118[0m
+[32mINFO    [0m 2023-07-24 15:33:18,880 [[34mscorca_140223754578288[0m] Amount of likely states after: 12[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:18,880 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 1950 -> 843[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:18,881 [[34mscorca_140223754578288[0m] [1m-1107 states removed! (-56.77%)[0m
+[32mINFO    [0m 2023-07-24 15:33:18,882 [[34mscorca_140223754578288[0m] Seconds MOVE: 915.4616[0m
+[32mINFO    [0m 2023-07-24 15:33:18,883 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:18,883 [[34mscorca_140223754578288[0m] Seconds left: 915.4616[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:18,884 [[34mscorca_140223754577376[0m] [1m28 likely states vs 15 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:18,888 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:19,326 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,326 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 843 -> 554[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,326 [[34mscorca_140223754578288[0m] [1m-289 states removed! (-34.28%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,333 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,333 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+Next move: d4c3
+[32mINFO    [0m 2023-07-24 15:33:19,698 [[34mscorca_140223754577376[0m] Amount of likely states before: 28[0m
+[32mINFO    [0m 2023-07-24 15:33:19,701 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[32mINFO    [0m 2023-07-24 15:33:19,702 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.3629772663116455[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,703 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 15 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,716 [[34mscorca_140223754577376[0m] [1m-14 states removed! (-93.33%)[0m
+[32mINFO    [0m 2023-07-24 15:33:19,717 [[34mscorca_140223754577376[0m] Only one possible board, no need to sense[0m
+[32mINFO    [0m 2023-07-24 15:33:19,838 [[34mscorca_140223754577376[0m] Amount of likely states before: 1[0m
+[32mINFO    [0m 2023-07-24 15:33:19,839 [[34mscorca_140223754577376[0m] Amount of likely states after: 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,840 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,855 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[32mINFO    [0m 2023-07-24 15:33:19,856 [[34mscorca_140223754577376[0m] Seconds MOVE: 937.3108510000002[0m
+[32mINFO    [0m 2023-07-24 15:33:19,858 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:19,858 [[34mscorca_140223754577376[0m] Seconds left: 937.3108510000002[0m
+Next move: e7g5
+[32mINFO    [0m 2023-07-24 15:33:19,975 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,976 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,992 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,994 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:19,994 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:24,012 [[34mscorca_140223754577376[0m] [1m2 likely states vs 1 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:24,021 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+Next move: e7g5
+[31m[47mCRITICAL[0m 2023-07-24 15:33:39,911 [[34mscorca_140223754578288[0m] [1m996 likely states vs 554 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:39,913 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:33:42,788 [[34mscorca_140223754578288[0m] Amount of likely states before: 996[0m
+[32mINFO    [0m 2023-07-24 15:33:42,796 [[34mscorca_140223754578288[0m] Amount of likely states after: 573[0m
+[32mINFO    [0m 2023-07-24 15:33:42,796 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 2.8782191276550293[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:42,797 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 554 -> 10760[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:42,798 [[34mscorca_140223754578288[0m] [1m10206 states added! (1842.24%)[0m
+[32mINFO    [0m 2023-07-24 15:33:42,799 [[34mscorca_140223754578288[0m] Amount of possible boards: 10760[0m
+[32mINFO    [0m 2023-07-24 15:33:42,800 [[34mscorca_140223754578288[0m] Seconds left: 897.2048239999999[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:42,800 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:33:42,805 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:33:42,806 [[34mscorca_140223754578288[0m] Time used for sense: 0.0054 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:33:42,806 [[34mscorca_140223754578288[0m] Sensed square: d2[0m
+[32mINFO    [0m 2023-07-24 15:33:46,658 [[34mscorca_140223754578288[0m] Amount of likely states before: 573[0m
+[32mINFO    [0m 2023-07-24 15:33:46,663 [[34mscorca_140223754578288[0m] Amount of likely states after: 280[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:46,663 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 10760 -> 5427[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:46,663 [[34mscorca_140223754578288[0m] [1m-5333 states removed! (-49.56%)[0m
+[32mINFO    [0m 2023-07-24 15:33:46,664 [[34mscorca_140223754578288[0m] Seconds MOVE: 893.339959[0m
+[32mINFO    [0m 2023-07-24 15:33:46,665 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:46,665 [[34mscorca_140223754578288[0m] Seconds left: 893.339959[0m
+[32mINFO    [0m 2023-07-24 15:33:48,831 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:48,831 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 5427 -> 2262[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:48,831 [[34mscorca_140223754578288[0m] [1m-3165 states removed! (-58.32%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:48,838 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:48,838 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+Next move: c3b2
+[32mINFO    [0m 2023-07-24 15:33:49,235 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:33:49,241 [[34mscorca_140223754577376[0m] Amount of likely states after: 0[0m
+[32mINFO    [0m 2023-07-24 15:33:49,241 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.4031033515930176[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:49,247 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:49,253 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[32mINFO    [0m 2023-07-24 15:33:49,258 [[34mscorca_140223754577376[0m] Only one possible board, no need to sense[0m
+[32mINFO    [0m 2023-07-24 15:33:49,771 [[34mscorca_140223754577376[0m] Amount of likely states before: 0[0m
+[32mINFO    [0m 2023-07-24 15:33:49,772 [[34mscorca_140223754577376[0m] Amount of likely states after: 0[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:49,773 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:49,791 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[32mINFO    [0m 2023-07-24 15:33:49,792 [[34mscorca_140223754577376[0m] Seconds MOVE: 941.2195660000002[0m
+[32mINFO    [0m 2023-07-24 15:33:49,795 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:33:49,816 [[34mscorca_140223754577376[0m] Seconds left: 941.2195660000002[0m
+Next move: a1b1
+[32mINFO    [0m 2023-07-24 15:33:49,968 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:49,969 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 1 -> 1[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:49,970 [[34mscorca_140223754577376[0m] [1m0 states removed! (0.00%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:49,991 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:49,992 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:33:57,140 [[34mscorca_140223754577376[0m] [1m2 likely states vs 1 possible states[0m
+[32mINFO    [0m 2023-07-24 15:33:57,147 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+Next move: a1b1
+[31m[47mCRITICAL[0m 2023-07-24 15:35:07,849 [[34mscorca_140223754578288[0m] [1m3922 likely states vs 2262 possible states[0m
+[32mINFO    [0m 2023-07-24 15:35:07,852 [[34mscorca_140223754578288[0m] Stopped background calculation![0m
+[32mINFO    [0m 2023-07-24 15:35:20,541 [[34mscorca_140223754578288[0m] Amount of likely states before: 3922[0m
+[32mINFO    [0m 2023-07-24 15:35:20,578 [[34mscorca_140223754578288[0m] Amount of likely states after: 3163[0m
+[32mINFO    [0m 2023-07-24 15:35:20,578 [[34mscorca_140223754578288[0m] Time to handle opponent move result: 12.725193738937378[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:20,578 [[34mscorca_140223754578288[0m] [1mStates changes handle_opponent_move_result: 2262 -> 40883[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:20,580 [[34mscorca_140223754578288[0m] [1m38621 states added! (1707.38%)[0m
+[32mINFO    [0m 2023-07-24 15:35:20,581 [[34mscorca_140223754578288[0m] Amount of possible boards: 40883[0m
+[32mINFO    [0m 2023-07-24 15:35:20,582 [[34mscorca_140223754578288[0m] Seconds left: 805.5747389999999[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:20,583 [[34mscorca_140223754578288[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:35:20,592 [[34mscorca_140223754578288[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:35:20,592 [[34mscorca_140223754578288[0m] Time used for sense: 0.0091 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:35:20,594 [[34mscorca_140223754578288[0m] Sensed square: d2[0m
+[32mINFO    [0m 2023-07-24 15:35:34,582 [[34mscorca_140223754578288[0m] Amount of likely states before: 3163[0m
+[32mINFO    [0m 2023-07-24 15:35:34,601 [[34mscorca_140223754578288[0m] Amount of likely states after: 1983[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:34,601 [[34mscorca_140223754578288[0m] [1mStates changes handle_sense_result: 40883 -> 16207[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:34,602 [[34mscorca_140223754578288[0m] [1m-24676 states removed! (-60.36%)[0m
+[32mINFO    [0m 2023-07-24 15:35:34,603 [[34mscorca_140223754578288[0m] Seconds MOVE: 791.553182[0m
+[32mINFO    [0m 2023-07-24 15:35:34,604 [[34mscorca_140223754578288[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:35:34,604 [[34mscorca_140223754578288[0m] Seconds left: 791.553182[0m
+[32mINFO    [0m 2023-07-24 15:35:43,985 [[34mscorca_140223754578288[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:43,991 [[34mscorca_140223754578288[0m] [1mStates changes handle_move_result: 16207 -> 14674[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:43,991 [[34mscorca_140223754578288[0m] [1m-1533 states removed! (-9.46%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:43,997 [[34mscorca_140223754577376[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:43,997 [[34mscorca_140223754577376[0m] [1mHandle opponent move result[0m
+Next move: a8d8
+[32mINFO    [0m 2023-07-24 15:35:44,483 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:35:44,489 [[34mscorca_140223754577376[0m] Amount of likely states after: 2[0m
+[32mINFO    [0m 2023-07-24 15:35:44,489 [[34mscorca_140223754577376[0m] Time to handle opponent move result: 0.48686647415161133[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:44,495 [[34mscorca_140223754577376[0m] [1mStates changes handle_opponent_move_result: 1 -> 39[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:44,501 [[34mscorca_140223754577376[0m] [1m38 states added! (3800.00%)[0m
+[32mINFO    [0m 2023-07-24 15:35:44,506 [[34mscorca_140223754577376[0m] Amount of possible boards: 39[0m
+[32mINFO    [0m 2023-07-24 15:35:44,512 [[34mscorca_140223754577376[0m] Seconds left: 945.5125740000002[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:44,517 [[34mscorca_140223754577376[0m] [1mSENSING BASED ON OPP MOVE WEIGHTS[0m
+[32mINFO    [0m 2023-07-24 15:35:44,520 [[34mscorca_140223754577376[0m] Used stockfish to find square![0m
+[32mINFO    [0m 2023-07-24 15:35:44,525 [[34mscorca_140223754577376[0m] Time used for sense: 0.0081 seconds[0m
+[36mDEBUG   [0m 2023-07-24 15:35:44,525 [[34mscorca_140223754577376[0m] Sensed square: e6[0m
+[32mINFO    [0m 2023-07-24 15:35:45,352 [[34mscorca_140223754577376[0m] Amount of likely states before: 2[0m
+[32mINFO    [0m 2023-07-24 15:35:45,357 [[34mscorca_140223754577376[0m] Amount of likely states after: 0[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:45,363 [[34mscorca_140223754577376[0m] [1mStates changes handle_sense_result: 39 -> 22[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:45,368 [[34mscorca_140223754577376[0m] [1m-17 states removed! (-43.59%)[0m
+[32mINFO    [0m 2023-07-24 15:35:45,368 [[34mscorca_140223754577376[0m] Seconds MOVE: 944.6502750000002[0m
+[32mINFO    [0m 2023-07-24 15:35:45,375 [[34mscorca_140223754577376[0m] Handle move result[0m
+[32mINFO    [0m 2023-07-24 15:35:45,375 [[34mscorca_140223754577376[0m] Seconds left: 944.6502750000002[0m
+[32mINFO    [0m 2023-07-24 15:35:47,107 [[34mscorca_140223754577376[0m] Opponents turn starting...
+[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:47,108 [[34mscorca_140223754577376[0m] [1mStates changes handle_move_result: 22 -> 3[0m
+Next move: g5d8
+[31m[47mCRITICAL[0m 2023-07-24 15:35:47,113 [[34mscorca_140223754577376[0m] [1m-19 states removed! (-86.36%)[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:47,119 [[34mscorca_140223754578288[0m] [1m*************************[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:47,120 [[34mscorca_140223754578288[0m] [1mHandle opponent move result[0m
+[31m[47mCRITICAL[0m 2023-07-24 15:35:53,972 [[34mscorca_140223754577376[0m] [1m6 likely states vs 3 possible states[0m
+[32mINFO    [0m 2023-07-24 15:35:53,979 [[34mscorca_140223754577376[0m] Stopped background calculation![0m
+/home/rstohr/anaconda3/envs/RBC/lib/python3.8/site-packages/joblib/externals/loky/backend/resource_tracker.py:314: UserWarning: resource_tracker: There appear to be 6 leaked semlock objects to clean up at shutdown
+  warnings.warn(
+/home/rstohr/anaconda3/envs/RBC/lib/python3.8/site-packages/joblib/externals/loky/backend/resource_tracker.py:314: UserWarning: resource_tracker: There appear to be 54 leaked folder objects to clean up at shutdown
+  warnings.warn(
