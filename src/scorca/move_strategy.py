@@ -24,7 +24,8 @@ CHECK_WITHOUT_CAPTURE_SCORE = 5
 
 # l0 Network weights
 # 24 blocks x 320 filters
-T60 = 'weights_run1_814501.lc0'  # 96 sec for 10000 evals
+#T60 = 'weights_run1_814501.lc0'  # 96 sec for 10000 evals
+T60 = 'weights_run2_792013.lc0'  # 96 sec for 10000 evals
 # 20 blocks x 256 filters
 LEELENSTEIN = '.20x256SE-jj-9-75000000.pb'  # 59 sec for 10000 evals
 # 15/16 blocks x 192 filters

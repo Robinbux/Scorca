@@ -5,7 +5,7 @@ from enum import Enum
 
 import chess
 from reconchess import Player, play_local_game, WinReason
-from reconchess.bots.attacker_bot import AttackerBot
+from reconchess.bots.attacker_bot import AttackerBot, QUICK_ATTACKS
 from reconchess.bots.trout_bot import TroutBot
 from reconchess.history import GameHistory
 from typing import Tuple
@@ -78,8 +78,7 @@ class GameMaster:
             winning_color = history_data['winner_color']
         return winning_color
 
-    def run_experiment(self, num_games: int, bot1_options: BotOptions, bot2_options: BotOptions,
-                       bot1_params=None, bot2_params=None):
+    def run_experiment(self, num_games: int, bot1_options: BotOptions, bot2_options: BotOptions):
         # Create new experiment directory
         experiment_dir = self.create_new_experiment_dir()
 
@@ -178,24 +177,78 @@ class GameMaster:
                 'seconds_per_player': SECONDS_PER_PLAYER,
             }, file, indent=2)
 
+    def play_against_all_attackers(self):
+        results = defaultdict(int)
+
+        experiment_dir = self.create_new_experiment_dir()
+
+
+        # Set up the bots with hardcoded parameters if provided
+        bot1_name, scorca_bot = self.setup_bot(BotOptions.SCORCA)
+        bot1_name = f"BOT 1 ({bot1_name})"
+        bot2_name, attacker_bot = self.setup_bot(BotOptions.ATTACKER)
+        bot2_name = f"BOT 2 ({bot2_name})"
+
+        self.save_initial_experiment_settings(experiment_dir, 8, scorca_bot, attacker_bot)
+
+        scorca_colors = [chess.WHITE, chess.BLACK]
+        quick_attack_ids = range(4)
+
+        game_idx = 0
+        for scorca_color in scorca_colors:
+            for quick_attack_id in quick_attack_ids:
+                if scorca_color == chess.WHITE:
+                    white = scorca_bot
+                    white_name = 'Scorca'
+                    black = attacker_bot
+                    black_name = 'Attacker'
+                else:
+                    white = attacker_bot
+                    white_name = 'Attacker'
+                    black = scorca_bot
+                    black_name = 'Scorca'
+
+                attacker_bot.move_sequence = QUICK_ATTACKS[quick_attack_id]
+
+                history_file, winning_color, win_reason, turns = self.play_single_game(white, black, game_idx,
+                                                                                       experiment_dir)
+                winner_name = white_name if winning_color else black_name
+
+                game_details = {
+                    'game_id': game_idx,
+                    'white_bot': white_name,
+                    'black_bot': black_name,
+                    'winner': winner_name,
+                    'winning_color': bool_to_color(winning_color),
+                    'win_reason': str(win_reason),
+                    'turns': turns,
+                }
+                self.update_results_and_game_details(experiment_dir, dict(results), game_details)
+                self.reset_bots(scorca_bot, attacker_bot)
+
+                game_idx += 1
+
+        # Return win rate of bot1
+        return results[bot1_name] / game_idx
 
 if __name__ == '__main__':
     print("START")
     game_master = GameMaster()
+    game_master.play_against_all_attackers()
 
-    num_experiments = 1
-    num_games = 1
-
-
-    bot1 = BotOptions.SCORCA
-    bot2 = BotOptions.ATTACKER
-
-
-    for i in range(num_experiments):
-        print(f"Running experiment {i + 1}...")
-
-        game_master.run_experiment(
-            num_games=num_games,
-            bot1_options=bot1,
-            bot2_options=bot2,
-        )
+    # num_experiments = 1
+    # num_games = 1
+    #
+    #
+    # bot1 = BotOptions.SCORCA
+    # bot2 = BotOptions.ATTACKER
+    #
+    #
+    # for i in range(num_experiments):
+    #     print(f"Running experiment {i + 1}...")
+    #
+    #     game_master.run_experiment(
+    #         num_games=num_games,
+    #         bot1_options=bot1,
+    #         bot2_options=bot2,
+    #     )

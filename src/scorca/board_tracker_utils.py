@@ -72,3 +72,8 @@ def pseudo_legal_moves_with_castling_through_check_list(boards: List[chess.Board
         # Flatten the list of lists into a single list
         all_moves = [move for moves in all_moves for move in moves]
         return list(set(all_moves))
+
+def null_move_for_all_boards(boards: List[chess.Board]) -> List[chess.Board]:
+    for board in boards:
+        board.push(chess.Move.null())
+    return boards

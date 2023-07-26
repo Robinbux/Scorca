@@ -41,6 +41,8 @@ STATES_CUTOFF_POINT = 10_000
 LIKELY_NEXT_STATES_PER_BOARD = 2
 OPTIMISTIC_STATES_PER_BOARD = 0
 
+ANTI_ATTACKER_SENSES_WHITE = [chess.parse_square('d6'), chess.parse_square('d6'), chess.parse_square('d5'), chess.parse_square('e3'), None]
+ANTI_ATTACKER_SENSES_BLACK = [chess.parse_square('d3'), chess.parse_square('d4'), chess.parse_square('e6'), None]
 
 def log_states_change(func):
     @wraps(func)
@@ -53,9 +55,20 @@ def log_states_change(func):
 
     return wrapper
 
+def skip_if_attacker_opp(func):
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        if self.play_against_attacker:
+            self.logger.info(f"Skipping {func.__name__} because opponent is attacker")
+            return
+        return func(self, *args, **kwargs)
+    return wrapper
+
 
 class Scorca(Player):
     def __init__(self, disable_logger: bool = False):
+        self.game_information_db = None
+        self.boards_tracker = None
         self.likely_states = set()
         self.likely_and_optimistic_states = set()
         self.opp_move_weights = None
@@ -87,8 +100,6 @@ class Scorca(Player):
         self.color = None
         self.board = None
         self.out_of_time = False
-        self.game_information_db = GameInformationDB(None, None)
-        self.boards_tracker = BoardsTracker(self.logger)
 
     def _configure_logger(self, disable_logger: bool, opponent_name: str):
         if disable_logger:
@@ -131,7 +142,6 @@ class Scorca(Player):
         )
 
     def _initialize_strategy(self):
-        self.move_strategy = MoveStrategy(self.game_information_db, self.logger)
         self.sense_strategy_name = 'naive_entropy_sense'
         self.sense_strategy = AdaptedEntropySense()
         self.ponders = []
@@ -142,10 +152,12 @@ class Scorca(Player):
         self.logger.info(f'Opponent name: {opponent_name}')
         print("HANDLE GAME START!!!!!")
         print(opponent_name)
-        self.play_against_attacker = opponent_name == "AttackerBot"
+        self.play_against_attacker = opponent_name in {"AttackerBot", "attacker"}
+        self.anti_attacker_senses = ANTI_ATTACKER_SENSES_WHITE if color else ANTI_ATTACKER_SENSES_BLACK
         self.color = color
-        self.game_information_db.color = color
-        self.game_information_db.opponent_color = not color
+        self.game_information_db = GameInformationDB(color, not color)
+        self.boards_tracker = BoardsTracker(self.logger, self.game_information_db)
+        self.move_strategy = MoveStrategy(self.game_information_db, self.logger)
         self._configure_logger(False, opponent_name)
 
     @log_states_change
@@ -170,7 +182,8 @@ class Scorca(Player):
         start_time = time.time()
         self.boards_tracker.handle_opponent_move_result(captured_my_piece=captured_my_piece,
                                                         capture_square=capture_square,
-                                                        seconds_left=self.seconds_left)
+                                                        seconds_left=self.seconds_left,
+                                                        play_against_attacker=self.play_against_attacker)
         self.logger.info(f"Done with boards tracker expansion!")
         if len(self.boards_tracker.possible_states) > 1 and self.opp_move_weights:
             if capture_square is not None:
@@ -187,8 +200,10 @@ class Scorca(Player):
 
         self.logger.info(f"Time to handle opponent move result: {time.time() - start_time}")
 
-    def choose_sense(self, sense_actions: List[Square], move_actions: List[chess.Move], seconds_left: float) -> \
-            Optional[Square]:
+    def choose_sense(self, sense_actions: List[Square], move_actions: List[chess.Move], seconds_left: float) -> Optional[Square]:
+        if self.play_against_attacker and self.game_information_db.turn < 4:
+            if square := self.anti_attacker_senses[self.game_information_db.turn]:
+                return square
         if self._should_skip_sense():
             return None
         if self._is_time_low(seconds_left):

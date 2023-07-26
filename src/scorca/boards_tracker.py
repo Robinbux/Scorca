@@ -9,7 +9,7 @@ from joblib import Parallel, delayed
 from multiprocessing import Pool
 
 from board_tracker_utils import legal_board_for_sense_result, legal_board_for_own_move_result, \
-    next_possible_board_states_based_on_opponent_move_result
+    next_possible_board_states_based_on_opponent_move_result, null_move_for_all_boards
 from utils import convert_castling_moves_if_any, possible_piece_types_from_move, HashableBoard
 
 
@@ -17,14 +17,16 @@ from utils import convert_castling_moves_if_any, possible_piece_types_from_move,
 
 class BoardsTracker:
 
-    def __init__(self, logger):
+    def __init__(self, logger, game_information_db):
         self.logger = logger
+        self.game_information_db = game_information_db
         self.possible_states = {HashableBoard()}
         self.likely_states = {}
         self.transposition_table = {}
         self.taken_moves = []
         self.num_cpus = 4
         self.best_squares_for_opp_to_move_to = [] # We only do that if there are not a lot of opponents boards
+
 
     def calculate_likely_states(self, opp_move_weights: Dict[chess.Move, float]) -> None:
         self.likely_states = set()
@@ -91,9 +93,14 @@ class BoardsTracker:
         self.possible_states = {board for board in Parallel(n_jobs=self.num_cpus)(new_boards) if board is not None}
 
     def handle_opponent_move_result(self, captured_my_piece: bool, capture_square: Optional[chess.Square],
-                                    seconds_left: float = None) -> None:
-        self.best_squares_for_opp_to_move_to = collections.Counter()
+                                    seconds_left: float = None, play_against_attacker: bool = False) -> None:
 
+        if play_against_attacker and self.game_information_db.turn > 4:
+            for board in self.possible_states:
+                board.turn = not board.turn
+            return
+
+        self.best_squares_for_opp_to_move_to = collections.Counter()
         start_time = time.time()
         results = []
         for board in self.possible_states:
