@@ -80,22 +80,13 @@ class MoveStrategy:
         return move_weights, likely_boards, optimistic_boards
 
     def find_best_move_l0(self, boards: Set[chess.Board], possible_moves: List[chess.Move]) -> Optional[chess.Move]:
+        if len(boards) == 1:
+            return self.find_best_move_single_board(boards[0], L0_BACKEND)
+
         move_weights, move_counts, _, _ = self.get_move_weights_and_move_counts(boards, possible_moves)
 
-        # I am FED UP WITH THE ATTACKER BOTS, SO MANUAL CHECKS...
-        self.logger.info(f"Turn: {self.game_information_db.turn}")
-        if self.game_information_db.turn == 2 and (
-                HashableBoard("rnbqkbnr/ppp2ppp/3N4/3pp3/8/8/PPPPPPPP/R1BQKBNR b KQkq - 0 3") in boards or HashableBoard(
-                "r1bqkbnr/pppp1ppp/2nN4/4p3/8/8/PPPPPPPP/R1BQKBNR b KQkq - 0 3") in boards):
-            best_move = chess.Move.from_uci("f8d6")
-            return best_move
-        elif self.game_information_db.turn == 3 and HashableBoard(
-                "r1bqkbnr/pppppppp/8/8/2PP4/2Nn4/PP2PPPP/R1BQKBNR w KQkq - 3 4") in boards:
-            best_move = chess.Move.from_uci("d1d3")
-            return best_move
-        else:
-            # Find the best move among all moves
-            best_move = find_best_move_among_all(move_weights, move_counts, boards)
+
+        best_move = find_best_move_among_all(move_weights, move_counts, boards)
 
         # If we are mated everywhere, return None
         if best_move is None:
@@ -114,6 +105,37 @@ class MoveStrategy:
         best_move = convert_castling_moves_if_any(best_move)
 
         return best_move
+
+    def find_best_move_single_board(self, board: chess.Board, b) -> Optional[chess.Move]:
+        move_weights = defaultdict(float)
+        move_counts = defaultdict(int)
+
+        # 2 Special cases:
+        # 1. If the opponent is in check, we want to capture the king
+        # 2. If we are checkmate we skip
+
+        # First case:
+        if current_mover_gives_check(board):
+            op_king_square = board.king(not board.turn)
+            pseudo_legal_moves = pseudo_legal_moves_with_castling_through_check(board, with_null=False)
+            for move in pseudo_legal_moves:
+                if move.to_square == op_king_square:
+                    return move
+
+        # Second case:
+        if board.is_checkmate():
+            return None
+
+        game_state = GameState(board.fen())
+        i2 = game_state.as_input(b)
+        eval = b.evaluate(i2)[0]
+
+        moves = game_state.moves()
+        policy_indices = game_state.policy_indices()
+        move_scores_softmax = list(zip(moves, eval.p_softmax(*policy_indices)))
+
+        sorted_moves = sorted(move_scores_softmax, key=lambda x: x[1], reverse=True)
+        return sorted_moves[0][0]
 
     def get_move_weights_and_move_counts(self, boards: List[chess.Board], possible_moves: List[chess.Move],
                                          n_likely_boards_per_state: Optional[int] = None,
