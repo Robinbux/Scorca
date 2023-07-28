@@ -81,7 +81,11 @@ class MoveStrategy:
 
     def find_best_move_l0(self, boards: Set[chess.Board], possible_moves: List[chess.Move]) -> Optional[chess.Move]:
         if len(boards) == 1:
-            return self.find_best_move_single_board(boards[0], L0_BACKEND)
+            move_uci = self.find_best_move_single_board(boards[0], L0_BACKEND)
+            if not move_uci:
+                return None
+            best_move = convert_castling_moves_if_any(chess.Move.from_uci(move_uci))
+            return best_move
 
         move_weights, move_counts, _, _ = self.get_move_weights_and_move_counts(boards, possible_moves)
 
