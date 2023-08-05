@@ -11,6 +11,8 @@ from datetime import datetime
 import chess
 import chess.polyglot
 import colorlog
+import signal
+
 from reconchess import Player, Color, Optional, WinReason, GameHistory, Square
 
 from boards_tracker import BoardsTracker
@@ -274,29 +276,33 @@ class Scorca(Player):
 
     def _perform_and_log_move_action(self, move_actions: List[chess.Move], seconds_left: int):
         start_time = time.time()
+        self.logger.info(f"Starting move evaluation. Time remaining: {seconds_left} seconds.")
         states_to_use = self.boards_tracker.possible_states
 
         if len(self.likely_states) > 0:
             states_to_use = self.likely_states
+            self.logger.info("Using likely states for move evaluation.")
             # Get all boards that attack our king
             all_possible_states = self.boards_tracker.possible_states
             states_that_attack_our_king = {state for state in all_possible_states if state.is_check()}
-            # self.logger.info('States that attack our king:')
-            # self.logger.info(states_that_attack_our_king)
-            # self.logger.info('States to use before:')
-            # self.logger.info(states_to_use)
+            self.logger.info('States that attack our king:')
+            self.logger.info(states_that_attack_our_king)
+            self.logger.info('States to use before:')
+            self.logger.info(states_to_use)
             states_to_use.update(states_that_attack_our_king)
-            # self.logger.info('States to use after:')
-            # self.logger.info(states_to_use)
+            self.logger.info('States to use after:')
+            self.logger.info(states_to_use)
 
         move, ponders = self.move_strategy.move(move_actions, states_to_use, seconds_left)
         # If move is none, pick random move
         if move is None:
             move = random.choice(move_actions)
+            self.logger.warning("Move strategy returned None. Picking a random move.")
         self.ponders = ponders
         self.logger.info(f"Time used for move: {time.time() - start_time:.4f} seconds")
         self.logger.debug(f"Requested Move: {move.uci() if move else 'None'}")
         self.seconds_left = seconds_left - (time.time() - start_time)
+        self.logger.info(f"Remaining time after move: {self.seconds_left} seconds")
 
         self.background_calc_finished = False
 

@@ -19,8 +19,8 @@ VALUE_MATE = 10000
 TIME_USED_FOR_OPERATION = 5
 
 KING_CAPTURE_SCORE = 15
-LEAVE_IN_CHECK_SCORE = 5
-CHECK_WITHOUT_CAPTURE_SCORE = 5
+LEAVE_IN_CHECK_SCORE = 7
+CHECK_WITHOUT_CAPTURE_SCORE = 7
 
 # l0 Network weights
 # 24 blocks x 320 filters
@@ -53,13 +53,16 @@ class MoveStrategy:
     def move(self, move_actions: List[chess.Move], states: Set[chess.Board], seconds_left: int) -> Tuple[Optional[
         chess.Move], List[chess.Move]]:
         self.move_actions = move_actions
+        self.logger.info(f"Received move actions with {len(states)} states and {seconds_left} seconds left.")
         # TODO: Some form of time management....
         return self.leela_chess_zero_move(states)
 
     def leela_chess_zero_move(self, possible_boards: List[chess.Board]) -> Tuple[
         Optional[chess.Move], List[chess.Move]]:
         possible_boards = list(possible_boards)
+        self.logger.info(f"Starting leela_chess_zero_move with {len(possible_boards)} possible boards.")
         best_move = self.find_best_move_l0(possible_boards, self.move_actions)
+        self.logger.info(f"Leela Chess Zero best move found: {best_move}")
         return best_move, []
 
     def get_best_moves_l0(self, boards: List[chess.Board], n_likely_boards_per_state: Optional[int] = None,
@@ -75,16 +78,20 @@ class MoveStrategy:
                                                                                                             n_likely_boards_per_state,
                                                                                                             n_optimistic_boards_per_state)
         self.logger.info("After get_move_weights_and_move_counts")
-
+        self.logger.info(f"Found {len(move_weights)} move weights, {len(likely_boards)} likely boards, and {len(optimistic_boards)} optimistic boards.")
 
         return move_weights, likely_boards, optimistic_boards
 
     def find_best_move_l0(self, boards: Set[chess.Board], possible_moves: List[chess.Move]) -> Optional[chess.Move]:
+        self.logger.info(f"Finding the best move from {len(boards)} boards and {len(possible_moves)} possible moves.")
         if len(boards) == 1:
+            boards = list(boards)
             move_uci = self.find_best_move_single_board(boards[0], L0_BACKEND)
             if not move_uci:
+                self.logger.warning("No move found on single board.")
                 return None
             best_move = convert_castling_moves_if_any(chess.Move.from_uci(move_uci))
+            self.logger.info(f"Best move found: {best_move}")
             return best_move
 
         move_weights, move_counts, _, _ = self.get_move_weights_and_move_counts(boards, possible_moves)
@@ -111,6 +118,7 @@ class MoveStrategy:
         return best_move
 
     def find_best_move_single_board(self, board: chess.Board, b) -> Optional[chess.Move]:
+        self.logger.info(f"Finding best move for single board with FEN: {board.fen()}")
         move_weights = defaultdict(float)
         move_counts = defaultdict(int)
 
@@ -124,10 +132,13 @@ class MoveStrategy:
             pseudo_legal_moves = pseudo_legal_moves_with_castling_through_check(board, with_null=False)
             for move in pseudo_legal_moves:
                 if move.to_square == op_king_square:
-                    return move
+                    self.logger.info(f"Opponent's king in check. Capturing the king with move to square {move.to_square}")
+                    self.logger.info(move)
+                    return move.uci()
 
         # Second case:
         if board.is_checkmate():
+            self.logger.warning("Board is in checkmate. No move found.")
             return None
 
         game_state = GameState(board.fen())
@@ -139,7 +150,10 @@ class MoveStrategy:
         move_scores_softmax = list(zip(moves, eval.p_softmax(*policy_indices)))
 
         sorted_moves = sorted(move_scores_softmax, key=lambda x: x[1], reverse=True)
-        return sorted_moves[0][0]
+        best_move = sorted_moves[0][0]
+        self.logger.info(f"Best move found: {best_move} with score {sorted_moves[0][1]}")
+        return best_move
+
 
     def get_move_weights_and_move_counts(self, boards: List[chess.Board], possible_moves: List[chess.Move],
                                          n_likely_boards_per_state: Optional[int] = None,

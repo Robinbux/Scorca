@@ -110,7 +110,7 @@ class NaiveEntropySense:
 
 class AdaptedEntropySense:
 
-    def __init__(self, move_strategy = None, include_penalty=True, include_ponder_bonus=False, include_attacker_squares=False, include_piece_value_bonus=True, ):
+    def __init__(self, move_strategy = None, include_penalty=False, include_ponder_bonus=False, include_attacker_squares=False, include_piece_value_bonus=False, ):
         self.move_strategy = move_strategy
         self.sensed_squares = np.zeros((8, 8), dtype=int)
         self.include_penalty = include_penalty
