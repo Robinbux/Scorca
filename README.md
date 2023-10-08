@@ -11,6 +11,6 @@ Scorca aims to effectively model knowledge, choose optimal sensing actions, and 
 - Evaluation of move quality across plausible board states
 - Utilization of the Leela Chess Zero neural network
 
-The source coe can be seen in the `src` directory, while the experiments and plots can be seen in the remaining ones.
+The source code can be seen in the `src` directory, while the experiments and plots can be seen in the remaining ones.
   
 During development, Scorca was able to achieve a high ranking on the RBC global leaderboard, demonstrating the effectiveness of its approach. The current Elo can be tracked bere: https://rbc.jhuapl.edu/users/48973
