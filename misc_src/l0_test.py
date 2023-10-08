@@ -182,25 +182,25 @@ class TestFindBestMove(unittest.TestCase):
         move_strategy = MoveStrategy(game_information_db, logger)
 
         boards = [HashableBoard('rnbqk2r/pppp1ppp/8/3QP3/1bB1n3/2P4N/PP3PPP/RNB1K2R b KQkq - 4 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/8/3QP3/1bB1n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/8/1B2P2Q/1b2n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/8/3QP3/1bB1n3/2P4N/PP3PPP/RNB1K2R b KQkq - 2 7'),
-                 HashableBoard('rnbqk2r/ppppQppp/8/4P3/1bB1n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/8/4P2Q/1bB1n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
-                 HashableBoard('rnbqkQ1r/pppp1ppp/B7/4P3/1b2n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/8/1B2P3/1b1Qn3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/4Q3/1B2P3/1b2n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/B7/4P2Q/1b2n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/4Q3/4P3/1bB1n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
-                 HashableBoard('rnbqk2r/ppppQppp/8/1B2P3/1b2n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/8/1B1QP3/1b2n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
-                 HashableBoard('rnbqk2r/ppppQppp/B7/4P3/1b2n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/B7/4P3/1b1Qn3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/B7/3QP3/1b2n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/8/4P3/1bBQn3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/B7/4P3/1b2n1Q1/2N4N/PPP2PPP/R1B1K2R b KQkq - 7 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/8/1B2P3/1b2n1Q1/2P4N/PP3PPP/RNB1K2R b KQkq - 4 7'),
-                 HashableBoard('rnbqk2r/pppp1ppp/8/3QP3/1bB1n3/2N4N/PPP2PPP/R1B1K2R b KQkq - 7 7')]
+                  HashableBoard('rnbqk2r/pppp1ppp/8/3QP3/1bB1n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/8/1B2P2Q/1b2n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/8/3QP3/1bB1n3/2P4N/PP3PPP/RNB1K2R b KQkq - 2 7'),
+                  HashableBoard('rnbqk2r/ppppQppp/8/4P3/1bB1n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/8/4P2Q/1bB1n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
+                  HashableBoard('rnbqkQ1r/pppp1ppp/B7/4P3/1b2n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/8/1B2P3/1b1Qn3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/4Q3/1B2P3/1b2n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/B7/4P2Q/1b2n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/4Q3/4P3/1bB1n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
+                  HashableBoard('rnbqk2r/ppppQppp/8/1B2P3/1b2n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/8/1B1QP3/1b2n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
+                  HashableBoard('rnbqk2r/ppppQppp/B7/4P3/1b2n3/7N/PPP2PPP/RNB1K2R b KQkq - 7 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/B7/4P3/1b1Qn3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/B7/3QP3/1b2n3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/8/4P3/1bBQn3/2P4N/PP3PPP/RNB1K2R b KQkq - 0 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/B7/4P3/1b2n1Q1/2N4N/PPP2PPP/R1B1K2R b KQkq - 7 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/8/1B2P3/1b2n1Q1/2P4N/PP3PPP/RNB1K2R b KQkq - 4 7'),
+                  HashableBoard('rnbqk2r/pppp1ppp/8/3QP3/1bB1n3/2N4N/PPP2PPP/R1B1K2R b KQkq - 7 7')]
         # Get a set off all moves from all boards...
         all_moves = set()
         for board in boards:
@@ -224,7 +224,37 @@ class TestFindBestMove(unittest.TestCase):
         if unexpected_moves:
             self.assertNotIn(best_move, unexpected_moves, msg=f'{best_move} is in the unexpected moves.')
 
+    def test_case_6(self):
+        color = chess.WHITE
+        game_information_db = GameInformationDB(color, not color)
 
+        move_strategy = MoveStrategy(game_information_db, logger)
+
+        boards = [HashableBoard('3k4/7R/4p1p1/1p2Pp2/r6P/1B2PKP1/PP6/8 w - - 7 39'),
+                  HashableBoard('8/7R/4p1p1/1p2Pp2/r3k2P/1B2PKP1/PP6/8 w - - 7 39')]
+
+        # Get a set off all moves from all boards...
+        all_moves = set()
+        for board in boards:
+            all_moves.update(list(board.pseudo_legal_moves))
+
+        best_move = move_strategy.find_best_move_l0(boards, possible_moves=list(all_moves))
+
+        print(f'Best move: {best_move}')
+
+        expected_moves_ucis = [
+
+        ]
+        unexpected_moves_ucis = [
+            'b4e1'
+        ]
+        expected_moves = [chess.Move.from_uci(uci) for uci in expected_moves_ucis]
+        unexpected_moves = [chess.Move.from_uci(uci) for uci in unexpected_moves_ucis]
+        # Assuming that expected_moves and unexpected_moves are defined
+        if expected_moves:
+            self.assertIn(best_move, expected_moves, msg=f'{best_move} is not in the expected moves.')
+        if unexpected_moves:
+            self.assertNotIn(best_move, unexpected_moves, msg=f'{best_move} is in the unexpected moves.')
 
 
 if __name__ == '__main__':

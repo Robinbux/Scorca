@@ -91,7 +91,7 @@ for bot_name, piece_averages in averages.items():
 plot_data = pd.DataFrame(plot_data)
 
 # Map abbreviated piece types to full names
-piece_name_map = {'p': 'Pawn', 'r': 'Rook', 'n': 'Knight', 'b': 'Bishop', 'q': 'Queen', 'k': 'King'}
+piece_name_map = {'p': 'Pawn', 'r': 'Rook', 'b': 'Bishop', 'q': 'Queen', 'k': 'King'}
 plot_data['Piece Type'] = plot_data['Piece Type'].map(piece_name_map)
 
 # Set seaborn style
@@ -103,8 +103,8 @@ ax = sns.barplot(x='Piece Type', y='Average Distance Moved', hue='Bot', data=plo
 
 # Adding labels and title
 ax.set_xlabel('Piece Types', fontsize=14)
-ax.set_ylabel('Average Distance Moved', fontsize=14)
-ax.set_title('Average Distance Moved by Different Piece Types for Each Bot', fontsize=16)
+ax.set_ylabel('Average chebyshev distance moved', fontsize=14)
+#ax.set_title('Average Distance Moved by Different Piece Types for Each Bot', fontsize=16)
 ax.legend(title='Bots', title_fontsize='13', fontsize='11')
 
 # Tweak the visuals a bit

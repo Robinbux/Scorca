@@ -69,6 +69,7 @@ def skip_if_attacker_opp(func):
 
 class Scorca(Player):
     def __init__(self, disable_logger: bool = False):
+        self.opponent_name = None
         self.game_information_db = None
         self.boards_tracker = None
         self.likely_states = set()
@@ -102,6 +103,7 @@ class Scorca(Player):
         self.color = None
         self.board = None
         self.out_of_time = False
+        self.opponent_name = None
 
     def _configure_logger(self, disable_logger: bool, opponent_name: str):
         if disable_logger:
@@ -153,7 +155,8 @@ class Scorca(Player):
         self.logger.info('Game starting...')
         self.logger.info(f'Opponent name: {opponent_name}')
         print("HANDLE GAME START!!!!!")
-        print(opponent_name)
+        print(f"Opponent name: {opponent_name}")
+        self.opponent_name = opponent_name
         self.play_against_attacker = opponent_name in {"AttackerBot", "attacker"}
         self.anti_attacker_senses = ANTI_ATTACKER_SENSES_WHITE if color else ANTI_ATTACKER_SENSES_BLACK
         self.color = color
@@ -289,7 +292,7 @@ class Scorca(Player):
             self.logger.info(states_that_attack_our_king)
             self.logger.info('States to use before:')
             self.logger.info(states_to_use)
-            states_to_use.update(states_that_attack_our_king)
+            #states_to_use.update(states_that_attack_our_king)
             self.logger.info('States to use after:')
             self.logger.info(states_to_use)
 
@@ -357,6 +360,8 @@ class Scorca(Player):
     def handle_game_end(self, winner_color: Optional[Color], win_reason: Optional[WinReason],
                         game_history: GameHistory):
         self.logger.info(f'Game end: {winner_color} {win_reason}')
+        # Print name of winner:
+        self.logger.info(f'Winner: {"Scorca !!! :)" if winner_color == self.color else self.opponent_name}')
         self.logger.info(game_history)
 
     def _log_states_difference(self, operation: str, before: int, after: int):

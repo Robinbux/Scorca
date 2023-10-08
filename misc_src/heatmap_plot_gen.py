@@ -17,14 +17,16 @@ data = [
 data = np.flip(data, axis=0)
 data_rounded = np.round(data, 2)
 
-
-# Creating labels for the plot
-x_labels = list('ABCDEFGH')
-y_labels = list(map(str, range(1, 9)))
 # Creating the heatmap
-fig, ax = plt.subplots(figsize=(10, 8))
+fig, ax = plt.subplots(figsize=(12, 10))
 
-sns.heatmap(data_rounded, annot=True, fmt=".2f", linewidths=.5, ax=ax, cmap="Reds", cbar=False, xticklabels=x_labels, yticklabels=y_labels)
+# Using a lambda function to adjust the font weight to bold and size for the annotations
+cax = sns.heatmap(data_rounded, annot=True, fmt=".2f", linewidths=.5, ax=ax, cmap="Reds", cbar=False, xticklabels=False, yticklabels=False)
+for text in cax.texts:
+    text.set_weight('bold')
+    text.set_size(15)
+    if text.get_text() == "-0.00":
+        text.set_text("0")
 
 # Setting the X axis labels on the top
 ax.xaxis.tick_top()
