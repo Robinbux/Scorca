@@ -1,0 +1,1 @@
+from .strangefish.strangefish_strategy import StrangeFish2
