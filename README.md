@@ -41,3 +41,5 @@ The behavior of Scorca can be configured using various parameters and hyperparam
 | `MAX_BOARDS` | 4,000 | Maximum number of boards to track |
 | `SECONDS_PER_PLAYER` | 300 | Time allocated per player (in seconds) |
 
+- Contact Robin in case of any inquiry (rb.stoehr@gmail.com)
+- ⁠The licence is CC-BY-ND 4.0.
