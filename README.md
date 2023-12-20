@@ -15,6 +15,15 @@ The source code can be seen in the `src` directory, while the experiments and pl
 
 During development, Scorca was able to achieve a high ranking on the RBC global leaderboard, demonstrating the effectiveness of its approach. The current Elo can be tracked here: [Scorca Elo Ranking](https://rbc.jhuapl.edu/users/48973)
 
+## Project overview
+The main logic can be seen in the files at `src/scorca`. `game_master.py` was used for local tests.
+The individual scripts had the following functions:
+- `scorca.py` - Main script for running Scorca
+- `sense_strategy.py` - Entropy sense strategy
+- `move_strategy.py` - Leela based move strategy
+- `boards_tracker.py` - Tracker of all possible board states
+- `utils.py` - Utility functions
+
 ## Configuration Parameters
 
 The behavior of Scorca can be configured using various parameters and hyperparameters. Below is a summary of these settings:
