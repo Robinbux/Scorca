@@ -1,5 +1,6 @@
 # Scorca - A Bot for Reconnaissance Blind Chess
 [![DOI](https://zenodo.org/badge/666874352.svg)](https://zenodo.org/doi/10.5281/zenodo.10412786)
+
 Scorca is an open-source bot designed to play Reconnaissance Blind Chess (RBC). It was created as part of a research project investigating knowledge modelling, sensing strategies, and moving strategies in RBC.
 
 ## About
